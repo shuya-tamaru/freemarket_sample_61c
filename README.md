@@ -34,7 +34,8 @@
 |------|----|-------|
 |number|integer|null:false|
 |name|string|null:false|
-|validated_date|integer|null:false|
+|validated_date_year|integer|null:false|
+|validated_date_month|integer|null:false|
 |security_number|integer|null:false|
 |user|references|null: false, foreign_key:true|
 ### Association
@@ -93,21 +94,13 @@
 ## evaluationsテーブル(ユーザーに対する評価)
 |Column|Type|Options|
 |------|----|-------|
-|evaluation|string|null:false|
-|user|references|null: false, foreign_key:true|
-|evaluation_type|references|null: false, foreign_key:true|
+|good_type|integer|null:false|
+|normal_type|integer|null:false|
+|bad_type|integer|null:false|
 |comment|string|
+|user|references|null: false, foreign_key:true|
 ### Association
 - belongs_to :user
-- belongs_to :evaluations_type
-
-
-## evaluations_typesテーブル(評価一覧を保存)
-|Column|Type|Options|
-|------|----|-------|
-|evaluation_type|string|null:false|
-### Association
-- has_many :evaluations_type
 ​
 ​
 ## likesテーブル(いいね！)
