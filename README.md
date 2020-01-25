@@ -139,7 +139,7 @@
 |shipping_way|string|null: false|
 |discription|string|null: false|
 |brand|refernces|index: true, foreign_key: true|
-|category|refernces|null: false, index: true, foreign_key: true|
+|grand_chaild_category|refernces|null: false, index: true, foreign_key: true|
 |buyer_user_id|integer|null: false|
 |saler_user_id|integer|null: false|
 |fee_side|string|null: false|
@@ -207,7 +207,7 @@
 - belongs_to :parent_category
 ​
 ​
-## child_categoryテーブル(例：シャツ)
+## grand_child_categoryテーブル(例：シャツ)
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
