@@ -18,9 +18,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["passward"] = params[:user][:passward]
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @cellphone = @user.build_cellphone
     render :new_cellphone
+  end
+
+  def create_cellphone
+    @user = User.new(session["devise.regist_data"]["user"])
+    @cellphone = Cellphone.new(cellphone_params)
+    unless @cellphone.valid?
+      flash.now[:alert] = @cellphone.errors.full_messages
+      render :new_cellphone and return
+    end
+    @user.build_cellphone(@cellphone.attributes)
+    #とりあえず２ページ目までで保存（あとで書き換え）
+    @user.save
+    sign_in(:user, @user)
   end
 
   # GET /resource/edit
@@ -52,6 +65,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
+
+  def cellphone_params
+    params.require(:cellphone).permit(:number)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
