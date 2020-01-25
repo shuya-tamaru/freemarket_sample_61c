@@ -1,0 +1,106 @@
+.header  {
+  height: 130px;
+  background-color: #f5f5f5;
+  font-family: arial;
+  &__logo {
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
+    line-height: 90px;
+    transform: translateY(20%);
+    &__image {
+      height: 90px;
+      width: 200px;
+    }
+  }
+}
+.contents {
+  background-color: #f5f5f5;
+  font-family: arial;
+  &__title {
+    background-color: #ffffff;
+    height: 100px;
+    width: 700px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid #f5f5f5;
+    margin: 0 auto;
+  }
+  &__selection {
+    background-color: #ffffff;
+    height: 300px;
+    width: 700px;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 0 0;
+  }
+  &__btn {
+    display: block;
+    height: 60px;
+    width: 400px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 80px;
+    padding: 0 50px 0 0;
+    &__icon1 {
+      padding: 15px 60px 13px 20px;
+    }
+    &__icon2 {
+      padding: 15px 80px 13px 20px;
+    }
+    &__icon3 {
+      padding: 15px 86px 13px 20px;
+    }
+    &__mail {
+      background-color: #dc143c;
+    }
+    &__facebook {
+      background-color: #191970;
+    }
+    &__google {
+      color: #000000;
+      border: 1px solid;
+    }
+  }
+}
+
+.footer {
+  height: calc(100vh - 130px - 100px - 5px - 300px);
+  background-color: #f5f5f5;
+  font-family: arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: block;
+  padding: 100px 10px 10px 0;
+  font-size: 13px;
+  &__list{
+    display: block;
+  }
+  &__logo {
+    padding: 20px 0 0 0;
+    display: block;
+    color: #c0c0c0;
+    height: 20px;
+    font-size: 40px;
+    &__image {
+      height: 40px;
+      width: 200px;
+    }
+  }
+  &__inc {
+    height: 20px;
+    display: block;
+    padding: 60px 0 0 0;
+  }
+}
