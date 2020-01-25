@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'cellphones', to: 'users/registrations#new_cellphone'
+    post 'cellphones', to: 'users/registrations#create_cellphone'
+  end
+  root to: "items#index"
 end

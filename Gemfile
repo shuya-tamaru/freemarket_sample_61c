@@ -72,3 +72,4 @@ end
 
 gem "haml-rails", "~> 2.0"
 gem "pry-rails"
+gem "devise"
