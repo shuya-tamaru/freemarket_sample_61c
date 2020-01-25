@@ -1,0 +1,38 @@
+-# コードを見ていただくにあたって(scssファイルと書いてあることは同じです。)
+-# ・現時点でのビューは https://gyazo.com/8141f3f29a694cbc604e1b4de9dc2db7 です。
+-# ・haml/scssファイルの名前や置き場所は仮です。gyazoの動画は一時的にindexファイルに置いたときに撮ったものです。
+-# ・各ボタン・ロゴなどのリンク先は全て今のページになっています。
+-# ・googleのロゴはfont awesomeのものを使用しており、カラーではありません。対応はできそうですが、簡単にできる方法があれば助言をお願いします。
+-# ・フッターのメルカリのロゴはヘッダーと同じものにしています。対応はできそうですが、簡単にできる方法があれば助言をお願いします。
+.header
+  .header__logo
+    = link_to root_path do
+      =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'header__logo__image'
+.contents
+  .contents__title
+    新規会員登録
+  .contents__selection
+    = link_to root_path, class: "contents__btn contents__btn__mail" do
+      = icon('far', 'envelope fa-2x', class: "contents__btn__icon1")
+      メールアドレスで登録する
+    = link_to root_path, class: "contents__btn contents__btn__facebook" do
+      = icon('fab', 'facebook-square fa-2x', class: "contents__btn__icon2")
+      Facebookで登録する
+    = link_to root_path, class: "contents__btn contents__btn__google" do
+      = icon('fab', 'google fa-2x', class: "contents__btn__icon3")
+      Googleで登録する
+.footer
+  .footer__list
+    = link_to root_path do
+      プライバシーポリシー
+    &nbsp;&nbsp;&nbsp;
+    = link_to root_path do
+      メルカリ利用規約
+    &nbsp;&nbsp;&nbsp;
+    = link_to root_path do
+      特定商取引に関する表記
+  .footer__logo
+    = link_to root_path do
+      =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'footer__logo__image'
+  .footer__inc
+    ©︎ Mercari, Inc
