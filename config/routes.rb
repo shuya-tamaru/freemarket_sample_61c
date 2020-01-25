@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     post 'cellphones', to: 'users/registrations#create_cellphone'
   end
   root to: "items#index"
+  resources :items
 end
