@@ -133,7 +133,7 @@
 |------|----|-------|
 |name|string|null: false, index: true|
 |price|integer|null: false|
-|size|string|null: false|
+|size|string||
 |item_status|string|null: false|
 |shipping_charge|string|null: false|
 |shipping_way|string|null: false|
