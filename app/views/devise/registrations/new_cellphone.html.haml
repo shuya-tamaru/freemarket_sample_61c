@@ -1,0 +1,10 @@
+%h2 携帯電話登録
+= form_for @cellphone do |f|
+  = render "devise/shared/error_messages", resource: @cellphone
+  .field
+    = f.label :cellphone
+    %br/
+    = f.text_field :number
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"

@@ -1,0 +1,25 @@
+.popular
+  - if index == 0
+    .popular__topFirst
+      %h3.popular__top__title
+        = "#{product}新着アイテム"
+      =link_to "#", class: "popular__top__more" do
+        もっと見る　＞
+  - else
+    .popular__top
+      %h3.popular__top__title
+        = "#{product}新着アイテム"
+      =link_to "#", class: "popular__top__more" do
+        もっと見る　＞
+  %ul.popular__list
+    - 10.times do
+      %li.popular__list__product
+        =link_to "#", class: "product" do
+          .product__image
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg'
+            %span
+              ¥999,999
+          .product__name
+            %span
+              商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品
+          .product__mask
