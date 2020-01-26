@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
   root to: "items#index"
   resources :items
-  resources :creditcard, only: [:index,:new]
+  resources :creditcard, only: [:index,:new,:show]
 end
