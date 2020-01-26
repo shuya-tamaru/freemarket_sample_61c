@@ -1,53 +1,20 @@
-%h2 新規登録
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  .field
-    = f.label :last_name_kana
-    %br/
-    = f.text_field :last_name_kana
-  .field
-    = f.label :first_name_kana
-    %br/
-    = f.text_field :first_name_kana
-  .field
-    = f.label :birthday_year
-    %br/
-    = f.number_field :birthday_year
-  .field
-    = f.label :birthday_month
-    %br/
-    = f.number_field :birthday_month
-  .field
-    = f.label :birthday_date
-    %br/
-    = f.number_field :birthday_date
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+-# コードを見ていただくにあたって(scssファイルと書いてあることは同じです。)
+-# ・現時点でのビューは https://gyazo.com/8141f3f29a694cbc604e1b4de9dc2db7 です。
+-# ・各ボタン・ロゴなどのリンク先は全てroot(=items#index)になっています。
+-# ・googleのロゴはfont awesomeのものを使用しており、カラーではありません。対応はできそうですが、簡単にできる方法があれば助言をお願いします。
+-# ・フッターのメルカリのロゴはヘッダーと同じものにしています。対応はできそうですが、簡単にできる方法があれば助言をお願いします。
+= render 'devise/shared/header'
+.contents
+  .contents__title
+    新規会員登録
+  .contents__selection
+    = link_to root_path, class: "contents__btn contents__btn__mail" do
+      = icon('far', 'envelope fa-2x', class: "contents__btn__icon1")
+      メールアドレスで登録する
+    = link_to root_path, class: "contents__btn contents__btn__facebook" do
+      = icon('fab', 'facebook-square fa-2x', class: "contents__btn__icon2")
+      Facebookで登録する
+    = link_to root_path, class: "contents__btn contents__btn__google" do
+      = icon('fab', 'google fa-2x', class: "contents__btn__icon3")
+      Googleで登録する
+= render 'devise/shared/footer'
