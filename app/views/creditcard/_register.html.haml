@@ -1,0 +1,25 @@
+.register
+  .card__header
+    支払い方法
+
+  .card__content
+    クレジットカード一覧
+
+    .card__content__register
+      .card__content__register__image
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "", size: '50x15')
+      
+      .card__content__register__number
+        ************2002
+      
+      .card__content__register__validatedDate
+        03/21
+      
+      .card__content__register__delete
+        = link_to "#", class: "delete__btn" do
+          削除する
+
+    .card__content__method
+      = link_to "#", class: "method__btn" do
+        支払い方法について
+        = icon('fas', 'angle-right',class:"method__btn--icon")
