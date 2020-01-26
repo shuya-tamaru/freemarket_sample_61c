@@ -1,0 +1,82 @@
+= render 'devise/shared/header'
+.contents1
+  .contents1__title
+    会員情報入力
+  .contents1__entry
+    .contents1__entry__item
+      ニックネーム&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form" do |f|
+      =f.text_field :text, placeholder: "例）メルカリ太郎", class: "contents1__form__text"
+    .contents1__entry__item
+      メールアドレス&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form" do |f|
+      =f.text_field :text, placeholder: "PC・携帯どちらでも可", class: "contents1__form__text"
+    .contents1__entry__item
+      パスワード&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form" do |f|
+      =f.text_field :text, placeholder: "７文字以上の半角英数字", class: "contents1__form__text"
+    .contents1__entry__message1
+      ※英字と数字の両方を含めて設定してください
+    .contents1__entry__message2
+      □&nbsp;パスワードを表示する
+    .contents1__entry__message3
+      本人確認
+    .contents1__entry__message4
+      安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+    .contents1__entry__item
+      お名前(全角)&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form2" do |f|
+      =f.text_field :text, placeholder: "例）山田", class: "contents1__form2__text"
+    =form_with class: "contents1__form2" do |f|
+      =f.text_field :text, placeholder: "例）彩", class: "contents1__form2__text"
+    .contents1__entry__item
+      お名前カナ(全角)&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form2" do |f|
+      =f.text_field :text, placeholder: "例）ヤマダ", class: "contents1__form2__text"
+    =form_with class: "contents1__form2" do |f|
+      =f.text_field :text, placeholder: "例）アヤ", class: "contents1__form2__text"
+    .contents1__entry__item
+      生年月日&nbsp;&nbsp;
+      = image_tag "must.png", class:"contents1__image", size: "45x20"
+    =form_with class: "contents1__form3" do |f|
+      =f.text_field :text, placeholder: "-", class: "contents1__form3__text"
+    &nbsp;&nbsp;年&nbsp;&nbsp;
+    =form_with class: "contents1__form3" do |f|
+      =f.text_field :text, placeholder: "-", class: "contents1__form3__text"
+    &nbsp;&nbsp;月&nbsp;&nbsp;
+    =form_with class: "contents1__form3" do |f|
+      =f.text_field :text, placeholder: "-", class: "contents1__form3__text"
+    &nbsp;&nbsp;日&nbsp;&nbsp;
+    .contents1__entry__message1
+      ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+    .contents1__entry__message5
+      「次へ進む」のボタンを押すことにより、
+      %a(href="https://www.mercari.com/jp/tos/" target="_blank")利用規約
+      に同意したものとみなします
+    .contents1__btn
+      = link_to root_path, class: "contents1__btn contents1__btn__next" do
+        次へ進む
+    .contents1__entry__message6
+      %a(href="https://www.mercari.com/jp/help_center/article/423/")本人情報の登録について＞
+    .contents1__entry__message7
+      This site is protected by reCAPTCHA and the the Google
+      %a(href="https://policies.google.com/privacy")Privacy Policy
+      and
+      %a(href="https://policies.google.com/terms")Terms of Service
+      apply.
+= render 'devise/shared/footer'
+
+-# = form_for @user, url: step1_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+-#   = f.text_field :nickname, placeholder: '例) メルカリ太郎'
+-#   = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+-#   = f.password_field :password, placeholder: '7文字以上の半角英数字'
+-#   = f.text_field :last_name, placeholder: '例) 山田'
+-#   = f.text_field :first_name, placeholder: '例) 彩'
+-#   = f.text_field :last_name_kana, placeholder: '例) ヤマダ'
+-#   = f.text_field :first_name_kana, placeholder: '例) アヤ'
+-#   = sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
