@@ -1,0 +1,17 @@
+.notCardRegister
+  .card__header
+    支払い方法
+
+  .card__content
+    クレジットカード一覧
+
+    .card__content__add
+      .card__content__add__btn
+        = link_to "#", class: "add__btn" do
+          = icon('fas', 'credit-card',class:"add__btn--icon")
+          クレジットカードを追加する
+
+    .card__content__method
+      = link_to "#", class: "method__btn" do
+        支払い方法について
+        = icon('fas', 'angle-right',class:"method__btn--icon")
