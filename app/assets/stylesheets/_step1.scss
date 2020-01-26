@@ -1,0 +1,121 @@
+.header  {
+  height: 130px;
+  background-color: #f5f5f5;
+  font-family: arial;
+  &__logo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    line-height: 90px;
+    transform: translateY(20%)
+  }
+    &__progress {
+      font-size: 40px;
+      line-height: 90px;
+      transform: translateY(30%)
+    }
+}
+.contents1 {
+  background-color: #f5f5f5;
+  font-family: arial;
+  &__title {
+    background-color: #ffffff;
+    height: 100px;
+    width: 700px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid #f5f5f5;
+    margin: 0 auto;
+  }
+  &__entry {
+    background-color: #ffffff;
+    height: 1300px;
+    width: 700px;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 0 0;
+    text-align: center;
+    &__item {
+      display: flex;
+      justify-content: center;
+      padding: 0 250px 5px 0;
+    }
+    &__message1 {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  &__btn {
+    display: block;
+    height: 60px;
+    width: 400px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 80px;
+    padding: 0 50px 0 0;
+    &__icon1 {
+      padding: 15px 60px 13px 20px;
+    }
+    &__icon2 {
+      padding: 15px 80px 13px 20px;
+    }
+    &__icon3 {
+      padding: 15px 86px 13px 20px;
+    }
+    &__mail {
+      color: #d3d3d3;
+      border: 1px solid;
+    }
+    &__facebook {
+      color: #d3d3d3;
+      border: 1px solid;
+    }
+    &__next {
+      background-color: #dc143c;
+      color: #ffffff;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+.footer {
+  height: calc(100vh - 130px - 100px - 5px - 300px);
+  background-color: #f5f5f5;
+  font-family: arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: block;
+  padding: 100px 10px 10px 0;
+  font-size: 13px;
+  &__list{
+    display: block;
+  }
+  &__logo {
+    padding: 20px 0 0 0;
+    display: block;
+    color: #c0c0c0;
+    height: 20px;
+    font-size: 40px;
+  }
+  &__inc {
+    height: 20px;
+    display: block;
+    padding: 60px 0 0 0;
+  }
+}
