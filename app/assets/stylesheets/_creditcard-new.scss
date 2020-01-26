@@ -1,0 +1,40 @@
+.new__card{
+    
+    .new__card__header{
+
+    }
+
+    .new__card__create{
+      &__number{
+        &__form{
+          &form__text{
+          }
+        }
+        &__image{
+        }
+      }
+
+      &__validatedDate{
+        &__select{
+
+        }
+      }
+
+      &__securityNumber{
+        &__form{
+          &form__text{
+          }
+        }
+      }
+      
+      &__question{
+        &question--icon{
+        }
+      }
+
+      &__add{
+        &add__btn{
+        }
+      }
+    }
+}

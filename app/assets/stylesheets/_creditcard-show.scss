@@ -1,0 +1,36 @@
+.card__register{
+  .card__header{
+
+  }
+
+  .card__content{
+  
+    &__register{
+      &__image{
+
+      }
+      
+      &__number{
+
+      }
+
+      &__validatedDate{
+
+      }
+      
+      &__delete{
+        &delete__btn{
+
+        }
+      }
+    }
+
+    &__method{
+      &method__btn{
+        &--icon{
+
+        }
+      }
+    }
+  }
+}
