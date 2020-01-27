@@ -3,7 +3,7 @@
   width: 100%;
   position: absolute;
   padding: 0 0 40px;
-  .card__notRegister{
+  .card{
     width: 700px;
     margin: 24px auto 0;
     background-color: #fff;
@@ -50,9 +50,6 @@
         display: block;
         &__btn{
           color: #0099e8;
-          &--icon{
-
-          }
         }
       }
     }

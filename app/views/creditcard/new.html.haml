@@ -3,30 +3,47 @@
     = form_with url:root_path do |f|
       
       .new__card__header
-        クレジットカード情報入力
+        %h1
+          クレジットカード情報入力
 
       .new__card__create
-        .new__card__create__number
-          カード番号
-          .new__card__create__number__form
-            = f.text_field :text, class:"form__text", placeholder: "半角数字のみ"
-          .new__card__create__number__image
-            = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "", size: '50x20')
+        .new__card__create__formgroup
+          .new__card__create__formgroup__number
+            %apan
+              カード番号
+            %span
+              必須
+            .new__card__create__formgroup__number__form
+              = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ"
+            .new__card__create__formgroup__number__image
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x15')
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png", alt: "master", size: '20x15')
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Saison_card_logo.svg/1024px-Saison_card_logo.svg.png", alt: "saison", size: '20x15')
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/600px-JCB_logo.svg.png", alt: "jcb", size: '20x15')
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1202px-American_Express_logo_%282018%29.svg.png", alt: "americanexpress", size: '20x15')
+              = image_tag("https://clipartart.com/images/diners-club-logo-clipart.png", alt: "dinersclub", size: '20x15')
+              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/DiscoverCard.svg/2880px-DiscoverCard.svg.png", alt: "discover", size: '20x15')
 
-        .new__card__create__validatedDate
-          有効期限
-          .new__card__create__validatedDate__select
-            != sprintf(f.date_select(:expiration_date,with_css_classes:'select__form', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+          .new__card__create__formgroup__validatedDate
+            %span
+              有効期限
+            %span
+              必須
+            .new__card__create__formgroup__validatedDate__select
+              != sprintf(f.date_select(:expiration_date,with_css_classes:'new__card__create__formgroup__validatedDate__select__form', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
 
-        .new__card__create__securityNumber
-          セキュリティコード
-          .new__card__create__securityNumber__form
-            = f.text_field :text, class:"form__text", placeholder: "カード背面4桁もしくは3桁の番号"
-        
-        .new__card__create__question
-          = icon('fas', 'question-circle',class:"question--icon")
-          カード裏面の番号とは？
+          .new__card__create__formgroup__securityNumber
+            %apan
+              セキュリティコード
+            %span
+              必須
+            .new__card__create__formgroup__securityNumber__form
+              = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号"
+          
+            .new__card__create__formgroup__securityNumber__question
+              = icon('fas', 'question-circle',class:"new__card__create__formgroup__securityNumber__question--icon")
+              カード裏面の番号とは？
 
-        .new__card__create__add
-          = link_to "#", class: "add__btn" do
-            追加する
+          .new__card__create__formgroup__add
+            = link_to "#", class: "new__card__create__formgroup__add__btn" do
+              追加する

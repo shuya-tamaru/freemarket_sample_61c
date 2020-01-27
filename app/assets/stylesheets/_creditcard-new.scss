@@ -1,40 +1,101 @@
-.new__card{
-    
-    .new__card__header{
+h2{
+  font-weight: 600;
+}
 
-    }
+.main{
+  background-color: #f5f5f5;
+  width: 100%;
+  position: absolute;
+  padding: 0 0 40px;
+  box-sizing: border-box;
+  .new__card{
+    width: 700px;
+    margin: 24px auto 0;
+    background-color: #fff;
+    position: relative;
 
-    .new__card__create{
-      &__number{
-        &__form{
-          &form__text{
+      &__header{
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        border-bottom: 1px solid #f5f5f5;
+        line-height: 1.4;
+      }
+
+      &__create{
+        padding: 24px 16px 40px;
+
+        &__formgroup{
+          max-width: 343px;
+          margin: 0 auto;
+
+        
+          &__number{
+
+            &__form{
+              margin: 8px 0 0;
+              &__text{
+                width: 100%;
+                height: 48px;
+                padding: 10px 16px 8px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                font-size: 16px;
+                border-radius: 5px;
+              }
+            }
+            &__image{
+              margin: 8px 0 0;
+            }
+          }
+
+          &__validatedDate{
+            margin: 24px 0 0;
+            &__select{
+              margin-top: 8px;
+              &__month,&__year{
+                height: 80px;
+              }
+            }
+          }
+
+          &__securityNumber{
+            margin: 24px 0 0;
+            &__form{
+              margin: 8px 0 0;
+              &__text{
+                width: 100%;
+                height: 48px;
+                padding: 10px 16px 8px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                font-size: 16px;
+                border-radius: 5px;
+              }
+            }
+          
+            &__question{
+              margin: 8px 0 0;
+              text-align: right;
+              color: #0099e8;
+              &--icon{
+              }
+            }
+          }
+
+          &__add{
+            margin: 24px 0 0;
+            &__btn{
+              background-color: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              line-height: 48px;
+              width: 100%;
+              text-align: center;
+              display: block;
+            }
           }
         }
-        &__image{
-        }
       }
-
-      &__validatedDate{
-        &__select{
-
-        }
-      }
-
-      &__securityNumber{
-        &__form{
-          &form__text{
-          }
-        }
-      }
-      
-      &__question{
-        &question--icon{
-        }
-      }
-
-      &__add{
-        &add__btn{
-        }
-      }
-    }
+  }
 }
