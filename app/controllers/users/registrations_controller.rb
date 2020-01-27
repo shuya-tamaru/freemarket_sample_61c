@@ -31,9 +31,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_cellphone and return
     end
     @user.build_cellphone(@cellphone.attributes)
-    #とりあえず２ページ目までで保存（あとで書き換え）
-    @user.save
-    sign_in(:user, @user)
+    session["cellphone"] = @cellphone.attributes
+    @address = @user.build_address
+    render :new_address
   end
 
   # GET /resource/edit
@@ -70,6 +70,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def cellphone_params
     params.require(:cellphone).permit(:number)
   end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
