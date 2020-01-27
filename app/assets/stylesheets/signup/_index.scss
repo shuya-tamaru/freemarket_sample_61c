@@ -88,8 +88,12 @@
   padding: 102px 0 0 0;
   font-size: 12px;
   font-weight: 100;
+  position: relative;
   &__list{
     text-align: center;
+    position: absolute;
+    bottom: calc(14px + 12px + 67px + 40px + 12px);
+    left: calc(50% - 220px);
     ul li {
       display: inline;
       margin-right: 1em;
@@ -108,6 +112,9 @@
       padding: 40px 63px 0 0;
       margin: 0 auto;
       font-size: 40px;
+      position:absolute;
+      bottom: 50px;
+      left: calc(50% - 32px);
       &__image {
         height: 67px;
         width: 64px;
@@ -123,11 +130,13 @@
     }
   &__inc {
     font-weight: 100;
-    width:100px;
-    display: flex;
-    justify-content: center;
+    width:120px;
     padding: 6px 0 14px 0;
     font-size: 12px;
     margin: 0 auto;
+    position: absolute;
+    bottom: 14px;
+    left: calc(50% - 60px);
+    text-align: center;
   }
 }
