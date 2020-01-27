@@ -36,6 +36,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_address
   end
 
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @cellphone = Cellphone.new(session["cellphone"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_cellphone(@cellphone.attributes)
+    @user.build_address(@address.attributes)
+    @user.save
+    sign_in(:user, @user)
+  end
+  
   # GET /resource/edit
   # def edit
   #   super
@@ -69,6 +83,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def cellphone_params
     params.require(:cellphone).permit(:number)
+  end
+
+  def address_params
+    params.require(:address).permit(:zip_code, :prefecture, :city, :address, :building, :phone_tell)
   end
 
 
