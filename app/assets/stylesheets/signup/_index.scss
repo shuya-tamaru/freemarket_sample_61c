@@ -6,14 +6,18 @@
     justify-content: center;
     font-size: 70px;
     line-height: 80px;
-    transform: translateY(19.5%) translateX(-0.3%);
+    transform: translateY(93.5%) translateX(-0.5%);
     &__image {
-      height: 90px;
-      width: 183px;
-      transition: color .5s;
-      :hover {
-        color: gold;
-      }
+      height: 46px;
+      width: 184px;
+      background: url('mercari1.png');
+      background-size: 184px;
+    }
+    &__image:hover {
+      height: 46px;
+      width: 184px;
+      background: url('mercari1w.png');
+      background-size: 184px;
     }
   }
 }
@@ -62,6 +66,10 @@
     }
     &__mail {
       background-color: #ef3a3a;
+      transition: background-color .5s;
+      &:hover{
+        background-color: #f97777;
+      }
     }
     &__facebook {
       background-color: #414f8a;
@@ -82,20 +90,35 @@
   font-weight: 100;
   &__list{
     text-align: center;
-    &:hover{
-      border-bottom: 1px solid white;
+    ul li {
+      display: inline;
+      margin-right: 1em;
+      a {
+        &:hover {
+          color: #8f8787;
+          border-bottom: 1px solid #8f8f8f;
+        }
+      }
     }
-    }
+  }
     &__logo {
       text-align: center;
       width:10px;
       display: block;
-      padding: 44px 63px 0 0;
+      padding: 40px 63px 0 0;
       margin: 0 auto;
       font-size: 40px;
       &__image {
-        height: 65px;
-        width: 65px;
+        height: 67px;
+        width: 64px;
+        background: url('mercari_gray.png');
+        background-size: 63px;
+      }
+      &__image:hover {
+        height: 67px;
+        width: 64px;
+        background: url('mercari_grayw.png');
+        background-size: 63px;
       }
     }
   &__inc {
@@ -103,7 +126,7 @@
     width:100px;
     display: flex;
     justify-content: center;
-    padding: 0 0 14px 0;
+    padding: px 0 14px 0;
     font-size: 12px;
     margin: 0 auto;
   }
