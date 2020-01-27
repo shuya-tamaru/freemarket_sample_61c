@@ -1,174 +1,32 @@
-.header
-  .header__container
-    .headerTop
-      -# .headerTop__link
-      -# .headerTop__form
-      =link_to "#", class: "headerTop__link" do
-        =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerTop__link__image'
-      =form_with class: "headerTop__form" do |f|
-        =f.text_field :text, placeholder: "何かお探しですか？", class: "headerTop__form__text"
-        =f.submit class: "headerTop__form__submit"
-    .headerBottom
-      .headerBottom__search
-        .headerBottom__search__category
-          =link_to "#", class: "headerBottom__search__category__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__category__link__icon'
-            カテゴリーで探す
-        .headerBottom__search__brand
-          =link_to "#", class: "headerBottom__search__brand__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__brand__link__icon'
-            ブランドで探す
-      %ul.headerBottom__list
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
-            いいね一覧
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
-            お知らせ
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
-            やることリスト
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'member_photo_noimage_thumb.png', class: 'headerBottom__list__link__icon ggg'
-            マイページ
-
-.new__card
-  = form_with url:root_path do |f|
-    
-    .new__card__header
-      クレジットカード情報入力
-
-    .new__card__create
-      .new__card__create__number
-        カード番号
-        .new__card__create__number__form
-          = f.text_field :text, class:"form__text", placeholder: "半角数字のみ"
-        .new__card__create__number__image
-          = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "", size: '50x20')
-
-      .new__card__create__validatedDate
-        有効期限
-        .new__card__create__validatedDate__select
-          != sprintf(f.date_select(:expiration_date,with_css_classes:'select__form', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-
-      .new__card__create__securityNumber
-        セキュリティコード
-        .new__card__create__securityNumber__form
-          = f.text_field :text, class:"form__text", placeholder: "カード背面4桁もしくは3桁の番号"
+.main
+  .new__card
+    = form_with url:root_path do |f|
       
-      .new__card__create__question
-        = icon('fas', 'question-circle',class:"question--icon")
-        カード裏面の番号とは？
+      .new__card__header
+        クレジットカード情報入力
 
-      .new__card__create__add
-        = link_to "#", class: "add__btn" do
-          追加する
+      .new__card__create
+        .new__card__create__number
+          カード番号
+          .new__card__create__number__form
+            = f.text_field :text, class:"form__text", placeholder: "半角数字のみ"
+          .new__card__create__number__image
+            = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "", size: '50x20')
 
+        .new__card__create__validatedDate
+          有効期限
+          .new__card__create__validatedDate__select
+            != sprintf(f.date_select(:expiration_date,with_css_classes:'select__form', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
 
-.footer
-  %nav.footer__nav
-    .footer__nav__nav1
-      %h2
-        メルカリについて
-      %ul
-        %li
-          =link_to "#" do
-            会社概要（運営会社）
-        %li
-          =link_to "#" do
-            採用情報
-        %li
-          =link_to "#" do
-            プレスリリース
-        %li
-          =link_to "#" do
-            公式ブログ
-        %li
-          =link_to "#" do
-            メルカリロゴ利用ガイドライン
-        =link_to "#", class: "externalLink" do
-          =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg', class: "aside__container__links__icons__app"
-        =link_to "#", class: "externalLink" do
-          =image_tag 'google-play-495575abb895b405aa6336b2a4304958.svg', class: "aside__container__links__icons__google"
-    .footer__nav__nav2
-      %h2
-        ヘルプ＆ガイド
-      %ul
-        %li
-          =link_to "#" do
-            メルカリガイド            
-        %li
-          =link_to "#" do
-            らくらくメルカリ便            
-        %li
-          =link_to "#" do
-            ゆうゆうメルカリ便            
-        %li
-          =link_to "#" do
-            大型メルカリ便            
-        %li
-          =link_to "#" do
-            車体取引ガイド            
-        %li
-          =link_to "#" do
-            メルカリあんしん・あんぜん宣言！            
-        %li
-          =link_to "#" do
-            偽ブランド品撲滅への取り組み            
-        %li
-          =link_to "#" do
-            メルカリボックス            
-    .footer__nav__nav3
-      %h2
-        プライバシーと利用規約
-      .left
-        %ul
-          %li
-            =link_to "#" do
-              プライバシーポリシー
-          %li
-            =link_to "#" do
-              メルカリ利用規約
-          %li
-            =link_to "#" do
-              あんしんスマホサポート制度に関する利用特約
-          %li
-            =link_to "#" do
-              コンプライアンスポリシー
-      .right
-        %ul
-          %li
-            =link_to "#" do
-              個人データの安全管理に係る基本方針
-          %li
-            =link_to "#" do
-              特定商取引に関する表記
-          %li
-            =link_to "#" do
-              資金決済法に基づく表示
-          %li
-            =link_to "#" do
-              法令順守と犯罪抑止のために
-    .footer__nav__nav4
-      %h2
-        国
-      %ul
-        %li
-          =link_to "#" do
-            日本
-        %li
-          =link_to "#" do
-            United States
-  .footer__inc
-    =link_to "#", class:  "footer__inc__logo" do
-      =image_tag 'logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg', class: "footer__inc__logo__image"
-    %span.footer__inc__name
-      &copy; Mercari, Inc.
-.exhibition
-  =link_to "#", class: "exhibition__link" do
-    出品
-    =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg'
+        .new__card__create__securityNumber
+          セキュリティコード
+          .new__card__create__securityNumber__form
+            = f.text_field :text, class:"form__text", placeholder: "カード背面4桁もしくは3桁の番号"
+        
+        .new__card__create__question
+          = icon('fas', 'question-circle',class:"question--icon")
+          カード裏面の番号とは？
+
+        .new__card__create__add
+          = link_to "#", class: "add__btn" do
+            追加する
