@@ -108,7 +108,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def card_params
-    params.require(:card).permit(:number, :name, :validated_date_year, :validated_date_month, :security_number)
+    params.require(:card).permit(:number, :validated_date_year, :validated_date_month, :security_number)
   end
 
 
