@@ -46,10 +46,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_cellphone(@cellphone.attributes)
     @user.build_address(@address.attributes)
+    session["address"] = @address.attributes
+    @card = @user.build_card
+    render :new_card
+  end
+
+
+  def create_card
+    @user = User.new(session["devise.regist_data"]["user"])
+    @cellphone = Cellphone.new(session["cellphone"])
+    @address = Address.new(session["address"])
+    @card = Card.new(card_params)
+    unless @card.valid?
+      flash.now[:alert] = @card.errors.full_messages
+      render :new_card and return
+    end
+    @user.build_cellphone(@cellphone.attributes)
+    @user.build_address(@address.attributes)
+    @user.build_card(@card.attributes)
     @user.save
     sign_in(:user, @user)
-  end
-  
+  end 
+
   # GET /resource/edit
   # def edit
   #   super
@@ -87,6 +105,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:zip_code, :prefecture, :city, :address, :building, :phone_tell)
+  end
+
+  def card_params
+    params.require(:card).permit(:number, :name, :validated_date_year, :validated_date_month, :security_number)
   end
 
 
