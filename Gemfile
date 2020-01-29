@@ -76,3 +76,5 @@ gem 'fog-aws'
 gem "haml-rails", "~> 2.0"
 gem "pry-rails"
 gem "devise"
+gem "font_awesome5_rails"
+gem "font-awesome-sass"

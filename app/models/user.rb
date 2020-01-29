@@ -21,4 +21,5 @@ class User < ApplicationRecord
   validates :birthday_year, presence: true, format: {with: /\A(19|20)\d{2}\z/}
   validates :birthday_month, presence: true, format: {with: /\b[1-9]\b|\A1[0-2]\Z/}
   validates :birthday_date, presence: true, format: {with: /\b[1-9]\b|\A[1-2][0-9]\Z|\A[3][0-1]\Z/}
+  has_many :items
 end
