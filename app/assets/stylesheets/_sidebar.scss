@@ -1,0 +1,31 @@
+.sidebar{
+  margin: 40px auto 0;
+  width: 280px;
+  .side__bar{
+    &__list{
+
+      &__item{
+        min-height: 48px;
+        padding: 16px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        line-height: 14px;
+        border-top: 1px solid #eee;
+        position: relative;
+        &--icon{
+          position: absolute;
+          color: #ccc;
+          top: 50%;
+          right: 16px;
+        }
+      }
+
+      &__head{
+        margin: 40px 0 8px 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
