@@ -1,0 +1,35 @@
+.header
+  .header__container
+    .headerTop
+      =link_to "#", class: "headerTop__link" do
+        =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerTop__link__image'
+      =form_with class: "headerTop__form" do |f|
+        =f.text_field :text, placeholder: "何かお探しですか？", class: "headerTop__form__text"
+        =f.submit class: "headerTop__form__submit"
+    .headerBottom
+      .headerBottom__search
+        .headerBottom__search__category
+          =link_to "#", class: "headerBottom__search__category__link" do
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__category__link__icon'
+            カテゴリーで探す
+        .headerBottom__search__brand
+          =link_to "#", class: "headerBottom__search__brand__link" do
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__brand__link__icon'
+            ブランドで探す
+      %ul.headerBottom__list
+        %li
+          =link_to "#", class: "headerBottom__list__link" do
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
+            いいね一覧
+        %li
+          =link_to "#", class: "headerBottom__list__link" do
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
+            お知らせ
+        %li
+          =link_to "#", class: "headerBottom__list__link" do
+            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
+            やることリスト
+        %li
+          =link_to "#", class: "headerBottom__list__link" do
+            =image_tag 'member_photo_noimage_thumb.png', class: 'headerBottom__list__link__icon ggg'
+            マイページ
