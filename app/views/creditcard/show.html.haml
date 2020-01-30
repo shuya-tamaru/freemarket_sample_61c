@@ -1,33 +1,37 @@
-.show
-  .card
-    .card__header
-      %h1
-        支払い方法
+.main
+  .sidebar
+    = render '/sidebar'
+    
+  .show
+    .card
+      .card__header
+        %h1
+          支払い方法
 
-    .card__content
-      .card__content__list
-        .card__content__list__name
-          %h2
-            クレジットカード一覧
+      .card__content
+        .card__content__list
+          .card__content__list__name
+            %h2
+              クレジットカード一覧
 
-        .card__content__list__register
-          .card__content__list__register__image
-            %li
-              = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
-        
-          .card__content__list__register__number
-            %li
-              ************2002
-        
-          .card__content__list__register__validatedDate
-            %li
-              03/21
-        
-          .card__content__list__register__delete
-            = link_to "#", class: "card__content__list__register__delete__btn" do
-              削除する
+          .card__content__list__register
+            .card__content__list__register__image
+              %li
+                = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
+          
+            .card__content__list__register__number
+              %li
+                ************2002
+          
+            .card__content__list__register__validatedDate
+              %li
+                03/21
+          
+            .card__content__list__register__delete
+              = link_to "#", class: "card__content__list__register__delete__btn" do
+                削除する
 
-      .card__content__method
-        = link_to "#", class: "card__content__method__btn" do
-          支払い方法について
-          = icon('fas', 'angle-right',class:"card__content__method__btn--icon")
+        .card__content__method
+          = link_to "#", class: "card__content__method__btn" do
+            支払い方法について
+            = icon('fas', 'angle-right',class:"card__content__method__btn--icon")
