@@ -70,9 +70,24 @@
               margin: 24px 0 0;
               &__select{
                 margin-top: 8px;
+                label{
+                  font-weight: normal;
+                  padding:0 5px;
+                }
                 &__month,&__year{
-                  height: 80px;
-                  
+                  display: inline-block;
+                  width: 45%;
+                  &__box{
+                    width: 80%;
+                    height: 48px;
+                    
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    background-color: #fff;
+                    font-size: 16px;
+                    cursor: pointer;
+                    
+                  }                  
                 }
               }
             }
@@ -96,6 +111,7 @@
                 margin: 8px 0 0;
                 text-align: right;
                 color: #0099e8;
+                font-size: 14px;
               }
             }
 

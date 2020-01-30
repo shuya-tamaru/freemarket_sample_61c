@@ -17,7 +17,7 @@
               %span
                 必須
               .new__card__create__formgroup__number__form
-                = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ"
+                = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16"
               .new__card__create__formgroup__number__image
                 %li
                   = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
@@ -40,15 +40,42 @@
               %span
                 必須
               .new__card__create__formgroup__validatedDate__select
-                != sprintf(f.date_select(:expiration_date,with_css_classes:'new__card__create__formgroup__validatedDate__select__form', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-
+                .new__card__create__formgroup__validatedDate__select__month
+                  %select.new__card__create__formgroup__validatedDate__select__month__box
+                    %option{value: "1"} 01
+                    %option{value: "2"} 02
+                    %option{value: "3"} 03
+                    %option{value: "4"} 04
+                    %option{value: "5"} 05
+                    %option{value: "6"} 06
+                    %option{value: "7"} 07
+                    %option{value: "8"} 08
+                    %option{value: "9"} 09
+                    %option{value: "10"} 10
+                    %option{value: "11"} 11
+                    %option{value: "12"} 12
+                  %label
+                    月
+                .new__card__create__formgroup__validatedDate__select__year
+                  %select.new__card__create__formgroup__validatedDate__select__year__box
+                    %option{value: "2020"} 20
+                    %option{value: "2021"} 21
+                    %option{value: "2022"} 22
+                    %option{value: "2023"} 23
+                    %option{value: "2024"} 24
+                    %option{value: "2025"} 25
+                    %option{value: "2026"} 26
+                    %option{value: "2027"} 27
+                    %option{value: "2028"} 28
+                  %label
+                    年
             .new__card__create__formgroup__securityNumber
               %label
                 セキュリティコード
               %span
                 必須
               .new__card__create__formgroup__securityNumber__form
-                = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号"
+                = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4"
             
               .new__card__create__formgroup__securityNumber__question
                 = icon('fas', 'question-circle',class:"new__card__create__formgroup__securityNumber__question--icon")

@@ -13,10 +13,14 @@
         line-height: 14px;
         border-top: 1px solid #eee;
         position: relative;
+        link:hover {
+          background: #fafafa;
+          text-decoration: none;
+          opacity: 1;
+        }
         &--icon{
           position: absolute;
           color: #ccc;
-          top: 50%;
           right: 16px;
         }
       }
