@@ -24,21 +24,25 @@
     -# =form_with class: "contents3__form" do |f|
     -#   =f.text_field :text, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password"
     %p
-      %input#js-password.password{placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password"}/
+      %input#js-password.password{placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password", value: ""}/
     .contents3__entry__message1
       ※英字と数字の両方を含めて設定してください
     %p
-      %input#js-passcheck{class: "checkbox", type: "checkbox"}/
+      %input#js-passcheck{class: "checkbox", type: "checkbox"}
       %label{class: "checkboxMessage", for: "js-passcheck"} パスワードを表示する
+      -# %input.test6{:type => "text", :value => ""}/
+    .contents3__entry__passwordResult
+      -# %input.test6{:type => "text", :value => ""}/
+      -# .test6_input_result
     -# .contents3__entry__message2
-      -# %p
-      -#   %input#js-passcheck{type: "checkbox"}/
-      -#   %label{for: "js-passcheck"} パ
-      -# %label
-      -#   %input#js-passcheck{type: "checkbox"}/
-      -#   %input.option-input02.checkbox{type: "checkbox"}/
-      -#   パスワードを表示する
-      -#   %label#js-password.passwordCheck
+    -#   %p
+    -#     %input#js-passcheck{type: "checkbox"}/
+    -#     %label{for: "js-passcheck"} パ
+    -#   %label
+    -#     %input#js-passcheck{type: "checkbox"}/
+    -#     %input.option-input02.checkbox{type: "checkbox"}/
+    -#     パスワードを表示する
+    -#     %label#js-password.passwordCheck
     .contents3__entry__message3
       本人確認
     .contents3__entry__message4

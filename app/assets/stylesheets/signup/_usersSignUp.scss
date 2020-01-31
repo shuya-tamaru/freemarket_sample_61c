@@ -173,6 +173,13 @@
       justify-content: flex-start;
       margin: 0 0 0 178px;
     }
+    &__passwordResult {
+      background-color: rgb(245, 245, 245);
+      display: inline-block;
+      margin: 5px 0 0 180px;
+      line-height: 30px;
+      padding: 0 10px 0 10px;
+    }
   }
   &__form {
     height: 61px;
@@ -369,3 +376,11 @@
   line-height: 24px;
   font-weight: 300;
 }
+
+// .passwordResult {
+//   background-color: rgb(245, 245, 245);
+//   display: inline-block;
+//   margin: 5px 0 0 180px;
+//   line-height: 30px;
+//   padding: 0 10px 0 10px;
+// }
