@@ -100,20 +100,6 @@ describe User do
       expect(another_user.errors[:email]).to include("has already been taken")
     end
 
-    #last_name_kanaが全角カタカナであれば登録できる
-    it "is valid that last_name_kana is Full-width" do
-      user = build(:user, last_name_kana: "キムラ")
-      user.valid?
-      expect(user).to be_valid
-    end
-
-    #first_name_kanaが全角カタカナであれば登録できる
-    it "is valid that last_name_kana is Full-width" do
-      user = build(:user, first_name_kana: "タクヤ")
-      user.valid?
-      expect(user).to be_valid
-    end
-
     #last_name_kanaが全角カタカナ以外だと登録できない
     it "is invalid that last_name_kana isn't Full-width" do
       user = build(:user, last_name_kana: "ｷﾑﾗ")

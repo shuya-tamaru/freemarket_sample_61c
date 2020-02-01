@@ -57,13 +57,6 @@ describe Address do
       expect(address).to be_valid
     end
 
-    #zip_codeが半角数字7文字であれば登録できる
-    it "is valid with a zip_code that is 6 characters " do
-      address = build(:address, zip_code: "1234567")
-      address.valid?
-      expect(address).to be_valid
-    end
-
     #zip_codeが半角数字6文字以下だと登録できない
     it "is invalid with a zip_code that is less than 7 characters " do
       address = build(:address, zip_code: "123456")
