@@ -1,7 +1,106 @@
-.scrolleImages{
+.slide{
   height: 390px;
-  &__image{
+  overflow: hidden;
+  position: relative;
+  &__images{
+    height: 100%;
+    position: relative;
+    &__link{
+      position: absolute;
+      top: 0;
+    }
+  }
+  &__navRight, &__navLeft{
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  &__navRight{
+    right: 60px;
+    transform: rotateY(180deg);
+  }
+  &__navLeft{
+    left: 60px;
+  }
+  &__circles{
+    position: absolute;
+    bottom: 16px;
+    transform: translateX(-50%);
+    left: 50%;
+    &__left, &__right{
+      border-radius: 50%;
+      display: inline-block;
+      height: 8px;
+      width: 8px;
+      background-color: rgba(209, 209, 209, .7);
+    }
+    &__left{
+      margin-right: 4px; 
+    }
+    &__right{
+      margin-left: 4px; 
+    }
+  }
+}
+.bright{
+  background-color: rgba(255, 255, 255, .7);
+}
+
+.slideImage1{
+  &__mainImage{
     height: 390px;
+    width: 100vw;
+    background: center;
+    background-image: image-url("top-banner-barcode-aacab86f81df6a91d5ef08831103f2af.png");
+  }
+}
+
+.slideImage2{
+  left: 100%;
+  &__mainImage{
+    height: 390px;
+    width: 100vw;
+    background: center;
+    background-image: image-url("top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
+    position: relative;
+    &__subImage{
+      display: block;
+      height: 390px;
+      transform: translateX(-50%);
+      position: absolute;
+      top: 0;
+      left: 62.5%;
+    }
+    &__title, &__explanation, &__app, &__google{
+      position: absolute;
+      z-index: 100;
+      bottom: 35px;
+    }
+    &__title{
+      line-height: 1.4em;
+      font-size: 60px;
+      font-weight: bolder;
+      top: 32px;
+      left: 26.8%;
+    }
+    &__explanation{
+      line-height: 1.8em;
+      font-size: 18px;
+      top: 215px;
+      left: 26.8%;
+    }
+    &__app{
+      width: 170px;
+      left: 26.8%;
+    }
+    &__google{
+      width: 170px;
+      left: 37.4%;
+    }
   }
 }
 
@@ -69,6 +168,8 @@
 }
 
 .product{
+  opacity: 0;
+  transition: opacity 900;
   display: inline-block;
   width: 100%;
   height: 252px;
@@ -89,6 +190,8 @@
       position: absolute;
       bottom: 8px;
       left: 0px;
+      height: 28px;
+      line-height: 28px;
       padding: 0 12px;
       color: #fff;
       font-size: 17px;
@@ -105,6 +208,7 @@
       display: inline-block;
       height: 100%;
       overflow: hidden;
+      line-height: 1.4em;
     }
   }
   &__mask{
@@ -118,70 +222,9 @@
   }
 }
 
-.aside{
-  background: image-url('download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg');
-  &__container{
-    width: 750px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__links{
-      > p:nth-of-type(1){
-        color: white;
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-      > p:nth-of-type(2){
-        color: white;
-        font-size: 35px;
-        margin-bottom: 20px;
-      }
-      &__icons{
-        display: flex;
-        align-items: center;
-        &__mercari{
-          height: 68px;
-          margin-right: 20px;
-        }
-        &__app{
-          height: 40px;
-          margin-right: 8px;
-          width: 144px;
-        }
-        &__google{
-          height: 40px;
-          margin-right: 8px;
-          width: 144px;
-        }
-      }
-    }
-    &__phone{
-      font-size: 0;
-      &__image{
-        height: 260px;
-      }
-    }
-  }
-}
-
-
-
-.externalLink{
-  display: inline-block;
-  margin-top: 30px;
-}
-
-.left, .right{
-  display: inline-block;
-  padding-right: 10px;
-  width: 50%;
-}
-
 .exhibition{
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   bottom: 32px;
   right: 32px;
   &__link{
@@ -196,43 +239,10 @@
     border-radius: 50%;
     outline: .5 solid green;
     padding-top: 32px;
+    &__icon{
+      display: block;
+      font-size: 60px;
+      margin-top: 3px;
+    }
   }
-}
-
-// font-size: 22px;
-
-.e{
-  height: 100px;
-}
-
-
-
-
-
-
-
-
-
-.a{
-  font-size: 0;
-  box-sizing: border-box;
-  height: 150px;
-  width: 500px;
-  background-color: red;
-}
-
-.b{
-  display: inline-block;
-  box-sizing: border-box;
-  height: 100px;
-  width: 50%;
-  background-color: green;
-}
-
-.c{
-  display: inline-block;
-  box-sizing: border-box;
-  height: 100px;
-  width: 50%;
-  background-color: blue;
 }
