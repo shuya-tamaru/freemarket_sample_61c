@@ -1,4 +1,4 @@
-class CreditcardController < ApplicationController
+class CardsController < ApplicationController
   def index
   end
 
@@ -7,6 +7,4 @@ class CreditcardController < ApplicationController
 
   def show
   end
-
-  
 end
