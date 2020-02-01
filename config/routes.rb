@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   root to: "items#index"
   resources :items
+  resources :cards, only: [:index,:new,:show]
 end
