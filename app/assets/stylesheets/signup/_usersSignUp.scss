@@ -279,13 +279,13 @@
   &__icon2 {
     color: rgb(174, 167, 167);
     font-size: 20px;
-    padding: 0 0 10px 343px;
+    padding: 0 0 10px 350px;
     margin-top: -30px;
   }
   &__icon3 {
     color: rgb(174, 167, 167);
     font-size: 20px;
-    padding: 0 0 10px 440px;
+    padding: 0 0 10px 450px;
     margin-top: -31px;
   }
 }
@@ -383,4 +383,66 @@
 //   margin: 5px 0 0 180px;
 //   line-height: 30px;
 //   padding: 0 10px 0 10px;
+// }
+
+.form {
+  margin: 0 0 0 150px;
+  position: relative;
+  padding-left: 0;
+  overflow: hidden;
+  width: 310px;
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 50px;
+  select {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    height: 48px;
+    padding: 0px 10px 0px 16px;
+    background-color: #ffffff;
+    transition: .2s;
+    font-size: 17px;
+    font-weight: 200;
+    &:focus{
+      border: 1px solid #0095ee;
+      outline: none;
+    }
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+// .select {
+//   font-size: 20px;
+//   display: inline-block;
+//   margin-left: 10px;
+//   height: 40px;
+//   width: 80px;
+//   padding: 0 0 0 20px;
+//   &__text{
+//     height: 40px;
+//     width: 60px;
+//     font-size: 15px;
+//     border: 1px solid rgb(204, 204, 204);
+//     border-radius: 4px;
+//     background-color: #ffffff;
+//     transition: .2s;
+//     font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+//     &:focus{
+//       border: 1px solid #0095ee;
+//       outline: none;
+//     }
+//   }
 // }

@@ -65,8 +65,19 @@
       生年月日&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     .contents3__form3
-      =form_with class: "contents3__entry__birthdate" do |f|
-        != sprintf(f.date_select(:birthday, use_month_numbers: true, date_separator: '%s', start_year: Time.now.year, end_year: 1900, prompt:"--", with_css_classes: 'contents3__form3'), '&nbsp;年&nbsp;','&nbsp;月&nbsp;') + '&nbsp;日&nbsp;'
+      %form.form
+        %select#year
+          %option{value: ""} --
+        年
+        %select#month
+          %option{value: ""} --
+        月
+        %select#day
+          %option{value: ""} --
+        日
+      %script{:src => "js/date_select.js", :type => "text/javascript"}
+      -# =form_with class: "contents3__entry__birthdate" do |f|
+      -#   != sprintf(f.date_select(:birthday, use_month_numbers: true, date_separator: '%s', start_year: Time.now.year, end_year: 1900, prompt:"--", with_css_classes: 'contents3__form3'), '&nbsp;年&nbsp;','&nbsp;月&nbsp;') + '&nbsp;日&nbsp;'
     .contents3__icon
       = fa_icon("chevron-down")
     .contents3__icon2

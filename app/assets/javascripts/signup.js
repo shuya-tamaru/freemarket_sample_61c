@@ -9,16 +9,13 @@ function changeInputtype(password, passcheck) {
   $(passcheck).change(function() {
       if ($(this).prop('checked')) {
         $(function(){
-          $(password).on('input', function(){
-            var input_text = $(this).val();
-            $('.contents3__entry__passwordResult').text(input_text);
-          });
+          var input_text = $(password).val();
+          $('.contents3__entry__passwordResult').show();
+          $('.contents3__entry__passwordResult').text(input_text);
         });
       } else {
         $(function(){
-          $(password).on('input', function(){
-            $('.contents3__entry__passwordResult').text();
-          });
+          $('.contents3__entry__passwordResult').hide();
         });
       }
   });
