@@ -1,3 +1,6 @@
+.header
+  = render 'items/header'
+
 .main
   .sidebar
     = render '/sidebar'
@@ -35,3 +38,6 @@
           = link_to "#", class: "card__content__method__btn" do
             支払い方法について
             = icon('fas', 'angle-right',class:"card__content__method__btn--icon")
+
+.footer
+  = render 'items/footer'
