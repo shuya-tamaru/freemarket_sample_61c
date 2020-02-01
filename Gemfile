@@ -70,7 +70,12 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 gem "haml-rails", "~> 2.0"
 gem "pry-rails"
 gem "devise"
-gem 'font_awesome5_rails'
+gem "font_awesome5_rails"
+gem "font-awesome-sass"
+gem "jquery-rails"

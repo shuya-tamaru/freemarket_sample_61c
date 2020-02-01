@@ -1,0 +1,80 @@
+.main{
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  position: relative;
+  padding: 0 0 40px;
+
+  .show{
+    margin-left: 40px;
+    border-top: 1px solid #eee;
+    .card{
+      width: 700px;
+      margin: 24px auto 0;
+      background-color: #fff;
+    }
+      .card__header{
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        border-bottom: 3px solid #f5f5f5;
+        line-height: 1.4;
+      }
+
+    .card__content{
+      padding: 64px;
+      margin: 0 auto;
+      &__list{
+        margin: 0 auto;
+        border-bottom: 1px solid #f5f5f5;
+        border-width: 100%;
+        &__name{
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        &__register{
+          max-width: 320px;
+          list-style: none;
+          margin: 24px auto;
+          text-align: left;
+          position: relative;
+          font-size: 16px;
+          li{
+            font-size: 14px;
+            margin: 8px 0 0;
+          }
+          
+          &__delete{
+            top: 0;
+            right: 0;
+            position: absolute;
+            &__btn{
+              color: #ea352d;
+              border: 1px solid #ea352d;
+              padding: 4px 6px;
+              text-decoration: none;
+              border-radius: 5px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      &__method{
+        margin: 40px 0 0;
+        text-align: right;
+        display: block;
+        &__btn{
+          color: #0099e8;
+          font-size: 14px;
+          &:hover{
+            color: #66CCFF;
+            border-bottom: 1px solid #66CCFF;
+          }
+        }
+      }
+    }
+  }
+}

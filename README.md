@@ -24,7 +24,7 @@
 - has_many :announces
 - has_many :item_comments
 - has_many :trade_comments
-- has_one  :cellphon
+- has_one  :cellphone
 - has_one  :address
 - has_one  :card
 ​
@@ -58,7 +58,7 @@
 ## cellphonesテーブル(携帯電話)
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false, unique: true|
+|number|string|null: false, unique: true|
 |user|references|null: false, foreign_key:true|
 ### Association
 - belongs_to :user
@@ -139,7 +139,7 @@
 |shipping_way|string|null: false|
 |discription|string|null: false|
 |brand|refernces|index: true, foreign_key: true|
-|category|refernces|null: false, index: true, foreign_key: true|
+|grand_chaild_category|refernces|null: false, index: true, foreign_key: true|
 |buyer_user_id|integer|null: false|
 |saler_user_id|integer|null: false|
 |fee_side|string|null: false|
@@ -155,7 +155,7 @@
 - belongs_to :grandchild_category
 - belongs_to :brand
 - has_many :images
-- belongs_to :order
+- has_one :order
 ​
 ​
 ## ordersテーブル
@@ -189,39 +189,20 @@
 - belongs_to :item
 ​
 ​
-## parent_categoryテーブル(例：メンズ)
+## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-### Association
-- has_many :child_categories
-
-​
-## child_categoryテーブル(例：トップス)
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|parent_category|refernces|null: false, foreign_key: true|
-### Association
-- has_many :grandchild_categories
-- belongs_to :parent_category
-​
-​
-## child_categoryテーブル(例：シャツ)
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|child_category|refernces|null: false, foreign_key: true|
+|ancestry|string|index: true|
 ### Association
 - has_many :items
-- belongs_to :child_category
+- has_ancestry
 ​
 ​
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item|refernces|null: false, foreign_key: true|
 ### Association
 - has_many :items
 ​
