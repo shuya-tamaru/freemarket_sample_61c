@@ -10,31 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_144921) do
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "zip_code", null: false
-    t.integer "prefecture", default: 0, null: false
-    t.string "city", null: false
-    t.string "address", null: false
-    t.string "building"
-    t.string "phone_tel"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-
-  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "number", null: false
-    t.integer "validated_date_year", null: false
-    t.integer "validated_date_month", null: false
-    t.integer "security_number", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2020_01_26_082837) do
 
   create_table "cellphones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "number", null: false
@@ -42,6 +18,24 @@ ActiveRecord::Schema.define(version: 2020_01_28_144921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cellphones_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "item_status", null: false
+    t.string "shipping_charge", null: false
+    t.string "shipping_way", null: false
+    t.string "discription", null: false
+    t.integer "buyer_user_id"
+    t.integer "saler_user_id", null: false
+    t.string "fee_side", null: false
+    t.string "region", null: false
+    t.string "sipping_days", null: false
+    t.string "transaction_status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
