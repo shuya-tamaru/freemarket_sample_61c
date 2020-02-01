@@ -14,54 +14,63 @@ describe User do
       user.valid?
       expect(user.errors[:nickname]).to include("can't be blank")
     end
+
     #last_nameが空だと登録できない
     it "is invalid without a last_name" do
       user = build(:user, last_name: "")
       user.valid?
       expect(user.errors[:last_name]).to include("can't be blank")
     end
+
     #first_nameが空だと登録できない
     it "is invalid without a first_name" do
       user = build(:user, first_name: "")
       user.valid?
       expect(user.errors[:first_name]).to include("can't be blank")
     end
+
     #last_name_kanaが空だと登録できない
     it "is invalid without a last_name_kana" do
       user = build(:user, last_name_kana: "")
       user.valid?
       expect(user.errors[:last_name_kana]).to include("can't be blank")
     end
+
     #first_name_kanaが空だと登録できない
     it "is invalid without a first_name_kana" do
       user = build(:user, first_name_kana: "")
       user.valid?
       expect(user.errors[:first_name_kana]).to include("can't be blank")
     end
+
     #passwordが空だと登録できない
     it "is invalid without a password" do
       user = build(:user, password: "")
       user.valid?
       expect(user.errors[:password]).to include("can't be blank")
     end
+
     #password_confirmationが空だと登録できない
     it "is invalid without a password_confirmation although with a password" do
       user = build(:user, password_confirmation: "")
       user.valid?
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
+
     #birthday_yearが空だと登録できない
     it "is invalid without a birthday_year" do
       user = build(:user, birthday_year: "")
       user.valid?
       expect(user.errors[:birthday_year]).to include("can't be blank")
     end
+
     #birthday_monthが空だと登録できない
     it "is invalid without a birthday_month" do
       user = build(:user, birthday_month: "")
       user.valid?
       expect(user.errors[:birthday_month]).to include("can't be blank")
     end
+
     #birthday_dateが空だと登録できない
     it "is invalid without a birthday_date" do
       user = build(:user, birthday_date: "")
@@ -89,6 +98,34 @@ describe User do
       another_user = build(:user, email: user.email)
       another_user.valid?
       expect(another_user.errors[:email]).to include("has already been taken")
+    end
+
+    #last_name_kanaが全角カタカナであれば登録できる
+    it "is valid that last_name_kana is Full-width" do
+      user = build(:user, last_name_kana: "キムラ")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    #first_name_kanaが全角カタカナであれば登録できる
+    it "is valid that last_name_kana is Full-width" do
+      user = build(:user, first_name_kana: "タクヤ")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    #last_name_kanaが全角カタカナ以外だと登録できない
+    it "is invalid that last_name_kana isn't Full-width" do
+      user = build(:user, last_name_kana: "ｷﾑﾗ")
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include("全角カタカナのみで入力して下さい")
+    end
+
+    #first_name_kanaが全角カタカナ以外だと登録できない
+    it "is invalid that first_name_kana isn't Full-width" do
+      user = build(:user, first_name_kana: "ｷﾑﾗ")
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include("全角カタカナのみで入力して下さい")
     end
 
   end
