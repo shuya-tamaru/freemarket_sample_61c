@@ -1,35 +1,150 @@
 .header
   .header__container
     .headerTop
-      =link_to "#", class: "headerTop__link" do
+      -# .headerTop__link
+      -# .headerTop__form
+      =link_to "/", class: "headerTop__link" do
         =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerTop__link__image'
       =form_with class: "headerTop__form" do |f|
-        =f.text_field :text, placeholder: "何かお探しですか？", class: "headerTop__form__text"
-        =f.submit class: "headerTop__form__submit"
+        =f.text_field :text, placeholder: "何かお探しですか？", class: "headerTop__form__text", autocomplete: 'off'
+        = button_tag type: 'submit', class: "headerTop__form__submit" do
+          = fa_icon 'search', class: "headerTop__form__submit__icon"
     .headerBottom
       .headerBottom__search
-        .headerBottom__search__category
-          =link_to "#", class: "headerBottom__search__category__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__category__link__icon'
-            カテゴリーで探す
-        .headerBottom__search__brand
-          =link_to "#", class: "headerBottom__search__brand__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__search__brand__link__icon'
-            ブランドで探す
+        .headerBottom__search__category.hoverList
+          =link_to "/", class: "headerBottom__search__category__link" do
+            = fa_icon 'list', class: "headerBottom__search__category__link__icon"
+            カテゴリーから探す
+          %ul.hoverList__list.leftLists
+            %li.nestList
+              =link_to "/", class: "hoverList__list__link" do
+                レディース
+              %ul.nestList__list
+                %li
+                  =link_to "/", class: "nestList__list__link" do
+                    トップス
+                %li
+                  =link_to "/", class: "nestList__list__link" do
+                    アウター/ジャケット
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                メンズ
+        .headerBottom__search__brand.hoverList
+          =link_to "/", class: "headerBottom__search__brand__link" do
+            = fa_icon 'tag', class: "headerBottom__search__category__link__icon"
+            ブランドから探す
+          %ul.hoverList__list.leftLists
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                シャネル
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                ナイキ
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                ルイ ヴィトン
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                シュプリーム
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                アディダス
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                ブランド一覧
       %ul.headerBottom__list
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
-            いいね一覧
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
+        %li.hoverList
+          =link_to "/", class: "headerBottom__list__link" do
+            = far_icon 'heart', class: "headerBottom__list__link__icon1"
+            いいね！一覧
+        %li.hoverList
+          =link_to "/", class: "headerBottom__list__link" do
+            = far_icon 'bell', class: "headerBottom__list__link__icon1"
             お知らせ
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'headerBottom__list__link__icon'
+          %ul.hoverList__list
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'hoverList__list__link__image'
+                .hoverList__list__link__text
+                  .hoverList__list__link__text__message
+                    お知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせお知らせ
+                  .hoverList__list__link__text__time
+                    = far_icon 'clock', class: "hoverList__list__link__text__time__icon"
+                    8時間前
+                = fas_icon 'angle-right', class: "hoverList__list__link__icon"
+        %li.hoverList
+          =link_to "/", class: "headerBottom__list__link" do
+            = fa_icon 'check', class: "headerBottom__list__link__icon1"
             やることリスト
-        %li
-          =link_to "#", class: "headerBottom__list__link" do
-            =image_tag 'member_photo_noimage_thumb.png', class: 'headerBottom__list__link__icon ggg'
+          %ul.hoverList__list
+            %li
+              =link_to "/", class: "hoverList__list__link" do
+                =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'hoverList__list__link__image'
+                .hoverList__list__link__text
+                  .hoverList__list__link__text__message
+                    やることやることやることやることやることやることやることやることやることやることやること
+                  .hoverList__list__link__text__time
+                    = far_icon 'clock', class: "hoverList__list__link__text__time__icon"
+                    8時間前
+                = fas_icon 'angle-right', class: "hoverList__list__link__icon"
+        %li.mypage
+          =link_to "/", class: "headerBottom__list__link" do
+            =image_tag 'member_photo_noimage_thumb.png', class: 'headerBottom__list__link__icon2'
             マイページ
+          .mypage__list
+            .mypage__list__images
+              =image_tag 'member_photo_noimage_thumb.png', class: 'mypage__list__image'
+              =image_tag 'user-bg-07a3d1eec321479f465363323ddeb262.jpg', class: 'mypage__list__backImage'
+            .mypage__list__myInfomation
+              .mypage__list__myInfomation__name
+                annaPanda
+              .mypage__list__myInfomation__data
+                %span
+                  評価：
+                %span
+                  出品数：
+              .mypage__list__myInfomation__sales
+                =link_to "/", class: "mypage__list__myInfomation__sales__link" do
+                  .mypage__list__myInfomation__sales__title
+                    売上金
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__sales__icon"
+                  .mypage__list__myInfomation__sales__infomation
+                    ¥999,999
+              .mypage__list__myInfomation__point
+                =link_to "/", class: "mypage__list__myInfomation__point__link" do
+                  .mypage__list__myInfomation__point__title
+                    ポイント
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__point__icon"
+                  .mypage__list__myInfomation__point__infomation
+                    P0
+            %ul.mypage__list__myInfomation__links
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    いいね！一覧
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    出品した商品-出品中
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    出品した商品-取引中
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    出品した商品-売却済
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    購入した商品-取引中
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
+              %li
+                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                  .mypage__list__myInfomation__links__link__title
+                    購入した商品-過去の取引
+                  = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"

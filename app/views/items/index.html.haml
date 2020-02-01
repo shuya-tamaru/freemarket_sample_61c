@@ -1,6 +1,35 @@
 = render "header"
-.scrolleImages
-  =image_tag 'blog_SNS.png', class: 'scrolleImages__image'
+.slide
+  .slide__images
+    .slide__images__link.slideImage1
+      =link_to "/" do
+        .slideImage1__mainImage
+    .slide__images__link.slideImage2
+      =link_to "/" do
+        .slideImage2__mainImage
+          =image_tag 'top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png', class: 'slideImage2__mainImage__subImage'
+          .slideImage2__mainImage__title
+            スマホで かんたん
+            %br
+            フリマアプリ
+          %p.slideImage2__mainImage__explanation
+            メルカリはスマホカメラからすぐに出品できる
+            %br
+            購入時も安心な独自システムのアプリです
+          %object
+            =link_to "/" do
+              =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg', class: "slideImage2__mainImage__app"
+          %object
+            =link_to "/" do
+              =image_tag 'google-play-495575abb895b405aa6336b2a4304958.svg', class: "slideImage2__mainImage__google"
+
+  =image_tag 'carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png', class: 'slide__navLeft'
+  =image_tag 'carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png', class: 'slide__navRight'
+  -# どちらの画像が表示されてるかを示してる小さい丸
+  .slide__circles
+    %span.slide__circles__left.bright
+    %span.slide__circles__right
+
 .body
   .popularCB
     .popularCB__container1
@@ -8,16 +37,16 @@
         人気のカテゴリー
       %ul.popularCB__container1__list
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             レディース
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             メンズ
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             家電・スマホ・カメラ
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             おもちゃ・ホビー・グッズ
     .popularCB__container2
       - @products_c.each_with_index do |product, index|
@@ -28,33 +57,23 @@
         人気のブランド
       %ul.popularCB__container1__list
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             シャネル
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             ルイヴィトン
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             シュプリーム
         %li
-          =link_to "#", class: "popularCB__container1__list__link" do
+          =link_to "/", class: "popularCB__container1__list__link" do
             ナイキ
     .popularCB__container2
       - @products_b.each_with_index do |product, index|
         = render partial: 'product', locals: { index: index, product: product }
-.aside
-  .aside__container
-    .aside__container__links
-      %p
-        スマホでかんたんフリマアプリ
-      %p
-        今すぐ無料ダウンロード！
-      .aside__container__links__icons
-        =image_tag 'mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png', class: 'aside__container__links__icons__mercari'
-        =link_to "#" do
-          =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg', class: "aside__container__links__icons__app"
-        =link_to "#" do
-          =image_tag 'google-play-495575abb895b405aa6336b2a4304958.svg', class: "aside__container__links__icons__google"
-    .aside__container__phone
-      =image_tag 'download_app_pc-a4418175e8be071827ac88d073f40e4a.png', class: 'aside__container__phone__image'
+
 = render "footer"
+.exhibition
+  =link_to "/", class: "exhibition__link" do
+    出品
+    = fas_icon 'camera', class: "exhibition__link__icon"

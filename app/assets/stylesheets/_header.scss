@@ -1,5 +1,12 @@
+*{
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+}
+
 .header{
+  position:relative;
   height: 100px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  z-index: 1000;
   &__container{
     
     width: 1020px;
@@ -20,11 +27,11 @@
     }
   }
   &__form{
-    font-size: 16px;
     height: 40px;
     width: 100%;
     position: relative;
     &__text{
+      font-size: 16px;
       height: 40px;
       width: 100%;
       border: 1px solid rgb(204, 204, 204);
@@ -39,13 +46,27 @@
     }
     &__submit{
       position: absolute;
-      top: 0;
+      position: absolute;
+      top: 50%;
       right: 0;
+      transform: translateY(-50%) translateX(-50%);
+      border: none;
+      background-color: transparent;
+      &__icon{
+        font-size: 14px;
+      }
+      &:hover{
+        cursor: pointer;
+      }
+      &:focus{
+        outline: none;
+      }
     }
   }
 }
 
 .headerBottom{
+  color: #333333;
   display: flex;
   justify-content: space-between;
   margin-top: 8px; 
@@ -59,11 +80,13 @@
         line-height: 36px;
         font-size: 14px;
         font-weight: 600;
+        color: #333333;
         &:hover{
           color: #0095ee;
         }
         &__icon{
           vertical-align: middle;
+          color: rgb(234, 53, 45);
           width: 20px;
         }
       }
@@ -93,17 +116,199 @@
     }
     &__link{
       font-size: 14px;
-      &:hover{
-        color: #0095ee;
-      }
-      &__icon{
+      &__icon1{
         vertical-align: middle;
+        color: rgb(174, 174, 174);
+        font-size: 17px;
         margin-right: 10px;
+      }
+      &__icon2{
+        vertical-align: middle;
         width: 32px;
+        border-radius: 50%;
+        margin-right: 10px;
       }
     }
   }
 }
-.ggg{
-  border-radius: 50%;
+
+.mypage{
+  position: relative;
+  &__list{
+    display: none;
+    box-shadow: 0 4px 5px 1px rgb(171, 171, 171);
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    width: 300px;
+    &__images{
+      position: relative;
+    }
+    &__image{
+      width: 60px;
+      transform: translateY(-50%) translateX(-50%);
+      border-radius: 50%;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+    }
+    &__backImage{
+      width: 100%;
+      height: 80px;
+    }
+    &__myInfomation{
+      width: 275px;
+      margin: 0 auto 18px;
+      text-align: center;
+      line-height: 1.2em;
+      &__name{
+        font-size: 16px;
+        line-height: 1.2em;
+      }
+      &__data{
+        font-size: 15px;
+        line-height: 1.2em;
+        margin: 14px 0;
+      }
+      &__sales, &__point{
+        font-size: 14px;
+        border: .3px solid rgb(224, 224, 224);
+        padding: 10px 8px;
+        background-color: rgba(245, 245, 245, 0.5);
+        &__title{
+          vertical-align: center;
+          float: left;
+        }
+        &__infomation{
+          vertical-align: center;
+          float: right;
+        }
+        &__icon{
+          margin-left: 5px; 
+          font-size: 19.2px;
+          float: right;
+          color: rgb(233, 230, 230);
+        }
+        &::after{
+          content: "";
+          display: block;
+          clear: both;
+        }
+      }
+      &__point{
+        border-top: none;
+      }
+      &__links{
+        &__link{
+          font-size: 14px;
+          padding: 7px 12px;
+          align-items: center;
+          border-top: .2px solid rgb(224, 224, 224);
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          &__icon{
+            font-size: 19px;
+            color: rgb(209, 208, 208);
+          }
+        }
+      }
+    }
+  }
+}
+
+.hoverList{
+  position: relative;
+  &__list{
+    display: none;
+    box-shadow: 0 4px 5px 1px rgb(171, 171, 171);
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    right: -50%;
+    z-index: 1000;
+    width: 300px;
+    &__link{
+      display: block;
+      padding: 15px; 
+      position: relative;
+      &__image{
+        vertical-align: top;
+        width: 40px;
+        display: inline-block;
+        margin-right: 8px;
+      }
+      &__text{
+        display: inline-block;
+        &__message{
+          font-size: 15px;
+          width: 180px;
+          height: 59px;
+          overflow: hidden;
+          position: relative;
+          line-height: 1.3em;
+          &:after{
+            background-color: white;
+            content: "...";
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+          }
+        }
+        &__time{
+          font-size: 14px;
+          color: grey;
+          line-height: 1.7em;
+          &__icon{
+            font-size: 14px;
+            color: grey;
+          }
+        }
+      }
+      &__icon{
+        font-size: 28px;
+        color: rgb(209, 208, 208);
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+      &::after{
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+  }
+}
+
+
+.leftLists{
+  width: 225px;
+  left: 0px;
+  font-size: 13px;
+  & a:hover{
+    background-color: rgb(234, 53, 45);
+    color:white;
+  }
+}
+
+.nestList{
+  position: relative;
+  &__list{
+    display: none;
+    box-shadow: 4px 4px 5px 1px rgb(171, 171, 171);
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 1000;
+    width: 210px;
+    &__link{
+      display: block;
+      padding: 10px; 
+    }
+  }
 }
