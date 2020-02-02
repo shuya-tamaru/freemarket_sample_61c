@@ -3,13 +3,13 @@ require 'rails_helper'
 describe User do
   describe '#create' do
     #１ページ目の全ての項目が存在すれば登録できる
-    it "is valid with a nickname, last_name, first_name, last_name_kana, first_name_kana, password, password_confirmation, birthday_year, birthday_month, birthday_date" do
+    it "is valid with a nickname, email, last_name, first_name, last_name_kana, first_name_kana, password, password_confirmation, birthday_year, birthday_month, birthday_date" do
       user = build(:user)
       expect(user).to be_valid
     end
     
-    it "is invalid without a nickname" do
     #nicknameが空だと登録できない
+    it "is invalid without a nickname" do
       user = build(:user, nickname: "")
       user.valid?
       expect(user.errors[:nickname]).to include("can't be blank")
@@ -50,7 +50,7 @@ describe User do
       expect(user.errors[:password]).to include("can't be blank")
     end
 
-    #password_confirmationが空だと登録できない
+    #passwordが存在しても、password_confirmationが空だと登録できない
     it "is invalid without a password_confirmation although with a password" do
       user = build(:user, password_confirmation: "")
       user.valid?
@@ -78,6 +78,20 @@ describe User do
       expect(user.errors[:birthday_date]).to include("can't be blank")
     end
 
+    #passwordが6文字以上の半角英数混在であれば登録できる
+    it "is valid with a password that has more than 6 characters " do
+      user = build(:user, password: "abc123", password_confirmation: "abc123")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    #passwordが6文字以上の半角英数混在でなければ登録できない
+    it "is invalid with a password that has more than 6 characters that aren't half-width alphanumeric" do
+      user = build(:user, password: "アイウエオカ", password_confirmation: "アイウエオカ")
+      user.valid?
+      expect(user.errors[:password]).to include("is invalid")
+    end
+
     #passwordが6文字以上であれば登録できること
     it "is valid with a password that has more than 6 characters " do
       user = build(:user, password: "000000", password_confirmation: "000000")
@@ -85,7 +99,7 @@ describe User do
       expect(user).to be_valid
     end
 
-    #passwordが5文字以下であれば登録できないこと
+    #passwordが5文字以下だと登録できないこと
     it "is invalid with a password that has less than 5 characters " do
       user = build(:user, password: "00000", password_confirmation: "00000")
       user.valid?

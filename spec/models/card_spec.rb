@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Card do
 
   describe '#create' do
+
     #4ページ目の全ての項目が存在すれば登録できる
     it "is valid with a number, validated_date_year, validated_date_month, validated_date_date, security_number" do
       card = build(:card)
@@ -52,7 +53,7 @@ describe Card do
     end
 
     #numberが全角数字16桁だと登録できない
-    it "is invalid with a number that is full_width 17 characters" do
+    it "is invalid with a number that is full_width 16 characters" do
       card = build(:card, number: "１２３４５６７８９０１２３４５６")
       card.valid?
       expect(card.errors[:number]).to include("is invalid")
@@ -72,8 +73,8 @@ describe Card do
       expect(card.errors[:security_number]).to include("is invalid")
     end
 
-    #security_number全角数字3桁だと登録できない
-    it "is invalid with a security_number that is full_width 3 characters" do
+    #security_numberが全角数字だと登録できない
+    it "is invalid with a security_number that is full_width characters" do
       card = build(:card, security_number: "１２３")
       card.valid?
       expect(card.errors[:security_number]).to include("is invalid")

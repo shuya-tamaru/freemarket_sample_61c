@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Cellphone do
   describe '#create' do
+
     #numberが空では登録できない
     it "is valid with a number" do
       cellphone = build(:cellphone)
@@ -9,7 +10,7 @@ describe Cellphone do
     end
 
     #numberが(070/080/090)で始まって11文字であれば登録できる
-    it "is valid with a number that is 11 characters && head of number is (070/080/090)" do
+    it "is valid with a number that is 11 characters and head of number is (070/080/090)" do
       cellphone = build(:cellphone, number: "07012345678")
       expect(cellphone).to be_valid
     end

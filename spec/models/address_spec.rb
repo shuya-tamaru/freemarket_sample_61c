@@ -44,21 +44,19 @@ describe Address do
     end
 
     #buildingが空でも登録できる
-    it "is invalid without a city" do
+    it "is valid without a building" do
       address = build(:address, building: "")
-      address.valid?
       expect(address).to be_valid
     end
 
     #phone_telが空でも登録できる
-    it "is invalid without a city" do
+    it "is valid without a phone_tel" do
       address = build(:address, phone_tel: "")
-      address.valid?
       expect(address).to be_valid
     end
 
     #zip_codeが半角数字6文字以下だと登録できない
-    it "is invalid with a zip_code that is less than 7 characters " do
+    it "is invalid with a zip_code that is less than 6 characters " do
       address = build(:address, zip_code: "123456")
       address.valid?
       expect(address.errors[:zip_code]).to include('ハイフンなし半角数字7文字で入力してください')
@@ -73,7 +71,7 @@ describe Address do
 
     #zip_codeがハイフンを含めて7文字だと登録できない
     it "is invalid with a zip_code that is 7 characters include hyphen" do
-      address = build(:address, zip_code: "123-4567")
+      address = build(:address, zip_code: "123-456")
       address.valid?
       expect(address.errors[:zip_code]).to include('ハイフンなし半角数字7文字で入力してください')
     end
