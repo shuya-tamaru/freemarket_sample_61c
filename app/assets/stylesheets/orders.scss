@@ -1,0 +1,124 @@
+.order-wrapper{
+  margin: 0 auto;
+  background: #f5f5f5;
+  width: 100%;
+  .order-header{
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 40px;
+  }
+  .order{
+    margin: 0 auto;
+    width: 700px;
+    background-color: white;
+    &__top{
+      text-align: center;
+      font-size: 20px;
+      font-style: bold;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: ridge 0.5px;
+    }
+    &__info{
+      border-bottom: ridge 0.5px;
+      height: 150px;
+
+      &__box{
+        display: flex;
+        .order-image{
+          width:10px;
+          display: flex;
+          padding: 20px 170px;
+          height: 80px;
+          .photo{
+            width: 80px;
+            height: 90px;
+        }
+      }
+        .order-text{
+          padding-top: 40px;
+          display: flex;
+          width:250px;
+          &__name{
+
+          }
+          &__price{
+            font-size: 22px;
+          }
+        }
+      }
+        .order-text{
+          display: inline;
+        }
+
+    }
+    &__amount{
+      margin: 0 auto;
+      font-weight: 100;
+      width:300px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 20px;
+      border-bottom: ridge 0.5px;
+      padding-bottom: 20px;
+    }
+    &__payment-method{
+      margin: 0 auto;
+      font-weight: 100;
+      width:300px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 20px;
+      border-bottom: ridge 0.5px;
+      padding-bottom: 20px;
+    }
+    &__shipment-address{
+      margin: 0 auto;
+      font-weight: 100;
+      width:300px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 20px;
+      border-bottom: ridge 0.5px;
+      padding-bottom: 20px;
+    }
+    &__btn{
+      height: 80px;
+      &__box{
+      margin: 0 auto;
+      height:50px;
+      width:270px;
+      background-color:#ea352c;
+      line-height:50px;
+      text-align: center;
+      margin-top:20px;
+      color:white;
+      font-size: 14px;
+      font-weight:bold;
+
+      }
+    }
+  }
+  .order-footer{
+    padding-top: 20px;
+    width: 700px;
+    margin: 0 auto;
+    &__box{
+      text-align: center;
+      margin-bottom: 15px;
+      p{
+        font-style: narrow;
+        font-size: 14px; 
+        display: inline;
+      }
+    }
+    &__image{
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+    }
+    &__copyright{
+      text-align: center;
+    }
+  }
+}
