@@ -31,10 +31,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_cellphone and return
     end
     @user.build_cellphone(@cellphone.attributes)
-    #とりあえず２ページ目までで保存（あとで書き換え）
+    session["cellphone"] = @cellphone.attributes
+    @address = @user.build_address
+    render :new_address
+  end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @cellphone = Cellphone.new(session["cellphone"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_cellphone(@cellphone.attributes)
+    @user.build_address(@address.attributes)
+    session["address"] = @address.attributes
+    @card = @user.build_card
+    render :new_card
+  end
+
+
+  def create_card
+    @user = User.new(session["devise.regist_data"]["user"])
+    @cellphone = Cellphone.new(session["cellphone"])
+    @address = Address.new(session["address"])
+    @card = Card.new(card_params)
+    unless @card.valid?
+      flash.now[:alert] = @card.errors.full_messages
+      render :new_card and return
+    end
+    @user.build_cellphone(@cellphone.attributes)
+    @user.build_address(@address.attributes)
+    @user.build_card(@card.attributes)
     @user.save
     sign_in(:user, @user)
-  end
+  end 
 
   # GET /resource/edit
   # def edit
@@ -70,6 +102,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def cellphone_params
     params.require(:cellphone).permit(:number)
   end
+
+  def address_params
+    params.require(:address).permit(:zip_code, :prefecture, :city, :address, :building, :phone_tell)
+  end
+
+  def card_params
+    params.require(:card).permit(:number, :validated_date_year, :validated_date_month, :security_number)
+  end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

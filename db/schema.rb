@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_111259) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
+# ActiveRecord::Schema.define(version: 2020_01_26_082837) do
 
   create_table "cellphones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "number", null: false
@@ -73,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_01_27_111259) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "cellphones", "users"
 end

@@ -21,8 +21,6 @@
     .contents3__entry__item
       パスワード&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
-    -# =form_with class: "contents3__form" do |f|
-    -#   =f.text_field :text, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password"
     %p
       %input#js-password.password{placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password", value: ""}/
     .contents3__entry__message1
@@ -30,19 +28,7 @@
     %p
       %input#js-passcheck{class: "checkbox", type: "checkbox"}
       %label{class: "checkboxMessage", for: "js-passcheck"} パスワードを表示する
-      -# %input.test6{:type => "text", :value => ""}/
     .contents3__entry__passwordResult
-      -# %input.test6{:type => "text", :value => ""}/
-      -# .test6_input_result
-    -# .contents3__entry__message2
-    -#   %p
-    -#     %input#js-passcheck{type: "checkbox"}/
-    -#     %label{for: "js-passcheck"} パ
-    -#   %label
-    -#     %input#js-passcheck{type: "checkbox"}/
-    -#     %input.option-input02.checkbox{type: "checkbox"}/
-    -#     パスワードを表示する
-    -#     %label#js-password.passwordCheck
     .contents3__entry__message3
       本人確認
     .contents3__entry__message4
@@ -76,8 +62,6 @@
           %option{value: ""} --
         日
       %script{:src => "js/date_select.js", :type => "text/javascript"}
-      -# =form_with class: "contents3__entry__birthdate" do |f|
-      -#   != sprintf(f.date_select(:birthday, use_month_numbers: true, date_separator: '%s', start_year: Time.now.year, end_year: 1900, prompt:"--", with_css_classes: 'contents3__form3'), '&nbsp;年&nbsp;','&nbsp;月&nbsp;') + '&nbsp;日&nbsp;'
     .contents3__icon
       = fa_icon("chevron-down")
     .contents3__icon2
@@ -101,21 +85,59 @@
       and
       %a(href="https://policies.google.com/terms")Terms of Service
       apply.
-      -# #disp この文章を表示したり消したりします。
-      -# %form
-      -# %input{:onclick => "hyoji1(0)", :type => "button", :value => "表示"}/
-      -# %input{:onclick => "hyoji1(1)", :type => "button", :value => "非表示"}/
-      -# :javascript
-      -#   function hyoji1(num)
-      -#   {
-      -#     if (num == 0)
-      -#     {
-      -#       document.getElementById("disp").style.display="block";
-      -#     }
-      -#     else
-      -#     {
-      -#       document.getElementById("disp").style.display="none";
-      -#     }
-      -#   }
-
 = render 'devise/shared/footer2'
+
+-# 下記は上記にマージしていくので消さないこと！
+-# %h2 新規登録
+-# = form_for(@user, url: user_registration_path) do |f|
+-#   = render "devise/shared/error_messages", resource: @user
+-#   .field
+-#     = f.label :nickname
+-#     %br/
+-#     = f.text_field :nickname
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation, autocomplete: "new-password"
+-#   .field
+-#     = f.label :last_name
+-#     %br/
+-#     = f.text_field :last_name
+-#   .field
+-#     = f.label :first_name
+-#     %br/
+-#     = f.text_field :first_name
+-#   .field
+-#     = f.label :last_name_kana
+-#     %br/
+-#     = f.text_field :last_name_kana
+-#   .field
+-#     = f.label :first_name_kana
+-#     %br/
+-#     = f.text_field :first_name_kana
+-#   .field
+-#     = f.label :birthday_year
+-#     %br/
+-#     = f.number_field :birthday_year
+-#   .field
+-#     = f.label :birthday_month
+-#     %br/
+-#     = f.number_field :birthday_month
+-#   .field
+-#     = f.label :birthday_date
+-#     %br/
+-#     = f.number_field :birthday_date
+-#   .actions
+-#     = f.submit "次へ"
+-# = render "devise/shared/links"
