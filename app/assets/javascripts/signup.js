@@ -19,6 +19,8 @@ $(function() {
   });
 });
 
+
+
 // $(function() {
 //   var password  = '#js-password';
 //   var passcheck = '#js-passcheck';
