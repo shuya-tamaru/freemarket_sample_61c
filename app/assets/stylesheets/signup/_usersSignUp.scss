@@ -21,7 +21,6 @@
     padding: 20px 0 0 0;
     font-size: 14px;
     font-weight: bold;
-    position: relative;
     &__item {
       display: flex;
       justify-content: flex-start;
@@ -118,9 +117,6 @@
       align-items: center;
       padding: 10px 10px 10px 10px;
       line-height: 15px;
-      position: absolute;
-      bottom: 65px;
-      left: 172px;
       font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
       a{
         color: #39a3e4;
@@ -377,14 +373,6 @@
   font-weight: 300;
 }
 
-// .passwordResult {
-//   background-color: rgb(245, 245, 245);
-//   display: inline-block;
-//   margin: 5px 0 0 180px;
-//   line-height: 30px;
-//   padding: 0 10px 0 10px;
-// }
-
 .form {
   margin: 0 0 0 150px;
   position: relative;
@@ -424,25 +412,10 @@
   }
 }
 
-// .select {
-//   font-size: 20px;
-//   display: inline-block;
-//   margin-left: 10px;
-//   height: 40px;
-//   width: 80px;
-//   padding: 0 0 0 20px;
-//   &__text{
-//     height: 40px;
-//     width: 60px;
-//     font-size: 15px;
-//     border: 1px solid rgb(204, 204, 204);
-//     border-radius: 4px;
-//     background-color: #ffffff;
-//     transition: .2s;
-//     font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
-//     &:focus{
-//       border: 1px solid #0095ee;
-//       outline: none;
-//     }
-//   }
-// }
+.margin {
+  background-color: #ffffff;
+  height: 500px;
+  width: 700px;
+  margin: 0 auto;
+  margin: -300px 0 0 0;
+}
