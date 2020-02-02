@@ -22,13 +22,15 @@
     &__info{
       border-bottom: ridge 0.5px;
       height: 150px;
-
+      padding-top:20px;
       &__box{
+        margin: 0 auto;
+        width: 300px;
+        height: 200px;
         display: flex;
         .order-image{
-          width:10px;
+          float: left;
           display: flex;
-          padding: 20px 170px;
           height: 80px;
           .photo{
             width: 80px;
@@ -36,14 +38,17 @@
         }
       }
         .order-text{
-          padding-top: 40px;
+          padding-left: 10px;
+          padding-top: 20px;
+          width:200px;
           display: flex;
-          width:250px;
           &__name{
-
+            font-size: 12px;
           }
           &__price{
-            font-size: 22px;
+            padding-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
           }
         }
       }
@@ -61,6 +66,20 @@
       font-size: 20px;
       border-bottom: ridge 0.5px;
       padding-bottom: 20px;
+      .amount-text{
+        font-size: 17px;
+        float: left;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .amount-price{
+        font-size: 25px;
+        float: right;
+      }
+      &__point{
+        clear: both;
+        font-size: 15px;
+      }
     }
     &__payment-method{
       margin: 0 auto;
@@ -71,6 +90,42 @@
       font-size: 20px;
       border-bottom: ridge 0.5px;
       padding-bottom: 20px;
+      .method{
+        font-size: 17px;
+        float: left;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .method-change{
+        font-size: 14px;
+        float: right;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #0099e8;
+        font-weight: lighter;
+      }
+      .method-change:hover{
+        text-decoration: underline;
+      }
+      .card-info{
+        margin-top: 5px;
+        clear: both;
+        font-size: 15px;
+        margin-bottom: 5px;
+        &__icon{
+          width: 20px;
+          height: 15px;
+          display: inline;
+        }
+        &__number{
+          display: inline;
+          font-size:15px;
+        }
+        &__expire{
+          margin-top: 5px;
+          font-size: 15px;
+        }
+      }
     }
     &__shipment-address{
       margin: 0 auto;
@@ -81,7 +136,31 @@
       font-size: 20px;
       border-bottom: ridge 0.5px;
       padding-bottom: 20px;
+      .address{
+        font-size: 17px;
+        float: left;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .address-change{
+        font-size: 14px;
+        float: right;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #0099e8;
+        font-weight: lighter;
+      }
+      .address-change:hover{
+        text-decoration: underline;
+      }
+      .postcode{
+        margin-top: 5px;
+        clear: both;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
     }
+    
     &__btn{
       height: 80px;
       &__box{
@@ -108,7 +187,7 @@
       margin-bottom: 15px;
       p{
         font-style: narrow;
-        font-size: 14px; 
+        font-size: 12px; 
         display: inline;
       }
     }
@@ -118,7 +197,9 @@
       margin: 0 auto;
     }
     &__copyright{
+      font-size: 12px;
       text-align: center;
+      padding-bottom: 10px;
     }
   }
 }

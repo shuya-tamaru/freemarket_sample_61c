@@ -6,7 +6,7 @@
       購入内容の確認
     .order__info
       .order__info__box
-        .order-image 
+        .order-image
           =image_tag "m48176654670_1.jpg", class: "photo"
         .order-text
           .order-text__name
@@ -14,28 +14,30 @@
           .order-text__price ¥7,500 （税込）送料込み
     .order__amount
       .order__amount__price
-        支払金額: ¥7,500
-      .order__amount__point
-        ポイントを使用(所持ポイント:0)
+        %p.amount-text 支払金額:
+        %p.amount-price ¥7,500
+        %br
+      .order__amount__point ポイントを使用(所持ポイント:0)
     .order__payment-method
       .order__payment-method__box
-        %p 支払い方法
-        %p 変更する
-      %label 登録クレジットカード情報
+        %p.method 支払い方法
+        %p.method-change 変更する
+      .card-info
+        クレジットカード
+      =image_tag "jcb.svg", class: "card-info__icon"
+      .card-info__number **** **** **** XXXX
       %br
-      = "**** **** **** XXXX"
-      %br
-      05
-      23
+      .card-info__expire 有効期限 05 / 23
     .order__shipment-address
-      .order__payment-method__box
-        %p 配送先
-        %p 変更する
-        %p 〒000-0000
-        %br
-        東京都 千代田区　hogehoge 1-1-1
-        %br
-        Name Namae
+      .order__shipment-address__box
+        %p.address 配送先
+        %p.address-change 変更する
+        %p.postcode 
+          〒 000-0000
+          %br
+          東京都 千代田区 hogehoge 1-1-1
+          %br
+          Name Namae
     .order__btn
       .order__btn__box
         購入する
