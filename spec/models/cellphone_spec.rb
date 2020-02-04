@@ -11,19 +11,19 @@ describe Cellphone do
     end
 
     #numberが(070)で始る半角数字11文字であれば登録できる
-    it "is valid with a number that is 11 characters and head of number is (070/080/090)" do
+    it "is valid with a number that is 11 characters and head of number is (070)" do
       cellphone = build(:cellphone, number: "07012345678")
       expect(cellphone).to be_valid
     end
 
     #numberが(080)で始る半角数字11文字であれば登録できる
-    it "is valid with a number that is 11 characters and head of number is (070/080/090)" do
+    it "is valid with a number that is 11 characters and head of number is (080)" do
       cellphone = build(:cellphone, number: "08012345678")
       expect(cellphone).to be_valid
     end
 
     #numberが(090)で始る半角数字11文字であれば登録できる
-    it "is valid with a number that is 11 characters and head of number is (070/080/090)" do
+    it "is valid with a number that is 11 characters and head of number is (090)" do
       cellphone = build(:cellphone, number: "09012345678")
       expect(cellphone).to be_valid
     end
