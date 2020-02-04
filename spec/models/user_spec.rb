@@ -91,9 +91,9 @@ describe User do
       expect(user).to be_valid
     end
 
-    #passwordが半角英数混在でなければ登録できない
+    #passwordが全角だと登録できない
     it "is invalid with a password that has more than 7 characters that aren't half-width alphanumeric" do
-      user = build(:user, password: "abcD１２３", password_confirmation: "abcD１２３")
+      user = build(:user, password: "ａｂｃｄ１２３", password_confirmation: "ａｂｃｄ１２３")
       user.valid?
       expect(user.errors[:password]).to include("is invalid")
     end
@@ -117,6 +117,13 @@ describe User do
       user = build(:user, password: "a0b1c2", password_confirmation: "a0b1c2")
       user.valid?
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
+    end
+
+    #passwordが7文字以上の半角数字混在でもpasswordとpassword_confirmationが不一致なら登録できない
+    it "is invalid that password isn't equal to password_confirmation" do
+      user = build(:user, password: "abcd123", password_confirmation: "abcd321")
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
     #emailが重複していると登録できない
