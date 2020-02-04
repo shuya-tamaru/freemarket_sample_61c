@@ -11,10 +11,22 @@ describe Address do
 
     #電話番号とビル名がなくても他があれば登録できる
     it "is valid with a zip_code, prefecture, city, address" do
-      address = build(:address)
+      address = build(:address, building:"", phone_tel:"")
       expect(address).to be_valid
     end
 
+    #buildingが空でも登録できる
+    it "is valid without a building" do
+      address = build(:address, building: "")
+      expect(address).to be_valid
+    end
+
+    #phone_telが空でも登録できる
+    it "is valid without a phone_tel" do
+      address = build(:address, phone_tel: "")
+      expect(address).to be_valid
+    end
+    
     #zip_codeが空だと登録できない
     it "is invalid without a zip_code" do
       address = build(:address, zip_code: "")
@@ -37,23 +49,12 @@ describe Address do
     end
 
     #addressが空だと登録できない
-    it "is invalid without a city" do
+    it "is invalid without a address" do
       address = build(:address, address: "")
       address.valid?
       expect(address.errors[:address]).to include("can't be blank")
     end
 
-    #buildingが空でも登録できる
-    it "is valid without a building" do
-      address = build(:address, building: "")
-      expect(address).to be_valid
-    end
-
-    #phone_telが空でも登録できる
-    it "is valid without a phone_tel" do
-      address = build(:address, phone_tel: "")
-      expect(address).to be_valid
-    end
 
     #zip_codeが半角数字6文字以下だと登録できない
     it "is invalid with a zip_code that is less than 6 characters " do

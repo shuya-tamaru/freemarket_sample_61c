@@ -38,11 +38,29 @@ describe Card do
       expect(card.errors[:security_number]).to include("can't be blank")
     end
 
-    #numberが半角数字15桁以下だと登録できない
-    it "is invalid with a number that is less than 15 characters" do
-      card = build(:card, number: "123456789012345")
+    #numberが半角数字13桁以下だと登録できない
+    it "is invalid with a number that is less than 13 characters" do
+      card = build(:card, number: "1234567890123")
       card.valid?
       expect(card.errors[:number]).to include("is invalid")
+    end
+
+    #numberが半角数字14桁だと登録できる
+    it "is valid with a number that is 14 characters" do
+      card = build(:card, number: "12345678901234")
+      expect(card).to be_valid
+    end
+
+    #numberが半角数字15桁だと登録できる
+    it "is valid with a number that is 15 characters" do
+      card = build(:card, number: "123456789012345")
+      expect(card).to be_valid
+    end
+
+    #numberが半角数字16桁だと登録できる
+    it "is valid with a number that is 15 characters" do
+      card = build(:card, number: "1234567890123456")
+      expect(card).to be_valid
     end
 
     #numberが半角数字17桁以上だと登録できない

@@ -15,6 +15,13 @@ describe User do
       expect(user.errors[:nickname]).to include("can't be blank")
     end
 
+    #emailが空だと登録できない
+    it "is invalid without a email" do
+      user = build(:user, email: "")
+      user.valid?
+      expect(user.errors[:email]).to include("can't be blank")
+    end
+
     #last_nameが空だと登録できない
     it "is invalid without a last_name" do
       user = build(:user, last_name: "")
@@ -78,32 +85,38 @@ describe User do
       expect(user.errors[:birthday_date]).to include("can't be blank")
     end
 
-    #passwordが6文字以上の半角英数混在であれば登録できる
-    it "is valid with a password that has more than 6 characters " do
-      user = build(:user, password: "abc123", password_confirmation: "abc123")
-      user.valid?
+    #passwordが7文字以上の半角英数混在であれば登録できる
+    it "is valid with a password that has more than 7 characters " do
+      user = build(:user, password: "abc1234", password_confirmation: "abc1234")
       expect(user).to be_valid
     end
 
-    #passwordが6文字以上の半角英数混在でなければ登録できない
-    it "is invalid with a password that has more than 6 characters that aren't half-width alphanumeric" do
-      user = build(:user, password: "アイウエオカ", password_confirmation: "アイウエオカ")
+    #passwordが半角英数混在でなければ登録できない
+    it "is invalid with a password that has more than 7 characters that aren't half-width alphanumeric" do
+      user = build(:user, password: "abcD１２３", password_confirmation: "abcD１２３")
       user.valid?
       expect(user.errors[:password]).to include("is invalid")
     end
 
-    #passwordが6文字以上であれば登録できること
-    it "is valid with a password that has more than 6 characters " do
-      user = build(:user, password: "000000", password_confirmation: "000000")
+    #passwordが7文字以上でも半角数字のみであれば登録できない
+    it "is invalid with a password that has more than 7 characters only half-width number" do
+      user = build(:user, password: "1234567", password_confirmation: "1234567")
       user.valid?
-      expect(user).to be_valid
+      expect(user.errors[:password]).to include("is invalid")
     end
 
-    #passwordが5文字以下だと登録できないこと
-    it "is invalid with a password that has less than 5 characters " do
-      user = build(:user, password: "00000", password_confirmation: "00000")
+    #passwordが7文字以上でも半角英字のみであれば登録できない
+    it "is invalid with a password that has more than 7 characters only half-width alphanumeric" do
+      user = build(:user, password: "abcdefg", password_confirmation: "abcdefg")
       user.valid?
-      expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+      expect(user.errors[:password]).to include("is invalid")
+    end
+
+    #passwordが6文字以下の半角英数混合だと登録できないこと
+    it "is invalid with a password that has less than 6 characters" do
+      user = build(:user, password: "a0b1c2", password_confirmation: "a0b1c2")
+      user.valid?
+      expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
     end
 
     #emailが重複していると登録できない
