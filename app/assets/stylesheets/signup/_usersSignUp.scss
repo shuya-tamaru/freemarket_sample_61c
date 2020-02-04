@@ -176,8 +176,11 @@
       line-height: 30px;
       padding: 0 10px 0 10px;
       position: relative;
+      &__string {
+        display:none
       }
     }
+  }
 
   &__form {
     height: 61px;
@@ -289,35 +292,35 @@
 }
 
 .contents3__entry__message2 .option-input02 {
-	position: relative;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	width: 20px;
-	height: 20px;
-	margin-right: 0.5rem;
-	cursor: pointer;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  cursor: pointer;
   transition: all 0.15s ease-out 0s;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 2px;
-	color: #ffffff;
-	outline: none;
+  color: #ffffff;
+  outline: none;
   background: #ffffff;
-	-webkit-appearance: none;
-	        appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
 }
 .contents3__entry__message2 .option-input02:checked {
-	background: #39b5f7;
+  background: #39b5f7;
 }
 .contents3__entry__message2 .option-input02:checked::before {
-	font-size: 14px;
-	line-height: 18px;
-	position: absolute;
-	display: inline-block;
-	width: 18px;
-	height: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  position: absolute;
+  display: inline-block;
+  width: 18px;
+  height: 10px;
   content: '✔';
-	text-align: center;
+  text-align: center;
 }
 
 .password {
@@ -339,35 +342,35 @@
 }
 
 .checkbox {
-	position: relative;
-	right: 0;
-	bottom: 0;
+  position: relative;
+  right: 0;
+  bottom: 0;
   left: 0;
-	width: 20px;
-	height: 20px;
-	margin-right: 0.5rem;
-	cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  cursor: pointer;
   transition: all 0.15s ease-out 0s;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 2px;
-	color: #ffffff;
-	outline: none;
+  color: #ffffff;
+  outline: none;
   background: #ffffff;
-	-webkit-appearance: none;
-	        appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
 }
 .checkbox:checked {
-	background: #39b5f7;
+  background: #39b5f7;
 }
 .checkbox:checked::before {
-	font-size: 14px;
-	line-height: 18px;
-	position: absolute;
-	display: inline-block;
-	width: 18px;
-	height: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  position: absolute;
+  display: inline-block;
+  width: 18px;
+  height: 10px;
   content: '✓';
-	text-align: center;
+  text-align: center;
 }
 
 .checkboxMessage {
