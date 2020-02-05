@@ -1,10 +1,38 @@
-%h2 携帯電話登録
-= form_for @cellphone do |f|
-  = render "devise/shared/error_messages", resource: @cellphone
-  .field
-    = f.label :cellphone
-    %br/
-    = f.text_field :number
-  .actions
-    = f.submit "次へ"
-= render "devise/shared/links"
+.header3
+  .header3__logo
+    = link_to root_path do
+      .header3__logo__image
+    .header3__logo__progress
+      = image_tag "step2.png", class: "image", size: "450x35"
+.contents4
+  .contents4__title
+    電話番号の確認
+  .contents4__entry
+    .contents4__entry__item
+      携帯電話の番号
+    =form_with class: "contents4__form" do |f|
+      =f.text_field :number, placeholder: "携帯電話の番号を入力", class: "contents4__form__text"
+    .contents4__entry__message1
+      本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+    .contents4__btn
+    = link_to root_path, class: "contents4__btn contents4__btn__sendingSMS" do
+      SMSを送信する
+    .contents4__entry__message1
+      ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+    .contents4__entry__message2
+      %a(href="https://www.mercari.com/jp/help_center/article/244/")電話番号の確認が必要な理由〉
+
+= render 'devise/shared/footer3'
+
+-# 以下は元の中身
+
+-# %h2 携帯電話登録
+-# = form_for @cellphone do |f|
+-#   = render "devise/shared/error_messages", resource: @cellphone
+-#   .field
+-#     = f.label :cellphone
+-#     %br/
+-#     = f.text_field :number
+-#   .actions
+-#     = f.submit "次へ"
+-# = render "devise/shared/links"
