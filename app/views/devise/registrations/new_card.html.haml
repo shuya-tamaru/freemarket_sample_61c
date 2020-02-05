@@ -1,22 +1,40 @@
-.single-main__container__form
-  .single-main__container__form__frame
-    = form_for(@card, url: cards_path,method: :post) do |f|
-      = render "devise/shared/error_messages", resource: @card
-      .form-group
-        = f.label :カード番号
-        %span.form-group__require 必須
-        = f.text_field :number, {placeholder: "半角数字のみ", class: "form-group__input"}
-      .form-group
-        = f.label :有効期限
-        %span.form-group__require 必須
-        %br
-        = f.select :validated_date_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
-        = f.label :月, class: "form-group__card--year-and-month"
-        = f.select :validated_date_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
-        = f.label :年, class: "form-group__card--year-and-month"
-      .form-group
-        = f.label :セキュリティコード, class: "label"
-        %span.form-group__require 必須
-        = f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番", class: "form-group__input"
-      .form-group
-        = f.submit "Sign up"
+.header3
+  .header3__logo
+    = link_to root_path do
+      .header3__logo__image
+    .header3__logo__progress
+      = image_tag "step4.png", class: "image", size: "450x35"
+.contents6
+  .contents6__title
+    支払い方法
+  .contents6__entry
+
+    .contents6__btn
+    = link_to root_path, class: "contents6__btn contents6__btn__next" do
+      次へ進む
+
+= render 'devise/shared/footer3'
+
+-# 下記は元の中身。消さないこと！
+-# .single-main__container__form
+-#   .single-main__container__form__frame
+-#     = form_for(@card, url: cards_path,method: :post) do |f|
+-#       = render "devise/shared/error_messages", resource: @card
+-#       .form-group
+-#         = f.label :カード番号
+-#         %span.form-group__require 必須
+-#         = f.text_field :number, {placeholder: "半角数字のみ", class: "form-group__input"}
+-#       .form-group
+-#         = f.label :有効期限
+-#         %span.form-group__require 必須
+-#         %br
+-#         = f.select :validated_date_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
+-#         = f.label :月, class: "form-group__card--year-and-month"
+-#         = f.select :validated_date_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
+-#         = f.label :年, class: "form-group__card--year-and-month"
+-#       .form-group
+-#         = f.label :セキュリティコード, class: "label"
+-#         %span.form-group__require 必須
+-#         = f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番", class: "form-group__input"
+-#       .form-group
+-#         = f.submit "Sign up"
