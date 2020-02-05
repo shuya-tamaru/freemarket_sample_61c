@@ -26,6 +26,15 @@
       justify-content: flex-start;
       padding: 20px 250px 5px 179px;
     }
+    &__image {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 0 5px 179px;
+      list-style: none;
+      li {
+        margin: 8px 0 0 8px;
+      }
+    }
   }
   &__form {
     height: 61px;

@@ -8,7 +8,29 @@
   .contents6__title
     支払い方法
   .contents6__entry
-
+    .contents6__entry__item
+      カード番号&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents6__form" do |f|
+      =f.text_field :text, placeholder: "半角数字のみ", class: "contents6__form__text"
+    .contents6__entry__image
+      %li
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
+      %li
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png", alt: "master", size: '25x20')
+      %li
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Saison_card_logo.svg/1024px-Saison_card_logo.svg.png", alt: "saison", size: '25x20')
+      %li
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/600px-JCB_logo.svg.png", alt: "jcb", size: '25x20')
+      %li
+        = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1202px-American_Express_logo_%282018%29.svg.png", alt: "americanexpress", size: '25x20')
+      %li
+        = image_tag("https://clipartart.com/images/diners-club-logo-clipart.png", alt: "dinersclub", size: '25x20')
+      %li
+        = image_tag("https://blog.mudora.jp/wp-content/uploads/2013/11/disc_5121.png", alt: "discover", size: '30x25')
+    .contents6__entry__item
+      有効期限&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
     .contents6__btn
     = link_to root_path, class: "contents6__btn contents6__btn__next" do
       次へ進む
