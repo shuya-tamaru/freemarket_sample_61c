@@ -1,7 +1,144 @@
 .header2
   = render 'devise/shared/header2'
 
+.items__new
+  .contents
+    = form_with url:root_path do |f|
+      .contents__header
+        %h2
+          商品の情報を入力
 
+      .contents__item
+        .contents__item__upload
+          .contents__item__upload__list
+            %label
+              出品画像
+            %span
+              必須
+            %p
+              最大10枚までアップロードできます
+            
+          .contents__item__upload__image
+            .contents__item__upload__image__btn
+              .contents__item__upload__image__form
+                .contents__item__upload__image__form__area
+                  %p
+                    ドラッグアンドドロップ
+                    %br
+                      またはクリックしてファイルをダウンロード
+
+        .contents__item__comment
+          .contents__item__comment__name
+            %label
+              商品名
+            %span
+              必須
+            .contents__item__comment__name__form
+              = f.text_field :text, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
+        
+          .contents__item__comment__description
+            %label
+              商品の説明
+            %span
+              必須
+            .contents__item__comment__description__form
+              = f.text_field :text, class:"contents__item__comment__descriptionform__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
+        
+        .contents__item__status
+          %h3
+            商品の詳細
+          .contents__item__status__category
+            %label
+              カテゴリー
+            %span
+              必須
+            = f.select :category, {}, class: "contents__item__status__category__select"
+
+          .contents__item__status__condition
+            %label
+              商品の状態
+            %span
+              必須
+            = f.select :condition, {}, class: "contents__item__status__condition__select"
+              
+        .contents__item__shipping__way
+          %h3
+            配送について
+          = icon('fas', 'question-circle',class:"contents__item__shipping__way--icon")
+          .contents__item__shipping__way__burden
+            %label
+              配送料の負担
+            %span
+              必須
+            = f.select :burden, {}, class: "contents__item__shipping__way__burden__select"
+
+          .contents__item__shipping__way__city
+            %label
+              発送元の地域
+            %span
+              必須
+            = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shipping__way__city__select'}
+            
+
+          .contents__item__shipping__way__days
+            %label
+              発送までの日数
+            %span
+              必須
+            = f.select :burden, {}, class: "contents__item__shipping__way__burden__select"
+
+        .contents__item__price
+          %h3
+            販売価格(300〜9,999,999)
+          = icon('fas', 'question-circle',class:"contents__item__price--icon")
+
+          .contents__item__price__total
+            %label
+              価格
+            %span
+              必須
+              .contents__item__price__total__form
+                ¥
+                = f.text_field :string, class:"contents__item__price__total__form__string", placeholder: "例) 300"
+          
+          .contents__item__price__fee
+            %label
+              販売手数料(10%)
+
+              .contents__item__price__fee__right
+                "=total*10%"
+
+          .contents__item__price__profit
+            %label
+              販売利益
+              .contents__item__price__profit__right
+                "=total-fee"
+
+        .contents__item__add
+          .contents__item__add__note
+            %div
+              %p
+                = link_to '#', class:"link-blue" do
+                  禁止されている出品
+                、
+                = link_to '#', class:"link-blue" do
+                  行為
+                を必ずご確認ください。
+              %p
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to '#', class:"link-blue" do
+                  偽ブランドの販売
+                は犯罪であり処罰される可能性があります。
+              %p
+                た、出品をもちまして
+                = link_to '#', class:"link-blue" do
+                  加盟店規約
+                に同意したことになります。
+
+            .contents__item__add__btn
+              = f.submit "出品する"
+              = link_to "#", class: "contents__item__add__btn__back" do
+                戻る
 
 
 .footer2
