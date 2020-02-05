@@ -1,10 +1,10 @@
 FactoryBot.define do
   
   factory :card do
-    number              {"1234567890123456"}
-    validated_date_year  {"20"}
-    validated_date_month {"12"}
-    security_number     {"123"}
+    number              {Faker::Number.number(digits: 16)}
+    validated_date_year  {Faker::Number.between(from: 20, to: 40)}
+    validated_date_month {Faker::Number.between(from: 1, to: 12)}
+    security_number     {Faker::Number.number(digits: 3)}
   end
 
 end
