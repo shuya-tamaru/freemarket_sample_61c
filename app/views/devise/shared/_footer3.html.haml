@@ -1,0 +1,19 @@
+-# チームの皆様：おそらくこのアプリではヘッダー・フッターが数種類出てきますので、みんな同じ「header」「footer」ではレイアウト崩れが生じてしまうので、このファイル名や以下のクラスのように仮ですが、ナンバリングしておきました。
+.wrapper
+.footer3
+  .footer3__list
+    %ul
+      %li
+        = link_to root_path do
+          プライバシーポリシー
+      %li
+        = link_to root_path do
+          メルカリ利用規約
+      %li
+        = link_to root_path do
+          特定商取引に関する表記
+  .footer3__logo
+    = link_to root_path do
+      .footer3__logo__image
+  .footer3__inc
+    ©︎ Mercari, Inc.
