@@ -10,16 +10,53 @@
   .contents5__entry
     .contents5__entry__item
       お名前&nbsp;&nbsp;&nbsp;
-      = image_tag "must.png", class: "image", size: "450x35"
+      = image_tag "must.png", class: "image", size: "30x16"
     =form_with class: "contents5__form" do |f|
       =f.text_field :number, placeholder: "例）山田", class: "contents5__form__text"
     =form_with class: "contents5__form" do |f|
       =f.text_field :number, placeholder: "例）彩", class: "contents5__form__text"
+    .contents5__entry__item
+      お名前カナ&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）ヤマダ", class: "contents5__form__text"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）アヤ", class: "contents5__form__text"
+    .contents5__entry__item
+      郵便番号&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）123-4567", class: "contents5__form__text"
+    .contents5__entry__item
+      都道府県&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "北海道", class: "contents5__form__text"
+    .contents5__entry__item
+      市区町村&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）横浜市緑区", class: "contents5__form__text"
+    .contents5__entry__item
+      番地&nbsp;&nbsp;&nbsp;
+      = image_tag "must.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）青山1-1-1", class: "contents5__form__text"
+    .contents5__entry__item
+      建物名&nbsp;&nbsp;&nbsp;
+      = image_tag "abt.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）緑ビル103", class: "contents5__form__text"
+    .contents5__entry__item
+      電話&nbsp;&nbsp;&nbsp;
+      = image_tag "abt.png", class: "image", size: "30x16"
+    =form_with class: "contents5__form" do |f|
+      =f.text_field :number, placeholder: "例）09012345678", class: "contents5__form__text"
     .contents5__btn
     = link_to root_path, class: "contents5__btn contents5__btn__next" do
       次へ進む
 
-= render 'devise/shared/footer3'
+= render 'devise/shared/footer2'
 
 -# 以下は元の中身。消さないこと！
 -# %main.single-main
