@@ -1,7 +1,7 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
 
-  validates :zip_code, presence: true, format: {with:/\A\d{7}\z/ , message: 'ハイフンなし半角数字で入力してください'}
+  validates :zip_code, presence: true, format: {with:/\A\d{7}\z/ , message: 'ハイフンなし半角数字7文字で入力してください'}
   validates :prefecture, presence: true
   validates :city, presence: true
   validates :address, presence: true
