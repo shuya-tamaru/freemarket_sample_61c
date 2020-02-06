@@ -1,5 +1,5 @@
-=render "devise/shared/header2"
 .order-wrapper
+  =render "devise/shared/header2"
   .order
     .order__top
       購入内容の確認
@@ -40,12 +40,4 @@
     .order__btn
       .order__btn__box
         購入する
-  .order-footer
-    .order-footer__box
-      %p.footer-box-text プライバシーポリシー
-      %p.footer-box-text メルカリ利用規約
-      %p.footer-box-text 特定商取引に関する表記
-    .order-footer__image
-      = image_tag "logo-gray.svg"
-    .order-footer__copyright
-      © Mercari, Inc.
+  =render "devise/shared/footer2"
