@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resources :sales, only: [:index]
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
+  resources :orders, only: [:new]
 end
