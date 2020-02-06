@@ -1,4 +1,7 @@
-= render "header"
+- if user_signed_in?
+  = render "header"
+-else
+  = render "header_unlogined"
 .slide
   .slide__images
     .slide__images__link.slideImage1

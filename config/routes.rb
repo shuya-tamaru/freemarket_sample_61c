@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -13,11 +12,10 @@ Rails.application.routes.draw do
   end
   root to: "items#index"
   resources :items
+  resources :users, only: [:index, :show]
   resources :categorized_items, only: [:index]
   resources :branded_items, only: [:index]
-
   resources :credit_cards, only: [:index,:new,:show]
-
   resources :myinfomations, only: [:index]
   resources :notifications, only: [:index]
   resources :todos, only: [:index]
