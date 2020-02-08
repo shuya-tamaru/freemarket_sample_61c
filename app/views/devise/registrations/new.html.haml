@@ -7,6 +7,8 @@
 .contents3
   .contents3__title
     会員情報入力
+    = form_with model: @user, url: user_registration_path do |f|
+      = render "devise/shared/error_messages", resource: @user
   .contents3__entry
     .contents3__entry__item
       ニックネーム&nbsp;&nbsp;&nbsp;
@@ -17,12 +19,12 @@
       メールアドレス&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     =form_with class: "contents3__form" do |f|
-      =f.email_field :email, placeholder: "PC・携帯どちらでも可", class: "contents3__form__text"
+      =f.email_field :email, placeholder: "PC・携帯どちらでも可", class: "contents3__form__text", autocomplete: "email"
     .contents3__entry__item
       パスワード&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     %p
-      %input#js-password.password{placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password", value: ""}/
+      %input#js-password.password{model: @password, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password", value: "", autocomplete: "new-password"}/
     .contents3__entry__message1
       ※英字と数字の両方を含めて設定してください
     %p
@@ -38,29 +40,29 @@
       お名前(全角)&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     =form_with class: "contents3__form2" do |f|
-      =f.text_field :text, placeholder: "例) 山田", class: "contents3__form2__text"
+      =f.text_field :last_name, placeholder: "例) 山田", class: "contents3__form2__text"
     =form_with class: "contents3__form2" do |f|
-      =f.text_field :text, placeholder: "例) 彩", class: "contents3__form2__text"
+      =f.text_field :first_name, placeholder: "例) 彩", class: "contents3__form2__text"
     .contents3__entry__item
       お名前カナ(全角)&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     =form_with class: "contents3__form2" do |f|
-      =f.text_field :text, placeholder: "例) ヤマダ", class: "contents3__form2__text"
+      =f.text_field :last_name_kana, placeholder: "例) ヤマダ", class: "contents3__form2__text"
     =form_with class: "contents3__form2" do |f|
-      =f.text_field :text, placeholder: "例) アヤ", class: "contents3__form2__text"
+      =f.text_field :first_name_kana, placeholder: "例) アヤ", class: "contents3__form2__text"
     .contents3__entry__item
       生年月日&nbsp;&nbsp;
       = image_tag "must.png", class:"image", size: "30x16"
     .contents3__form3
       %form.form
         %select#year
-          %option{value: ""} --
+          %option{value: "", model: @birthday_year, type:"number"} --
         年
         %select#month
-          %option{value: ""} --
+          %option{value: "", model: @birthday_month, type:"number"} --
         月
         %select#day
-          %option{value: ""} --
+          %option{value: "", model: @birthday_date, type:"number"} --
         日
       %script{:src => "js/date_select.js", :type => "text/javascript"}
     .contents3__icon
@@ -77,7 +79,7 @@
         利用規約
       に同意したものとみなします
     .contents3__btn
-      = link_to root_path, class: "contents3__btn contents3__btn__next" do
+      = link_to cellphones_path, class: "contents3__btn contents3__btn__next", type: "submit" do
         次へ進む
     .contents3__entry__message7
       = link_to "https://www.mercari.com/jp/help_center/article/423/" do
@@ -91,3 +93,58 @@
         Terms of Service
       apply.
 = render 'devise/shared/footer2'
+
+-# （ご参考）元の中身
+%h2 新規登録(まだ上のフォームに記入しても登録されないので、下欄を埋めてください。)
+= form_for(@user, url: user_registration_path) do |f|
+  = render "devise/shared/error_messages", resource: @user
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autocomplete: "email"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  .field
+    = f.label :last_name_kana
+    %br/
+    = f.text_field :last_name_kana
+  .field
+    = f.label :first_name_kana
+    %br/
+    = f.text_field :first_name_kana
+  .field
+    = f.label :birthday_year
+    %br/
+    = f.number_field :birthday_year
+  .field
+    = f.label :birthday_month
+    %br/
+    = f.number_field :birthday_month
+  .field
+    = f.label :birthday_date
+    %br/
+    = f.number_field :birthday_date
+  .actions
+    = f.submit "次へ"
+-# = render "devise/shared/links"
