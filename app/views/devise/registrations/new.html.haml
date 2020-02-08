@@ -73,17 +73,21 @@
       ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
     .contents3__entry__message6
       「次へ進む」のボタンを押すことにより、
-      %a(href="https://www.mercari.com/jp/tos/" target="_blank")利用規約
+      = link_to "https://www.mercari.com/jp/tos/" do
+        利用規約
       に同意したものとみなします
     .contents3__btn
       = link_to root_path, class: "contents3__btn contents3__btn__next" do
         次へ進む
     .contents3__entry__message7
-      %a(href="https://www.mercari.com/jp/help_center/article/423/")本人情報の登録について〉
+      = link_to "https://www.mercari.com/jp/help_center/article/423/" do
+        本人情報の登録について〉
     .contents3__entry__message8
       This site is protected by reCAPTCHA and the the Google
-      %a(href="https://policies.google.com/privacy")Privacy Policy
+      = link_to "https://policies.google.com/privacy" do
+        Privacy Policy
       and
-      %a(href="https://policies.google.com/terms")Terms of Service
+      = link_to "https://policies.google.com/terms" do
+        Terms of Service
       apply.
 = render 'devise/shared/footer2'
