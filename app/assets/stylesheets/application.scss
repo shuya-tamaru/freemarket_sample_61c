@@ -1,9 +1,10 @@
 @import "reset";
 @import "index";
+@import 'font_awesome5_webfont';
+@import 'font_awesome5.css';
+@import "items";
 @import "header";
 @import "footer";
-@import "font_awesome5";
-@import "font-awesome-sprockets";
 @import "index";
 @import "signup/index";
 @import "signup/header";
@@ -11,7 +12,11 @@
 @import "signup/headerStep1";
 @import "signup/usersSignUp";
 @import "signup";
+@import "signup/header";
+@import "signup/footer";
+@import "signup/index";
 @import "sidebar";
 @import "credit_cards/index";
 @import "credit_cards/show";
 @import "credit_cards/new";
+@import "orders"

@@ -18,6 +18,8 @@ class User < ApplicationRecord
     with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角カタカナのみで入力して下さい"
   }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ }
+  validates :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ }
   validates :birthday_year, presence: true, format: {with: /\A(19|20)\d{2}\z/}
   validates :birthday_month, presence: true, format: {with: /\b[1-9]\b|\A1[0-2]\Z/}
   validates :birthday_date, presence: true, format: {with: /\b[1-9]\b|\A[1-2][0-9]\Z|\A[3][0-1]\Z/}
