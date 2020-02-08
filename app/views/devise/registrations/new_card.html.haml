@@ -13,7 +13,7 @@
       カード番号&nbsp;&nbsp;&nbsp;
       = image_tag "must.png", class: "image", size: "30x16"
     = form_with class: "cardsContents__form" do |f|
-      =f.text_field :text, placeholder: "半角数字のみ", class: "cardsContents__form__text", maxlength: "16"
+      =f.text_field :number, placeholder: "半角数字のみ", class: "cardsContents__form__text", maxlength: "16"
     .cardsContents__entry__image
       %li
         = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
@@ -34,7 +34,7 @@
       = image_tag "must.png", class: "image", size: "30x16"
     .cardsContents__monthForm
       %form.validatedDateForm
-        %select#month
+        %select#validated_date_month
           %option{value: "1"} 01
           %option{value: "2"} 02
           %option{value: "3"} 03
@@ -51,7 +51,7 @@
           月
     .cardsContents__yearForm
       %form.validatedDateForm
-        %select#year
+        %select#validated_date_year
           %option{value: "2020"} 20
           %option{value: "2021"} 21
           %option{value: "2022"} 22
@@ -71,7 +71,7 @@
       セキュリティコード&nbsp;&nbsp;&nbsp;
       = image_tag "must.png", class: "image", size: "30x16"
     = form_with class: "cardsContents__form" do |f|
-      =f.text_field :text, placeholder: "カード背面4桁もしくは3桁の番号", class: "cardsContents__form__text", maxlength: "4"
+      =f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番号", class: "cardsContents__form__text", maxlength: "4"
     .cardsContents__question
       = icon('fas', 'question-circle',class:"cardsContents__question--icon")
       %a(href="https://www.mercari.com/jp/box/qa45a372693140314/")カード裏面の番号とは？
