@@ -3,25 +3,19 @@
   justify-content: center;
   background-color: #f5f5f5;
   width: 100%;
-  position: relative;
-  padding: 0 0 40px;
   font-family: YuGothic;
 
   .new{
-    margin-left: 40px;
-    border-top: 1px solid #eee;
     .new__card{
       width: 700px;
-      margin: 24px auto 0;
+      margin: 0 auto;
       background-color: #fff;
-      position: relative;
 
         &__header{
           font-size: 22px;
           height:98px;
           width: 700px;
           font-weight: 700;
-          padding: 8px 24px;
           text-align: center;
           border-bottom: 1px solid #f5f5f5;
           line-height: 1.4;
@@ -31,7 +25,10 @@
         }
 
         &__create{
-          padding: 24px 16px 40px;
+          background-color: #ffffff;
+          width: 700px;
+          margin: 0 auto;
+          padding: 40px 0 0 0;
 
           &__formgroup{
             max-width: 343px;
@@ -147,7 +144,11 @@
     }
   }
 }
-
+.cardsMargin{
+  background-color:#ffffff;
+  height: 30px;
+  width:700px;
+}
 
 // .contents6 {
 //   background-color: #f5f5f5;
