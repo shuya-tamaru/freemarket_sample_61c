@@ -1,83 +1,254 @@
-.contents6 {
+.cardsMain{
+  display: flex;
+  justify-content: center;
   background-color: #f5f5f5;
-  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
-  &__title {
-    background-color: #ffffff;
-    height: 98px;
-    width: 700px;
-    font-size: 22px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #f5f5f5;
-    margin: 0 auto;
-  }
-  &__entry {
-    background-color: #ffffff;
-    height: 1000px;
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px 0 0 0;
-    font-size: 14px;
-    font-weight: bold;
-    &__item {
-      display: flex;
-      justify-content: flex-start;
-      padding: 20px 250px 5px 179px;
-    }
-    &__image {
-      display: flex;
-      justify-content: flex-start;
-      padding: 0 0 5px 179px;
-      list-style: none;
-      li {
-        margin: 8px 0 0 8px;
-      }
-    }
-  }
-  &__form {
-    height: 61px;
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 -10px 175px;
-    &__text{
-      height: 48px;
-      width: 344px;
-      border: 1px solid rgb(204, 204, 204);
-      border-radius: 4px;
-      padding: 0px 40px 0px 16px;
-      background-color: #ffffff;
-      transition: .2s;
-      font-size: 16px;
-      font-weight: 200px;
-      font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
-      &:focus{
-        border: 1px solid #0095ee;
-        outline: none;
-      }
-    }
-  }
-  &__btn {
-    display: block;
-    height: 50px;
-    width: 350px;
-    margin: 0 auto ;
-    font-size: 15px;
-    color: #ffffff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-weight: 200;
-    line-height: 80px;
-    &__next {
-      background-color: #ef3a3a;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+  width: 100%;
+  position: relative;
+  padding: 0 0 40px;
+  font-family: YuGothic;
+
+  .new{
+    margin-left: 40px;
+    border-top: 1px solid #eee;
+    .new__card{
+      width: 700px;
+      margin: 24px auto 0;
+      background-color: #fff;
+      position: relative;
+
+        &__header{
+          font-size: 22px;
+          height:98px;
+          width: 700px;
+          font-weight: 700;
+          padding: 8px 24px;
+          text-align: center;
+          border-bottom: 1px solid #f5f5f5;
+          line-height: 1.4;
+          display: flex;
+          justify-content:center;
+          align-items: center;
+        }
+
+        &__create{
+          padding: 24px 16px 40px;
+
+          &__formgroup{
+            max-width: 343px;
+            margin: 0 auto;
+            label{
+              font-weight: 600;
+              font-size: 14px;
+            }
+            span{
+              background-color: #ea352d;
+              font-size: 12px;
+              color: #fff;
+              margin: 0 0 0 8px;
+              padding: 3px 5px;
+              border-radius: 2px;
+              vertical-align: top;
+            }
+          
+            &__number{
+
+              &__form{
+                margin: 8px 0 0;
+                &__text{
+                  width: 100%;
+                  height: 48px;
+                  padding: 10px 16px 8px;
+                  border: 1px solid #ccc;
+                  background-color: #fff;
+                  font-size: 16px;
+                  border-radius: 5px;
+                }
+              }
+              &__image{
+                display: flex;
+                list-style: none;
+                li{
+                  margin: 8px 0 0 8px;
+                }
+              }
+            }
+
+            &__validatedDate{
+              margin: 24px 0 0;
+              &__select{
+                margin-top: 8px;
+                label{
+                  font-weight: normal;
+                  padding:0 5px;
+                }
+                &__month,&__year{
+                  display: inline-block;
+                  width: 45%;
+                  &__box{
+                    width: 80%;
+                    height: 48px;
+                    
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    background-color: #fff;
+                    font-size: 16px;
+                    cursor: pointer;
+                    
+                  }                  
+                }
+              }
+            }
+
+            &__securityNumber{
+              margin: 24px 0 0;
+              &__form{
+                margin: 8px 0 0;
+                &__text{
+                  width: 100%;
+                  height: 48px;
+                  padding: 10px 16px 8px;
+                  border: 1px solid #ccc;
+                  background-color: #fff;
+                  font-size: 16px;
+                  border-radius: 5px;
+                }
+              }
+            
+              &__question{
+                margin: 8px 0 0;
+                text-align: right;
+                color: #0099e8;
+                font-size: 14px;
+                a{
+                  color:#0099e8;
+                  &:hover{
+                    color:#5cadd5;
+                    border-bottom: 1px solid #5cadd5;
+                  }
+                }
+              }
+            }
+
+            &__add{
+              margin: 24px 0 0;
+              &__btn{
+                background-color: #ea352d;
+                border: 1px solid #ea352d;
+                color: #fff;
+                line-height: 48px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                cursor: pointer;
+              }
+            }
+          }
+        }
     }
   }
 }
+
+
+// .contents6 {
+//   background-color: #f5f5f5;
+//   font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+//   &__title {
+//     background-color: #ffffff;
+//     height: 98px;
+//     width: 700px;
+//     font-size: 22px;
+//     font-weight: 700;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border-bottom: 1px solid #f5f5f5;
+//     margin: 0 auto;
+//   }
+//   &__entry {
+//     background-color: #ffffff;
+//     height: 1000px;
+//     width: 700px;
+//     margin: 0 auto;
+//     padding: 20px 0 0 0;
+//     font-size: 14px;
+//     font-weight: bold;
+//     &__item {
+//       display: flex;
+//       justify-content: flex-start;
+//       padding: 20px 250px 5px 179px;
+//       &__validatedDate {
+//         margin-top: 8px;
+//         label {
+//           font-weight: inline-block;
+//           width: 45%;
+//           &__month,&__year{
+//             display: inline-block;
+//             width: 45%;
+//             &__box {
+//               width: 80%;
+//               height: 48px;
+//               border-radius: 5px;
+//               border: 1px solid;
+//               background-color: #ffffff;
+//               font-size: 16px;
+//               cursor: pointer;
+//             }
+//           }
+//         }
+//       }
+//     }
+//     &__image {
+//       display: flex;
+//       justify-content: flex-start;
+//       padding: 0 0 5px 179px;
+//       list-style: none;
+//       li {
+//         margin: 8px 0 0 8px;
+//       }
+//     }
+//   }
+//   &__form {
+//     height: 61px;
+//     width: 350px;
+//     display: flex;
+//     justify-content: center;
+//     margin: 0 0 -10px 175px;
+//     &__text{
+//       height: 48px;
+//       width: 344px;
+//       border: 1px solid rgb(204, 204, 204);
+//       border-radius: 4px;
+//       padding: 0px 40px 0px 16px;
+//       background-color: #ffffff;
+//       transition: .2s;
+//       font-size: 16px;
+//       font-weight: 200px;
+//       font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+//       &:focus{
+//         border: 1px solid #0095ee;
+//         outline: none;
+//       }
+//     }
+//   }
+//   &__btn {
+//     display: block;
+//     height: 50px;
+//     width: 350px;
+//     margin: 0 auto ;
+//     font-size: 15px;
+//     color: #ffffff;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     font-weight: 200;
+//     line-height: 80px;
+//     &__next {
+//       background-color: #ef3a3a;
+//       color: #ffffff;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       text-align: center;
+//     }
+//   }
+// }
