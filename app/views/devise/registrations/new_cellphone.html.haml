@@ -10,12 +10,12 @@
   .contents4__entry
     .contents4__entry__item
       携帯電話の番号
-    =form_with class: "contents4__form" do |f|
+    =form_with model: @cellphone, class: "contents4__form" do |f|
       =f.text_field :number, placeholder: "携帯電話の番号を入力", class: "contents4__form__text"
     .contents4__entry__message1
       本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
     .contents4__btn
-    = link_to root_path, class: "contents4__btn contents4__btn__sendingSMS" do
+    = link_to addresses_path, class: "contents4__btn contents4__btn__sendingSMS" do
       SMSを送信する
     .contents4__entry__message1
       ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
