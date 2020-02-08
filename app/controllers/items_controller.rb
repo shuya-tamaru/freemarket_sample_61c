@@ -6,15 +6,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
   @item = Item.new(item_params)
-  if @item.save
-    redirect_to :index
-  else
-    redirect_to :new
+    if @item.save
+      redirect_to :index
+    else
+      redirect_to :new
+    end
   end
 
   private
