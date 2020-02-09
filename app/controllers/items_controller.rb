@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
   def create
   @item = Item.new(item_params)
     if @item.save
+      # @image = Image.new(image_params)
+      # @image.save
       redirect_to :index
     else
       redirect_to :new
@@ -20,6 +22,10 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:items).permit(:image, :name, :discription, :grand_chaild_category, :brand, :saler_user_id, :item_status, :shipping_charge, :shipping_way, :shipping_days, :price, :region)
+    params.require(:items).permit(:name, :discription, :grand_chaild_category, :brand, :saler_user_id, :item_status, :shipping_charge, :shipping_way, :shipping_days, :price, :region).validate(:images)
+  end
+
+  def image_params
+    params.require(:items).permit(:image)
   end
 end
