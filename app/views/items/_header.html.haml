@@ -12,7 +12,7 @@
     .headerBottom
       .headerBottom__search
         .headerBottom__search__category.hoverList
-          =link_to "/", class: "headerBottom__search__category__link" do
+          =link_to categorized_items_path, class: "headerBottom__search__category__link" do
             = fa_icon 'list', class: "headerBottom__search__category__link__icon"
             カテゴリーから探す
           %ul.hoverList__list.leftLists
@@ -30,7 +30,7 @@
               =link_to "/", class: "hoverList__list__link" do
                 メンズ
         .headerBottom__search__brand.hoverList
-          =link_to "/", class: "headerBottom__search__brand__link" do
+          =link_to branded_items_path, class: "headerBottom__search__brand__link" do
             = fa_icon 'tag', class: "headerBottom__search__category__link__icon"
             ブランドから探す
           %ul.hoverList__list.leftLists
@@ -54,11 +54,11 @@
                 ブランド一覧
       %ul.headerBottom__list
         %li.hoverList
-          =link_to "/", class: "headerBottom__list__link" do
+          =link_to likes_path, class: "headerBottom__list__link" do
             = far_icon 'heart', class: "headerBottom__list__link__icon1"
             いいね！一覧
         %li.hoverList
-          =link_to "/", class: "headerBottom__list__link" do
+          =link_to notifications_path, class: "headerBottom__list__link" do
             = far_icon 'bell', class: "headerBottom__list__link__icon1"
             お知らせ
           %ul.hoverList__list
@@ -73,7 +73,7 @@
                     8時間前
                 = fas_icon 'angle-right', class: "hoverList__list__link__icon"
         %li.hoverList
-          =link_to "/", class: "headerBottom__list__link" do
+          =link_to todos_path, class: "headerBottom__list__link" do
             = fa_icon 'check', class: "headerBottom__list__link__icon1"
             やることリスト
           %ul.hoverList__list
@@ -88,7 +88,7 @@
                     8時間前
                 = fas_icon 'angle-right', class: "hoverList__list__link__icon"
         %li.mypage
-          =link_to "/", class: "headerBottom__list__link" do
+          =link_to myinfomations_path, class: "headerBottom__list__link" do
             =image_tag 'member_photo_noimage_thumb.png', class: 'headerBottom__list__link__icon2'
             マイページ
           .mypage__list
@@ -104,14 +104,14 @@
                 %span
                   出品数：
               .mypage__list__myInfomation__sales
-                =link_to "/", class: "mypage__list__myInfomation__sales__link" do
+                =link_to sales_path, class: "mypage__list__myInfomation__sales__link" do
                   .mypage__list__myInfomation__sales__title
                     売上金
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__sales__icon"
                   .mypage__list__myInfomation__sales__infomation
                     ¥999,999
               .mypage__list__myInfomation__point
-                =link_to "/", class: "mypage__list__myInfomation__point__link" do
+                =link_to points_path, class: "mypage__list__myInfomation__point__link" do
                   .mypage__list__myInfomation__point__title
                     ポイント
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__point__icon"
@@ -119,32 +119,32 @@
                     P0
             %ul.mypage__list__myInfomation__links
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to likes_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     いいね！一覧
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to products_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     出品した商品-出品中
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to trading_products_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     出品した商品-取引中
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to sold_products_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     出品した商品-売却済
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to trading_items_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     購入した商品-取引中
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
               %li
-                =link_to "/", class: "mypage__list__myInfomation__links__link" do
+                =link_to  bought_items_path, class: "mypage__list__myInfomation__links__link" do
                   .mypage__list__myInfomation__links__link__title
                     購入した商品-過去の取引
                   = fas_icon 'angle-right', class: "mypage__list__myInfomation__links__link__icon"
