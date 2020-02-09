@@ -1,0 +1,34 @@
+.header3
+  .header3__logo
+    = link_to root_path do
+      .header3__logo__image
+    .header3__logo__progress
+      = image_tag "done.png", class: "image", size: "450x35"
+
+.createAccountContents
+  .createAccountContents__title
+    会員登録完了
+  .createAccountContents__selection
+    %ul
+      %li ありがとうございます。
+      %li 会員登録が完了しました。
+    .createAccountContents__btn
+    = link_to root_path, class: "createAccountContents__btn createAccountContents__btn__start" do
+      %ul
+        %li メルカリをはじめる
+    .createAccountContents__image
+      %ul
+        %h1 ＼ スマホでかんたんフリマアプリ ／
+        %h2 今すぐ無料ダウンロード！
+        %object
+          =link_to "/" do
+            =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg',size:"200x70"
+        %object
+          =link_to "/" do
+            =image_tag 'google-play-495575abb895b405aa6336b2a4304958.svg',size:"200x70"
+    = image_tag "createAccountFooterImage.png", class: "createAccountContents__image2", size:"700x500"
+= render 'devise/shared/footerDone'
+
+-# 元の中身
+-# %h2 登録が完了しました
+-# = link_to "トップへ戻る", root_path

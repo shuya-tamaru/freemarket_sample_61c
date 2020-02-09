@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'create_accounts/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :items
   resources :credit_cards, only: [:index,:new,:show]
+  resources :create_accounts, only: [:index]
 end
