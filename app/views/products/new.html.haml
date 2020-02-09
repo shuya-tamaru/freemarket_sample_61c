@@ -54,14 +54,14 @@
                 カテゴリー
               %span
                 必須
-              = f.select :category, {}, class:"contents__item__status__right__category__select"
+              = f.select :category, [["---", ""], ["レディース"],["メンズ"]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__condition
               %label
                 商品の状態
               %span
                 必須
-              = f.select :condition, {}, class:"contents__item__status__right__condition__select"
+              = f.select :condition, [["---", ""], ["新品、未使用"],["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], class: "contents__item__status__right__condition__select"
               
         .contents__item__shippingWay
           %h3
@@ -75,14 +75,14 @@
                 配送料の負担
               %span
                 必須
-              = f.select :burden, {}, class: "contents__item__shippingWay__right__burden__select"
+              = f.select :burden, [["---", ""], ["送料込み(出品者負担)"],["着払い(購入者負担)"]], class: "contents__item__shippingWay__right__burden__select"
 
             .contents__item__shippingWay__right__city
               %label
                 発送元の地域
               %span
                 必須
-              = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shippingWay__right__city__select'}
+              = f.select :city,Address.prefectures.keys, class: 'contents__item__shippingWay__right__city__select'
 
 
             .contents__item__shippingWay__right__days
@@ -90,7 +90,7 @@
                 発送までの日数
               %span
                 必須
-              = f.select :burden, {}, class: "contents__item__shippingWay__right__days__select"
+              = f.select :days, [["---", ""], ["1〜2日で発送"],["2〜3日で発送"], ["4〜7日で発送"]], class: "contents__item__shippingWay__right__days__select"
 
         .contents__item__price
           %h3
@@ -146,6 +146,6 @@
             .contents__item__add__btnBack
               = link_to "#", class:"contents__item__add__btnBack__link" do
                 もどる
-                
+
 .footer2
   = render 'devise/shared/footer2'
