@@ -1,0 +1,96 @@
+.main{
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  position: relative;
+  padding: 0 0 40px;
+}
+
+.profile{
+  width: 700px;
+  height: 568px;
+  margin-left: 40px;
+  margin-top: 24px;
+  &__head{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 50px;
+  }
+  &__main{
+    width: 100%;
+    height: 518px;
+    &__user{
+      width: 100%;
+      height: 156px;
+      background-image: url(profile_backgroumd.jpg);
+      display: flex;
+      justify-content: center;
+     
+      .profile__icon{
+        width: 60px;
+        height: 60px;
+        margin-top: 72px;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+      .nickname__fileld{
+        width: 220px;
+        height: 48px;
+        margin-top: 78px;
+        margin-left: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        padding: 10px 16px 8px 16px;
+        font-size: 16px;
+        outline: 0;
+      }
+      .nickname__fileld:focus{
+        border-color: #0099e8;
+      }
+    }
+    &__textBox{
+      width: 100%;
+      height: 362px;
+      background-color: #fff;
+      flex-flow:column;
+      justify-content: center;
+      padding:40px 16px; 
+      .profile-comment{
+        width: 668px;
+        height: 216px;
+        font-size: 16px;
+        color:rgb(51,51,51);
+        padding: 10px;
+        outline: 0;
+      }
+      .profile-comment:focus{
+        border-color: #0099e8;
+      }
+      .edit__button{
+        width: 668px;
+        height: 50px;
+        margin-top:16px;
+        font-size: 14px;
+        margin-top: 16px;
+        background-color: #EA352D;
+        color: #fff;
+        line-height: 50px;
+        text-align: center;
+        font-weight: inherit;
+        cursor: pointer;
+        border:1px solid #EA352D;
+        transition: all 0.2s ease-out;
+        outline: 0;
+      }
+      .edit__button:active {
+        background-color: gray;
+        border:1px solid gray;
+      }
+    }
+  }
+}
