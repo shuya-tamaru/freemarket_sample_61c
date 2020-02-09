@@ -15,45 +15,59 @@
   }
   &__selection {
     background-color: #ffffff;
-    height: 286px;
+    height: 795px;
     width: 700px;
     margin: 0 auto;
     padding: 40px 0 0 0;
+    ul{
+      list-style-type: none;
+      text-align: center;
+      li{
+        line-height: 25px;
+        text-align: center;
+      }
+    }
   }
   &__btn {
     display: block;
     height: 50px;
     width: 343px;
     margin: 0 auto 16px;
-    border-radius: 5px;
+    border-radius: 1px;
     font-size: 14px;
     color: #ffffff;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    line-height: 80px;
-    &__icon1 {
-      padding: 15px 52px 13px 17px;
-    }
-    &__icon2 {
-      padding: 15px 60px 13px 20px;
-    }
-    &__icon3 {
-      padding: 15px 78px 13px 18px;
-    }
-    &__mail {
+    &__start {
       background-color: #ef3a3a;
       transition: background-color .5s;
       &:hover{
         background-color: #f97777;
       }
     }
-    &__facebook {
-      background-color: #414f8a;
+  }
+  &__image {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    ul{
+      margin: 0 auto;
+      text-align: center;
+      position: absolute;
+      top: 60px;
+      h1 {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      h2{
+        font-size: 50px;
+        line-height: 60px;
+      }
     }
-    &__google {
-      color: #000000;
-      border: thin solid #a7a7a7;
-    }
+  }
+  &__image2 {
+    margin-top: 40px;
   }
 }
