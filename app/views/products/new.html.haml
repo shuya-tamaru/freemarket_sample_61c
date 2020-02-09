@@ -17,6 +17,7 @@
               必須
             %p
               最大10枚までアップロードできます
+<<<<<<< HEAD
             
           .contents__item__upload__image
             .contents__item__upload__image__btn
@@ -27,6 +28,17 @@
               .contents__item__upload__image__btn__area
                 = f.file_field :image, class: 'contents__item__upload__image__btn__area__field', type: "file"
                 
+=======
+
+          .contents__item__upload__image
+            .contents__item__upload__image__btn
+              .contents__item__upload__image__form
+                .contents__item__upload__image__form__area
+                  %p
+                    ドラッグアンドドロップ
+                    %br
+                      またはクリックしてファイルをダウンロード
+>>>>>>> master
 
         .contents__item__comment
           .contents__item__comment__name
@@ -36,13 +48,18 @@
               必須
             .contents__item__comment__name__form
               = f.text_field :text, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> master
           .contents__item__comment__description
             %label
               商品の説明
             %span
               必須
             .contents__item__comment__description__form
+<<<<<<< HEAD
               = f.text_area :text, class:"contents__item__comment__description__form__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など） 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
         
         .contents__item__status
@@ -78,10 +95,44 @@
               = f.select :burden, {}, class: "contents__item__shippingWay__right__burden__select"
 
           .contents__item__shippingWay__right__city
+=======
+              = f.text_field :text, class:"contents__item__comment__descriptionform__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
+
+        .contents__item__status
+          %h3
+            商品の詳細
+          .contents__item__status__category
+            %label
+              カテゴリー
+            %span
+              必須
+            = f.select :category, {}, class: "contents__item__status__category__select"
+
+          .contents__item__status__condition
+            %label
+              商品の状態
+            %span
+              必須
+            = f.select :condition, {}, class: "contents__item__status__condition__select"
+
+        .contents__item__shipping__way
+          %h3
+            配送について
+          = icon('fas', 'question-circle',class:"contents__item__shipping__way--icon")
+          .contents__item__shipping__way__burden
+            %label
+              配送料の負担
+            %span
+              必須
+            = f.select :burden, {}, class: "contents__item__shipping__way__burden__select"
+
+          .contents__item__shipping__way__city
+>>>>>>> master
             %label
               発送元の地域
             %span
               必須
+<<<<<<< HEAD
             = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shippingWay__right__city__select'}
 
 
@@ -91,10 +142,22 @@
               %span
                 必須
               = f.select :burden, {}, class: "contents__item__shippingWay__right__days__select"
+=======
+            = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shipping__way__city__select'}
+
+
+          .contents__item__shipping__way__days
+            %label
+              発送までの日数
+            %span
+              必須
+            = f.select :burden, {}, class: "contents__item__shipping__way__burden__select"
+>>>>>>> master
 
         .contents__item__price
           %h3
             販売価格(300〜9,999,999)
+<<<<<<< HEAD
           = link_to '#' do
             = icon('fas', 'question-circle',class:"contents__item__price--icon")
 
@@ -118,6 +181,31 @@
                 販売利益
               .contents__item__price__right__profit__form
                 456
+=======
+          = icon('fas', 'question-circle',class:"contents__item__price--icon")
+
+          .contents__item__price__total
+            %label
+              価格
+            %span
+              必須
+              .contents__item__price__total__form
+                ¥
+                = f.text_field :string, class:"contents__item__price__total__form__string", placeholder: "例) 300"
+
+          .contents__item__price__fee
+            %label
+              販売手数料(10%)
+
+              .contents__item__price__fee__right
+                "=total*10%"
+
+          .contents__item__price__profit
+            %label
+              販売利益
+              .contents__item__price__profit__right
+                "=total-fee"
+>>>>>>> master
 
         .contents__item__add
           .contents__item__add__note
@@ -140,6 +228,7 @@
                   加盟店規約
                 に同意したことになります。
 
+<<<<<<< HEAD
             .contents__item__add__btnTop
               = f.submit "出品する", class:"contents__item__add__btnTop__submit"
 
@@ -150,3 +239,13 @@
 
 .footer2
   = render 'devise/shared/footer2'
+=======
+            .contents__item__add__btn
+              = f.submit "出品する"
+              = link_to "#", class: "contents__item__add__btn__back" do
+                戻る
+
+
+.footer2
+  = render 'devise/shared/footer2'
+>>>>>>> master

@@ -1,0 +1,15 @@
+.main
+  .sidebar
+    -# = render '/sidebar'
+  .profile
+    .profile__head
+      プロフィール
+    .profile__main
+      .profile__main__user
+        %figure
+          =image_tag 'member_photo_noimage_thumb.png', class: "profile__icon"
+        %input.nickname__fileld{:value => "nickname"}
+
+      .profile__main__textBox
+        %textarea.profile-comment{:placeholder=>"例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+        %button.edit__button{:tyle => "submit"} 変更する
