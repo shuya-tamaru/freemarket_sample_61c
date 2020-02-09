@@ -8,6 +8,4 @@ class Item < ApplicationRecord
   belongs_to :grandchild_category
   belongs_to :brand
   has_one :order​​
-
-  accepts_nested_attributes_for :images, allow_destroy: true
 end

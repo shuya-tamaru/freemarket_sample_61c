@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :create]
   resources :credit_cards, only: [:index,:new,:show]
   resources :orders, only: [:new]
+  resources :products, only: [:new, :create]
 end

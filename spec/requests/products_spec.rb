@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe "ItemsController", type: :request do
+RSpec.describe "ProductsController", type: :request do
 
   describe "POST :create" do
     context 'with valid params' do
-      subject { post :create, params: { items: params } }
+      subject { post :create, params: { products: params } }
       let!(:params) {
         {
           name: "テストの商品",
