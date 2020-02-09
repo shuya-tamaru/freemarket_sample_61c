@@ -74,7 +74,8 @@
       =f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番号", class: "cardsContents__form__text", maxlength: "4"
     .cardsContents__question
       = icon('fas', 'question-circle',class:"cardsContents__question--icon")
-      %a(href="https://www.mercari.com/jp/box/qa45a372693140314/")カード裏面の番号とは？
+      = link_to "https://www.mercari.com/jp/box/qa45a372693140314/" do
+        カード裏面の番号とは？
     .cardsContents__btn
     = link_to create_accounts_path, class: "cardsContents__btn cardsContents__btn__next" do
       次へ進む
