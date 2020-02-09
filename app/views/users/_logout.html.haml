@@ -1,6 +1,5 @@
 .main
   .sidebar
     = render 'myinfomations/sidebar'
-  .logout
-    = link_to "ログアウト","#", class: "logout__button"
-    -# = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__button"
+  .logout    
+    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__button"
