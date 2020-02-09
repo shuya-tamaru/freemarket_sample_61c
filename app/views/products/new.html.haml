@@ -77,12 +77,12 @@
                 必須
               = f.select :burden, {}, class: "contents__item__shippingWay__right__burden__select"
 
-          .contents__item__shippingWay__right__city
-            %label
-              発送元の地域
-            %span
-              必須
-            = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shippingWay__right__city__select'}
+            .contents__item__shippingWay__right__city
+              %label
+                発送元の地域
+              %span
+                必須
+              = f.select :prefecture, Address.prefectures.keys, {}, {class: 'contents__item__shippingWay__right__city__select'}
 
 
             .contents__item__shippingWay__right__days
@@ -111,13 +111,13 @@
             .contents__item__price__right__fee
               販売手数料(10%)
               .contents__item__price__right__fee__form
-                123
+                **
 
             .contents__item__price__right__profit
               %label
                 販売利益
               .contents__item__price__right__profit__form
-                456
+                **
 
         .contents__item__add
           .contents__item__add__note
@@ -146,7 +146,6 @@
             .contents__item__add__btnBack
               = link_to "#", class:"contents__item__add__btnBack__link" do
                 もどる
-
-
+                
 .footer2
   = render 'devise/shared/footer2'
