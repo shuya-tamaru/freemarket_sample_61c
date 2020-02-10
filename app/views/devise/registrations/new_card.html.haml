@@ -32,37 +32,16 @@
     .cardsContents__entry__item
       有効期限&nbsp;&nbsp;&nbsp;
       = image_tag "must.png", class: "image", size: "30x16"
-    .cardsContents__monthForm
-      %form.validatedDateForm
-        %select#validated_date_month
-          %option{value: "1"} 01
-          %option{value: "2"} 02
-          %option{value: "3"} 03
-          %option{value: "4"} 04
-          %option{value: "5"} 05
-          %option{value: "6"} 06
-          %option{value: "7"} 07
-          %option{value: "8"} 08
-          %option{value: "9"} 09
-          %option{value: "10"} 10
-          %option{value: "11"} 11
-          %option{value: "12"} 12
-        %label
-          月
-    .cardsContents__yearForm
-      %form.validatedDateForm
-        %select#validated_date_year
-          %option{value: "2020"} 20
-          %option{value: "2021"} 21
-          %option{value: "2022"} 22
-          %option{value: "2023"} 23
-          %option{value: "2024"} 24
-          %option{value: "2025"} 25
-          %option{value: "2026"} 26
-          %option{value: "2027"} 27
-          %option{value: "2028"} 28
-        %label
-          年
+    .cardsContents__MonthForm
+    =form_with class: "cardsContents__MonthForm" do |f|
+      = f.collection_select(:month_id, Month.all, :id, :name, {prompt: false}, {class: "cardsContents__MonthForm__text"})
+    %label
+      月
+    .cardsContents__YearForm
+    =form_with class: "cardsContents__YearForm" do |f|
+      = f.collection_select(:year_id, Year.all, :id, :name, {prompt: false}, {class: "cardsContents__YearForm__text"})
+    %label
+      年
     .cardsContents__icon
       = fa_icon("chevron-down")
     .cardsContents__icon2
