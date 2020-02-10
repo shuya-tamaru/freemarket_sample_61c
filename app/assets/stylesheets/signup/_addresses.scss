@@ -49,6 +49,7 @@
       font-size: 16px;
       font-weight: 200px;
       font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+      -webkit-appearance: none;
       &:focus{
         border: 1px solid #0095ee;
         outline: none;
@@ -80,44 +81,6 @@
     color: rgb(174, 167, 167);
     font-size: 20px;
     padding: 0 0 10px 500px;
-    margin-top: -33px;
-  }
-}
-.prefectureForm {
-  margin: 0 0 -10px 175px;
-  position: relative;
-  padding-left: 0;
-  overflow: hidden;
-  width: 350px;
-  margin-top: 8px;
-  text-align: center;
-  display: flex;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 50px;
-  select {
-    width: 100%;
-    padding-right: 10px;
-    padding-left: 10px;
-    cursor: pointer;
-    text-indent: 0.01px;
-    text-overflow: ellipsis;
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 4px;
-    height: 48px;
-    padding: 0px 10px 0px 16px;
-    background-color: #ffffff;
-    transition: .2s;
-    font-size: 17px;
-    font-weight: 200;
-    &:focus{
-      border: 1px solid #0095ee;
-      outline: none;
-    }
-    outline: none;
-    background: transparent;
-    box-shadow: none;
-    -webkit-appearance: none;
-    appearance: none;
+    margin-top: -45px;
   }
 }
