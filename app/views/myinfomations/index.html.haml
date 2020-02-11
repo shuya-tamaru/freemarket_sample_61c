@@ -32,8 +32,9 @@
             .myinfomations__tabs__contents__notifications__text
               %label お知らせ１
             .myinfomations__tabs____contentsnotifications__time
-              %span=icon('far', 'clock',class:"myinfomations__tabs__contents__notifications__time--icon")
+              %span=icon('far', 'clock',class:"time--icon")
               %span 2 時間前
+              = icon('fas', 'chevron-right',class:"right--icon")
 
         %ul.myinfomations__tabs__contents__todos
           =link_to "#" do
@@ -41,8 +42,9 @@
             .myinfomations__tabs__contents__todos__text
               %label やることリスト１
             .myinfomations__tabs__contents__todos__time
-              %span=icon('far', 'clock',class:"myinfomations__tabs__contents__todos__time--icon")
+              %span=icon('far', 'clock',class:"time--icon")
               %span 2 時間前
+              = icon('fas', 'chevron-right',class:"right--icon")
 
     .myinfomations__trade
       %h4 購入した商品
@@ -59,8 +61,9 @@
             .myinfomations__trade__contents__tradingItems__text
               %label 取引中１
             .myinfomations__trade__contents__tradingItems__time
-              %span=icon('far', 'clock',class:"myinfomations__trade__contents__tradingItems__time--icon")
+              %span=icon('far', 'clock',class:"time--icon")
               %span 3 時間前
+              = icon('fas', 'chevron-right',class:"right--icon")
 
         %ul.myinfomations__trade__contents__boughtItems
           =link_to "#" do
@@ -68,8 +71,9 @@
             .myinfomations__trade__contents__boughtItems__text
               %label 過去の取引１
             .myinfomations__trade__contents__boughtItems__time
-              %span=icon('far', 'clock',class:"myinfomations__trade__contents__boughtItems__time--icon")
+              %span=icon('far', 'clock',class:"time--icon")
               %span 3 時間前
+              = icon('fas', 'chevron-right',class:"right--icon")
 
 .footer
   = render 'items/footer'
