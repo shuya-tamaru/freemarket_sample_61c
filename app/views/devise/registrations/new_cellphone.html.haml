@@ -24,16 +24,3 @@
         電話番号の確認が必要な理由〉
     .contents4__entry__box
 = render 'devise/shared/footerUserRegis'
-
--# 以下は元の中身
-
--# %h2 携帯電話登録
--# = form_for @cellphone do |f|
--#   = render "devise/shared/error_messages", resource: @cellphone
--#   .field
--#     = f.label :cellphone
--#     %br/
--#     = f.text_field :number
--#   .actions
--#     = f.submit "次へ"
--# = render "devise/shared/links"
