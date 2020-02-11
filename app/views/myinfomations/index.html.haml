@@ -5,9 +5,20 @@
   .sidebar
     =render "sidebar"
 
+  .myinfomations
+    .myinfomations__head
+      = link_to "#" do
+        .myinfomations__head__inner
+          =image_tag 'member_photo_noimage_thumb.png', class: 'myinfomations__head__inner__image'
+          .myinfomations__head__inner__name
+            %h2 *** ***
+          .myinfomations__head__inner__data
+            %span 評価 0
+            %span 出品数 0
+              
+      =image_tag 'user-bg-07a3d1eec321479f465363323ddeb262.jpg', class: 'myinfomations__head__backImage'
 
-
-
+    
 
 .footer
   = render 'items/footer'
