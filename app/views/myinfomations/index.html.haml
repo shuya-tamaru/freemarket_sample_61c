@@ -18,8 +18,29 @@
               
       =image_tag 'user-bg-07a3d1eec321479f465363323ddeb262.jpg', class: 'myinfomations__head__backImage'
 
-    .myinfomations__
-    
+    .myinfomations__tabs
+      %ul.myinfomations__tabs__label
+        %li.myinfomations__tabs__label.active
+          %h3 お知らせ
+        %li.myinfomations__tabs__label
+          %h3 やることリスト
+
+      .myinfomations__tabs__contents
+        %ul.myinfomations__tabs__contents__notifications.view
+          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+          .myinfomations__tabs__contents__notifications__text
+            %label お知らせ１
+          .myinfomations__tabs____contentsnotifications__time
+            %span=icon('far', 'clock',class:"myinfomations__tabs__contents__notifications__time--icon")
+            %span 2 時間前
+
+        %ul.myinfomations__tabs__contents__todos
+          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+          .myinfomations__tabs__contents__todos__text
+            %label やることリスト１
+          .myinfomations__tabs__contents__todos__time
+            %span=icon('far', 'clock',class:"myinfomations__tabs__contents__todos__time--icon")
+            %span 2 時間前
 
 .footer
   = render 'items/footer'
