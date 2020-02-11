@@ -15,7 +15,7 @@
   }
   &__entry {
     background-color: #ffffff;
-    height: 1200px;
+    min-height: calc(100vh - 128px - 98px - 1px - 240px);
     width: 700px;
     margin: 0 auto;
     padding: 20px 0 0 0;
@@ -179,6 +179,11 @@
       &__string {
         display:none
       }
+    }
+    &__box {
+      background-color: #ffffff;
+      height: 20px;
+      width: 100%;
     }
   }
 
