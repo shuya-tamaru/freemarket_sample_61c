@@ -84,3 +84,4 @@ gem "font-awesome-sass"
 gem "jquery-rails"
 gem "active_hash"
 gem "recaptcha", require: "recaptcha/rails"
+gem 'dotenv-rails'

@@ -19,6 +19,8 @@
       .field
         %br/
         = f.password_field :password, autocomplete: "current-password", class: 'SignInMain__form', placeholder: "パスワード"
+      .recaptcha
+        = recaptcha_tags
       .actions
         = f.submit "ログイン", class: 'SignInMain__btn SignInMain__btn__login'
       .IfForgotPWLink
