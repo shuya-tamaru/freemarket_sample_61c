@@ -14,7 +14,7 @@
       .cardsContents__entry__item
         .form-group
           = f.label "カード番号"
-          %span 必須
+          %span.must 必須
           %br/
           = f.text_field :number, {placeholder: "半角数字のみ", class: "cardsContents__form__text"}
       .cardsContents__entry__image
@@ -35,7 +35,7 @@
       .cardsContents__entry__item
         .form-group
           = f.label "有効期限"
-          %span 必須
+          %span.must 必須
           %br/
           = f.select :validated_date_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "cardsContents__MonthForm__text"}
           %label
@@ -43,11 +43,15 @@
           = f.select :validated_date_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "cardsContents__YearForm__text"}
           %label
             年
+      .cardsContents__icon
+        = fa_icon("chevron-down")
+      .cardsContents__icon2
+        = fa_icon("chevron-down")
       .cardsContents__entry__item
         .form-group
-          = f.label "セキュリティコード", class: "label"
-          %span 必須
-          = f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番", class: "cardsContents__form__text"
+          = f.label "セキュリティコード"
+          %span.must 必須
+          = f.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番号", class: "cardsContents__form__text"
       .cardsContents__question
         = icon('fas', 'question-circle',class:"cardsContents__question--icon")
         = link_to "https://www.mercari.com/jp/box/qa45a372693140314/" do
