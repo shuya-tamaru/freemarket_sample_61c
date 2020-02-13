@@ -59,15 +59,3 @@
     .cardsContents__entry__boxwhite
     .cardsContents__entry__boxgray
 = render 'devise/shared/footerUserRegis'
-
--# （参考）下記は年月モデルを使ったときの書き方
--#     .cardsContents__MonthForm
--#     =form_with class: "cardsContents__MonthForm" do |f|
--#       = f.collection_select(:month_id, Month.all, :id, :name, {prompt: false}, {class: "cardsContents__MonthForm__text"})
--#     %label
--#       月
--#     .cardsContents__YearForm
--#     =form_with class: "cardsContents__YearForm" do |f|
--#       = f.collection_select(:year_id, Year.all, :id, :name, {prompt: false}, {class: "cardsContents__YearForm__text"})
--#     %label
--#       年

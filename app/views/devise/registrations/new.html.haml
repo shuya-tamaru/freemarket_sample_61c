@@ -100,34 +100,3 @@
         apply.
       .contents3__entry__box
 = render 'devise/shared/footerUserRegis'
-
-
-
--# （参考）js実装部分の書き方
--#     .contents3__entry__item
--#       パスワード&nbsp;&nbsp;
--#       = image_tag "must.png", class:"image", size: "30x16"
--#     %p
--#       %input#js-password.password{placeholder: "7文字以上の半角英数字", class: "contents3__form__text", type: "password", value: ""}/
--#     .contents3__entry__message1
--#       ※英字と数字の両方を含めて設定してください
--#     %p
--#       %input#js-passcheck{class: "checkbox", type: "checkbox"}
--#       %label{class: "checkboxMessage", for: "js-passcheck"} パスワードを表示する
--#     .contents3__entry__passwordResult
--#       .contents3__entry__passwordResult__string
--#     .contents3__entry__item
--#       生年月日&nbsp;&nbsp;
--#       = image_tag "must.png", class:"image", size: "30x16"
--#     .contents3__form3
--#       %form.form
--#         %select#year
--#           %option{value: ""} --
--#         年
--#         %select#month
--#           %option{value: ""} --
--#         月
--#         %select#day
--#           %option{value: ""} --
--#         日
--#       %script{:src => "js/date_select.js", :type => "text/javascript"}
