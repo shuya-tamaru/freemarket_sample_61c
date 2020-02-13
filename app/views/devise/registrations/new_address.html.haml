@@ -8,7 +8,47 @@
   .contents5__title
     住所入力
   .contents5__entry
+    =form_for(@address, url: addresses_path, method: :post) do |f|
+      =render "devise/shared/error_messages", resource: @address
+      .contents5__entry__item
+        .form-group
+          = f.label "郵便番号"
+          %span 必須
+          = f.text_field :zip_code,{autofocus: true, placeholder: "例）1234567 ハイフンなし", class: "contents5__form__text"}
+      .contents5__entry__item
+        .form-group
+          = f.label "都道府県"
+          %span 必須
+          = f.select :prefecture, Address.prefectures.keys, {}, {class: "contents5__form__text"}
+      .contents5__entry__item
+        .form-group
+          = f.label "市区町村"
+          %span 必須
+          = f.text_field :city, autofocus: true, placeholder: "例）札幌市", class: "contents5__form__text"
+      .contents5__entry__item
+        .form-group
+          = f.label "番地"
+          %span 必須
+          = f.text_field :address, autofocus: true, placeholder: "例）青葉1-1-1", class: "contents5__form__text"
+      .contents5__entry__item
+        .form-group
+          = f.label "建物名"
+          %h6 任意
+          = f.text_field :building, autofocus: true, placeholder: "例）柳ビル103", class: "contents5__form__text"
+      .contents5__entry__item
+        .form-group
+          = f.label "電話"
+          %h6 任意
+          = f.text_field :building, autofocus: true, placeholder: "例）09012345678", class: "contents5__form__text"
+      .contents5__btn
+        .form-group
+          = f.submit '次へ進む', class: "contents5__btn contents5__btn__next"
+      .contents5__entry__box
+
+
     .contents5__entry__item
+      下記は目標のデザイン。フォーム入力は上記で行ってください。
+      %br/
       お名前&nbsp;&nbsp;&nbsp;
       = image_tag "must.png", class: "image", size: "30x16"
     =form_with class: "contents5__form" do |f|
