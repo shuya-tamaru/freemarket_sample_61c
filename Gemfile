@@ -85,3 +85,6 @@ gem "jquery-rails"
 gem "active_hash"
 gem "recaptcha", require: "recaptcha/rails"
 gem 'dotenv-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
