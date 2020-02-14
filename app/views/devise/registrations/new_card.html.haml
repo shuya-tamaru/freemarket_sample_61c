@@ -9,7 +9,7 @@
   .cardsContents__title
     支払い方法
   .cardsContents__entry
-    = form_for(@card, url: cards_path,method: :post) do |f|
+    = form_with model:@card, url: cards_path, method: :post, id: 'new_user', local: true do |f|
       = render "devise/shared/error_messages", resource: @card
       .cardsContents__entry__item
         .form-group

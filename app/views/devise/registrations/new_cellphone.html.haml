@@ -8,7 +8,7 @@
   .contents4__title
     電話番号の確認
   .contents4__entry
-    = form_for @cellphone do |f|
+    = form_with model: @cellphone, id: 'new_user', local: true  do |f|
       = render "devise/shared/error_messages", resource: @cellphone
       .contents4__entry__item
         .field

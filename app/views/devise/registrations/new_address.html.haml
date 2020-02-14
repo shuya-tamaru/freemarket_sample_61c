@@ -8,7 +8,7 @@
   .contents5__title
     住所入力
   .contents5__entry
-    =form_for(@address, url: addresses_path, method: :post) do |f|
+    =form_with model: @address, url: addresses_path, method: :post, id: 'new_user', local: true do |f|
       =render "devise/shared/error_messages", resource: @address
       .contents5__entry__item
         .form-group
