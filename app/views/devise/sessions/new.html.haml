@@ -21,6 +21,7 @@
         = f.password_field :password, autocomplete: "current-password", class: 'SignInMain__form', placeholder: "パスワード"
       -# .recaptcha
       -#   = recaptcha_tags
+      -# キー番号は発行済。GitHubにpushできないので、コードレビュー時のみこちらはコメントアウトしています。recapthca起動時の画像は https://gyazo.com/0cbb46d0b723d4b0605665f1ff336e34 で確認できます。
       .actions
         = f.submit "ログイン", class: 'SignInMain__btn SignInMain__btn__login'
       .IfForgotPWLink
