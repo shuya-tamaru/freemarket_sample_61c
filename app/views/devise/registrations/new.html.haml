@@ -8,7 +8,7 @@
   .contents3__title
     会員情報入力
   .contents3__entry
-    = form_for(@user, url: user_registration_path) do |f|
+    = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f|
       = render "devise/shared/error_messages", resource: @user
       .contents3__entry__item
         .field
