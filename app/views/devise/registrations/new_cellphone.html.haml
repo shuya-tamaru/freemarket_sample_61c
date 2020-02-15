@@ -7,22 +7,22 @@
 .contents4
   .contents4__title
     電話番号の確認
-  -# .contents4__entry
-  -#   = form_with model: @cellphone, id: 'new_user', local: true  do |f|
-  -#     = render "devise/shared/error_messages", resource: @cellphone
-  -#     .contents4__entry__item
-  -#       .field
-  -#         = f.label "携帯電話の番号"
-  -#         %br/
-  -#         = f.text_field :number, placeholder: "携帯電話の番号を入力", class: "contents4__form__text"
-  -#     .contents4__entry__message1
-  -#       本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-  -#     .actions
-  -#       = f.submit "SMSを送信する", class: "contents4__btn contents4__btn__sendingSMS"
-  -#     .contents4__entry__message1
-  -#       ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
-  -#     .contents4__entry__message2
-  -#       = link_to "https://www.mercari.com/jp/help_center/article/244/" do
-  -#         電話番号の確認が必要な理由〉
-  -#     .contents4__entry__box
+  .contents4__entry
+    = form_with model: @cellphone, id: 'new_user', local: true  do |f|
+      = render "devise/shared/error_messages", resource: @cellphone
+      .contents4__entry__item
+        .field
+          = f.label "携帯電話の番号"
+          %br/
+          = f.text_field :number, placeholder: "携帯電話の番号を入力", class: "contents4__form__text"
+      .contents4__entry__message1
+        本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+      .actions
+        = f.submit "SMSを送信する", class: "contents4__btn contents4__btn__sendingSMS"
+      .contents4__entry__message1
+        ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+      .contents4__entry__message2
+        = link_to "https://www.mercari.com/jp/help_center/article/244/" do
+          電話番号の確認が必要な理由〉
+      .contents4__entry__box
 = render 'devise/shared/footerUserRegis'
