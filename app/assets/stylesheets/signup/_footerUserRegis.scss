@@ -1,0 +1,51 @@
+.footerUserRegis {
+  height: 240px;
+  background-color: #f5f5f5;
+  font-family: YuGothic;
+  padding: 50px 0 0 0;
+  font-size: 12px;
+  font-weight: 100;
+  &__list{
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    ul li {
+      display: inline;
+      margin-right: 1em;
+      a {
+        &:hover {
+          color: #8f8787;
+          border-bottom: 1px solid #8f8f8f;
+        }
+      }
+    }
+  }
+    &__logo {
+      text-align: center;
+      width:10px;
+      display: block;
+      padding: 40px 63px 0 0;
+      margin: 0 auto;
+      font-size: 40px;
+      &__image {
+        height: 67px;
+        width: 64px;
+        background: url('mercari_gray.png');
+        background-size: 63px;
+      }
+      &__image:hover {
+        height: 67px;
+        width: 64px;
+        background: url('mercari_grayw.png');
+        background-size: 63px;
+      }
+    }
+  &__inc {
+    font-weight: 100;
+    width:120px;
+    padding: 6px 0 0 0;
+    font-size: 12px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
