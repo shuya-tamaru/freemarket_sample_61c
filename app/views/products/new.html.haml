@@ -2,7 +2,7 @@
   = render 'devise/shared/header2'
 
 .products__new
-  = form_with model: Item, local: true, class: "contents" do |f|
+  = form_with model: Item, local: true, url: products_path, class: "contents" do |f|
     .contents__header
       %h2
         商品の情報を入力
@@ -25,7 +25,7 @@
                   またはクリックしてファイルをダウンロード
               .contents__item__upload__image__btn__area
                 = f.file_field :image, class: 'contents__item__upload__image__btn__area__field', type: "file"
-                
+                  
 
         .contents__item__comment
           .contents__item__comment__name
@@ -53,14 +53,14 @@
                 カテゴリー
               %span
                 必須
-              = f.select :grand_chaild_category, [["---", ""], ["レディース"],["メンズ"]], class: "contents__item__status__right__category__select"
+              = f.select :category, [["---", ""], ["レディース"],["メンズ"]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__condition
               %label
                 商品の状態
               %span
                 必須
-              = f.select :condition, [["---", ""], ["新品、未使用"],["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], class: "contents__item__status__right__condition__select"
+              = f.select :item_status, [["---", ""], ["新品、未使用"],["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], class: "contents__item__status__right__condition__select"
               
         .contents__item__shippingWay
           %h3
@@ -89,7 +89,7 @@
                 発送までの日数
               %span
                 必須
-              = f.select :shipping_days, [["---", ""], ["1〜2日で発送"],["2〜3日で発送"], ["4〜7日で発送"]], class: "contents__item__shippingWay__right__days__select"
+              = f.select :sipping_days, [["---", ""], ["1〜2日で発送"],["2〜3日で発送"], ["4〜7日で発送"]], class: "contents__item__shippingWay__right__days__select"
 
         .contents__item__price
           %h3

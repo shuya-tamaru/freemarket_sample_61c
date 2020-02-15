@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     name {"テストの商品"}
-    images {"meracari1.png"}
+    image {["meracari1.png"]}
     discription {"hogeeeeeeeefugaaaaaaaaaaaa"}
     grand_child_category {"香水"}
     brand {"Channel"}
@@ -9,7 +9,7 @@ FactoryBot.define do
     item_status {"未使用"}
     shipping_charge {"出品者負担"}
     shipping_way {"ほげ"}
-    shipping_days {"3-5日"}
+    sipping_days {"3-5日"}
     price {20000}
     region {"東京都"}
   end
