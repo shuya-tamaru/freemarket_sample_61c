@@ -53,14 +53,14 @@
                 カテゴリー
               %span
                 必須
-              = f.select :category_id, [["---", ], ["レディース", value = 1],["メンズ", value = 2]], class: "contents__item__status__right__category__select"
+              = f.select :category_id, [["---", ], ["レディース", value = 1.to_i],["メンズ", value = 2.to_i]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__category
               %label
                 ブランド
               %span
                 必須
-              = f.select :brand_id, [["---", ], ["シャネル", value = 1]], class: "contents__item__status__right__category__select"
+              = f.select :brand_id, [["---", ], ["シャネル", value = 1.to_i]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__condition
               %label
@@ -81,7 +81,15 @@
                 配送料の負担
               %span
                 必須
-              = f.select :shipping_charge, [["---", ""], ["送料込み(出品者負担)", value = "1"],["着払い(購入者負担)", value = "2"]], class: "contents__item__shippingWay__right__burden__select"
+              = f.select :fee_side, [["---", ""], ["送料込み(出品者負担)", value = "1"],["着払い(購入者負担)", value = "2"]], class: "contents__item__shippingWay__right__burden__select"
+
+          .contents__item__shippingWay__right
+            .contents__item__shippingWay__right__burden
+              %label
+                配送料の負担
+              %span
+                必須
+              = f.select :shipping_way, [["---", ""], ["未定", value = "1"],["ヤマト", value = "2"]], class: "contents__item__shippingWay__right__burden__select"
 
             .contents__item__shippingWay__right__city
               %label

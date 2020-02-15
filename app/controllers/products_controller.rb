@@ -6,8 +6,8 @@ class ProductsController < ApplicationController
   end
 
   def create
-  @item = Item.new(item_params)
-  @item.save
+  item = Item.new(item_params)
+  item.save!
   redirect_to root_path
 
     # if @item.save
@@ -20,8 +20,7 @@ class ProductsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region).merge(saler_user_id: current_user.id)
-    binding.pry
+    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes: [:image]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
   end
   
 end
