@@ -8,16 +8,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    item.save!
-    redirect_to root_path
-
-
-    # if @item.save
-    #   redirect_to root_path, notice: "商品を投稿しました"
-    # else
-    #   redirect_to new_product_path, notice: "error"
-    # end
+    begin
+      item = Item.new(item_params)
+      item.save!
+      redirect_to root_path, notice: "商品を投稿しました"
+    rescue ActiveRecord::RecordInvalid => e
+      redirect_to new_product_path, status: 400, notice: "error"
+    end
   end
 
   private
