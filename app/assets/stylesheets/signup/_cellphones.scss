@@ -30,7 +30,7 @@
       display: flex;
       justify-content: flex-start;
       padding: 0 0 0 179px;
-      margin: 10px 0 20px 0;
+      margin: 10px 0 0 0;
       width: 520px;
       text-align: left;
       font-weight: 200;
@@ -68,7 +68,6 @@
       border: 1px solid rgb(204, 204, 204);
       border-radius: 4px;
       padding: 0px 40px 0px 16px;
-      margin: 10px 0 0 0;
       background-color: #ffffff;
       transition: .2s;
       font-size: 16px;
@@ -91,9 +90,7 @@
     justify-content: flex-start;
     align-items: center;
     font-weight: 200;
-    line-height: 16px;
-    cursor: pointer;
-    outline: none;
+    line-height: 80px;
     &__sendingSMS {
       background-color: #ef3a3a;
       color: #ffffff;
