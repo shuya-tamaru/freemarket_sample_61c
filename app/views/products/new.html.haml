@@ -2,11 +2,10 @@
   = render 'devise/shared/header2'
 
 .products__new
-  .contents
-    = form_with url:root_path do |f|
-      .contents__header
-        %h2
-          商品の情報を入力
+  = form_with model: Item, local: true, url: products_path, class: "contents" do |f|
+    .contents__header
+      %h2
+        商品の情報を入力
 
       .contents__item
         .contents__item__upload
@@ -26,7 +25,7 @@
                   またはクリックしてファイルをダウンロード
               .contents__item__upload__image__btn__area
                 = f.file_field :image, class: 'contents__item__upload__image__btn__area__field', type: "file"
-                
+                  
 
         .contents__item__comment
           .contents__item__comment__name
@@ -35,7 +34,7 @@
             %span
               必須
             .contents__item__comment__name__form
-              = f.text_field :text, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
+              = f.text_field :name, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
         
           .contents__item__comment__description
             %label
@@ -43,7 +42,7 @@
             %span
               必須
             .contents__item__comment__description__form
-              = f.text_area :text, class:"contents__item__comment__description__form__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など） 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
+              = f.text_area :discription, class:"contents__item__comment__description__form__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など） 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
         
         .contents__item__status
           %h3
@@ -61,7 +60,7 @@
                 商品の状態
               %span
                 必須
-              = f.select :condition, [["---", ""], ["新品、未使用"],["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], class: "contents__item__status__right__condition__select"
+              = f.select :item_status, [["---", ""], ["新品、未使用"],["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], class: "contents__item__status__right__condition__select"
               
         .contents__item__shippingWay
           %h3
@@ -75,14 +74,14 @@
                 配送料の負担
               %span
                 必須
-              = f.select :burden, [["---", ""], ["送料込み(出品者負担)"],["着払い(購入者負担)"]], class: "contents__item__shippingWay__right__burden__select"
+              = f.select :shipping_charge, [["---", ""], ["送料込み(出品者負担)"],["着払い(購入者負担)"]], class: "contents__item__shippingWay__right__burden__select"
 
             .contents__item__shippingWay__right__city
               %label
                 発送元の地域
               %span
                 必須
-              = f.select :city,Address.prefectures.keys, class: 'contents__item__shippingWay__right__city__select'
+              = f.select :region,Address.prefectures.keys, class: 'contents__item__shippingWay__right__city__select'
 
 
             .contents__item__shippingWay__right__days
@@ -90,7 +89,7 @@
                 発送までの日数
               %span
                 必須
-              = f.select :days, [["---", ""], ["1〜2日で発送"],["2〜3日で発送"], ["4〜7日で発送"]], class: "contents__item__shippingWay__right__days__select"
+              = f.select :sipping_days, [["---", ""], ["1〜2日で発送"],["2〜3日で発送"], ["4〜7日で発送"]], class: "contents__item__shippingWay__right__days__select"
 
         .contents__item__price
           %h3
@@ -106,7 +105,7 @@
                 必須
               .contents__item__price__right__total__form
                 ¥
-                = f.text_field :string, class:"contents__item__price__right__total__form__string", placeholder: "例) 300"
+                = f.text_field :price, class:"contents__item__price__right__total__form__string", placeholder: "例) 300"
           
             .contents__item__price__right__fee
               販売手数料(10%)

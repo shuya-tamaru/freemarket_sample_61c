@@ -9,6 +9,10 @@
 @import "font_awesome5";
 @import "font-awesome-sprockets";
 @import "index";
+@import "signup/index";
+@import "signup/header";
+@import "signup/footer";
+@import "signup/headerStep1";
 @import "signup/usersSignUp";
 @import "signup";
 @import "signup/header";
@@ -22,11 +26,13 @@
 @import "signup/footer2";
 @import "signup/footerUserRegis";
 @import "signup/createAccount";
-@import "signin";
+@import "signup";
 @import "sidebar";
 @import "credit_cards/index";
 @import "credit_cards/show";
 @import "credit_cards/new";
+@import "orders";
+@import "products";
 @import "logout";
 @import "orders";
 @import "bought_items";
