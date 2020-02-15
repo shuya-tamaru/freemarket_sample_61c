@@ -45,9 +45,10 @@
 ## addressesテーブル(住所)
 |Column|Type|Options|
 |------|----|-------|
-|prefecture|string|null: false|
+|zip_code|integer|null: false|
+|prefecture|integer|null: false|
 |city|string|null:false|
-|adress|string|null:false|
+|address|string|null:false|
 |building|string||
 |phone_tel|integer||
 |user|references|null: false, foreign_key:true|
@@ -58,13 +59,13 @@
 ## cellphonesテーブル(携帯電話)
 |Column|Type|Options|
 |------|----|-------|
-|number|string|null: false, unique: true|
+|number|integer|null: false, unique: true|
 |user|references|null: false, foreign_key:true|
 ### Association
 - belongs_to :user
 ​
 ​
-## to_dosテーブル(やることリスト)
+## to_doesテーブル(やることリスト)
 |Column|Type|Options|
 |------|----|-------|
 |todo|string||
@@ -97,7 +98,7 @@
 |good_type|integer|null:false|
 |normal_type|integer|null:false|
 |bad_type|integer|null:false|
-|comment|string|
+|comment|string||
 |user|references|null: false, foreign_key:true|
 ### Association
 - belongs_to :user
@@ -106,8 +107,8 @@
 ## likesテーブル(いいね！)
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|user|refernces|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -116,7 +117,7 @@
 ## social_profilesテーブル(SNSアカウントでログインする機能)
 |Column|Type|Options|
 |------|----|-------|
-|user|refernces|null:false, foreign_key: true|
+|user|references|null:false, foreign_key: true|
 |provider|string|null: false|
 |uid|string|null:false|
 |access_token|string||
@@ -139,13 +140,13 @@
 |shipping_way|string|null: false|
 |discription|string|null: false|
 |brand|refernces|index: true, foreign_key: true|
-|grand_chaild_category|refernces|null: false, index: true, foreign_key: true|
-|buyer_user_id|integer|null: false|
+|grand_child_category|references|null: false, index: true, foreign_key: true|
+|buyer_user_id|integer||
 |saler_user_id|integer|null: false|
 |fee_side|string|null: false|
 |region|string|null: false|
 |shipping_days|string|null: false|
-|transaction_status|string|null: false|
+|purchase_date|string||
 ### Association
 - belongs_to :user
 - has_many :evaluations
@@ -155,14 +156,16 @@
 - belongs_to :grandchild_category
 - belongs_to :brand
 - has_many :images
-- has_one :order
+- has_one :transaction_status
 ​
 ​
-## ordersテーブル
+## transaction_statusesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|order_status|integer|null: false|
-|item|refernces|null: false, foreign_key: true|
+|selling|string||
+|trading|string||
+|sold|string||
+|item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to item
 ​
@@ -170,9 +173,9 @@
 ## item_commentsテーブル(商品詳細ページにつくコメント)
 |Column|Type|Options|
 |------|----|-------|
-|text|text||
-|user|refernces|null: false, foreign_key: true|
-|item|refernces|null: false, foreign_key: true|
+|text|string||
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -181,19 +184,19 @@
 ## trade_commentsテーブル(取引画面につくコメント)
 |Column|Type|Options|
 |------|----|-------|
-|text|text||
-|user|refernces|null: false, foreign_key: true|
-|item|refernces|null: false, foreign_key: true|
+|text|string||
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
 ​
 ​
-## categoryテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|index: true|
+|ancestry|string||
 ### Association
 - has_many :items
 - has_ancestry
@@ -214,3 +217,11 @@
 |item|refernces|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
+​
+​
+## sizesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+### Association
+- has_many :items

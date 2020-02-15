@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'create_accounts/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :categorized_items, only: [:index]
   resources :branded_items, only: [:index]
   resources :credit_cards, only: [:index,:new,:show]
+  resources :create_accounts, only: [:index]
   resources :myinfomations, only: [:index]
   resources :notifications, only: [:index]
   resources :todos, only: [:index]
@@ -33,4 +35,5 @@ Rails.application.routes.draw do
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
   resources :orders, only: [:new]
+  resources :products, only: [:new, :create]
 end

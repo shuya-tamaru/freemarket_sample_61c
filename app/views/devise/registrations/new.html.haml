@@ -1,53 +1,102 @@
-%h2 新規登録
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  .field
-    = f.label :last_name_kana
-    %br/
-    = f.text_field :last_name_kana
-  .field
-    = f.label :first_name_kana
-    %br/
-    = f.text_field :first_name_kana
-  .field
-    = f.label :birthday_year
-    %br/
-    = f.number_field :birthday_year
-  .field
-    = f.label :birthday_month
-    %br/
-    = f.number_field :birthday_month
-  .field
-    = f.label :birthday_date
-    %br/
-    = f.number_field :birthday_date
-  .actions
-    = f.submit "次へ"
-= render "devise/shared/links"
+.header3
+  .header3__logo
+    = link_to root_path do
+      .header3__logo__image
+    .header3__logo__progress
+      = image_tag "step1.png", class: "image", size: "450x35"
+.contents3
+  .contents3__title
+    会員情報入力
+  .contents3__entry
+    = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f|
+      = render "devise/shared/error_messages", resource: @user
+      .contents3__entry__item
+        .field
+          = f.label "ニックネーム"
+          %span.must 必須
+          %br/
+          = f.text_field :nickname, placeholder: "例) メルカリ太郎", class: "contents3__form__text"
+      .contents3__entry__item
+        .field
+          = f.label "メールアドレス"
+          %span.must 必須
+          %br/
+          = f.email_field :email, placeholder: "PC・携帯どちらでも可", class: "contents3__form__text", autocomplete: "email"
+      .contents3__entry__item
+        .field
+          = f.label "パスワード"
+          %span.must 必須
+          %br/
+          = f.password_field :password, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", autocomplete: "new-password"
+      .contents3__entry__message1
+        ※英字と数字の両方を含めて設定してください
+      %p
+        %input#js-passcheck{class: "checkbox", type: "checkbox"}
+        %label{class: "checkboxMessage", for: "js-passcheck"} パスワードを表示する
+      .contents3__entry__passwordResult
+        .contents3__entry__passwordResult__string
+      .contents3__entry__message3
+        本人確認
+      .contents3__entry__message4
+        安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+      .contents3__entry__item
+        .field
+          = f.label "お名前(全角)"
+          %span.must 必須
+          %br/
+          = f.text_field :last_name, placeholder: "例) 山田", class: "contents3__form2__text"
+        .field
+          %br/
+          = f.text_field :first_name, placeholder: "例) 彩", class: "contents3__form2__text"
+      .contents3__entry__item
+        .field
+          = f.label "お名前カナ(全角)"
+          %span.must 必須
+          %br/
+          = f.text_field :last_name_kana, placeholder: "例) ヤマダ", class: "contents3__form2__text"
+        .field
+          %br/
+          = f.text_field :first_name_kana, placeholder: "例) アヤ", class: "contents3__form2__text"
+      .contents3__entry__item
+        .field
+          = f.label "生年月日"
+          %span.must 必須
+          %br/
+          = f.number_field :birthday_year, class: "contents3__form3__text", placeholder: "--"
+          %span.date 年
+        .field
+          %br/
+          = f.number_field :birthday_month, class: "contents3__form3__text", placeholder: "--"
+          %span.date 月
+        .field
+          %br/
+          = f.number_field :birthday_date, class: "contents3__form3__text", placeholder: "--"
+          %span.date 日
+      .contents3__icon
+        = fa_icon("chevron-down")
+      .contents3__icon2
+        = fa_icon("chevron-down")
+      .contents3__icon3
+        = fa_icon("chevron-down")
+      .contents3__entry__message5
+        ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+      .contents3__entry__message6
+        「次へ進む」のボタンを押すことにより、
+        = link_to "https://www.mercari.com/jp/tos/" do
+          利用規約
+        に同意したものとみなします
+      .actions
+        = f.submit "次へ進む", class: "contents3__btn contents3__btn__next"
+      .contents3__entry__message7
+        = link_to "https://www.mercari.com/jp/help_center/article/423/" do
+          本人情報の登録について〉
+      .contents3__entry__message8
+        This site is protected by reCAPTCHA and the the Google
+        = link_to "https://policies.google.com/privacy" do
+          Privacy Policy
+        and
+        = link_to "https://policies.google.com/terms" do
+          Terms of Service
+        apply.
+      .contents3__entry__box
+= render 'devise/shared/footerUserRegis'

@@ -1,0 +1,106 @@
+.contents4 {
+  background-color: #f5f5f5;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  &__title {
+    background-color: #ffffff;
+    height: 98px;
+    width: 700px;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 0 auto;
+  }
+  &__entry {
+    background-color: #ffffff;
+    min-height: calc(100vh - 128px - 98px - 1px - 240px);
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    font-size: 14px;
+    font-weight: bold;
+    &__item {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px 250px 5px 179px;
+    }
+    &__message1 {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 0 0 179px;
+      margin: 10px 0 20px 0;
+      width: 520px;
+      text-align: left;
+      font-weight: 200;
+      line-height: 20px;
+    }
+    &__message2 {
+      display: flex;
+      justify-content: flex-end;
+      padding: 33px 20px 30px 150px;
+      width: 550px;
+      font-weight: 500;
+      a{
+        color: #39a3e4;
+        &:hover {
+          color: #9acceb;
+          border-bottom: 1px solid #9acceb;
+        }
+      }
+    }
+    &__box {
+      background-color: #f5f5f5;
+      height: calc(100vh - 128px - 98px - 1px - 240px - 385px);
+      width: 100%;
+    }
+  }
+  &__form {
+    height: 61px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 -10px 175px;
+    &__text{
+      height: 48px;
+      width: 344px;
+      border: 1px solid rgb(204, 204, 204);
+      border-radius: 4px;
+      padding: 0px 40px 0px 16px;
+      margin: 10px 0 0 0;
+      background-color: #ffffff;
+      transition: .2s;
+      font-size: 16px;
+      font-weight: 200px;
+      font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+      &:focus{
+        border: 1px solid #0095ee;
+        outline: none;
+      }
+    }
+  }
+  &__btn {
+    display: block;
+    height: 50px;
+    width: 350px;
+    margin: 0 auto ;
+    font-size: 15px;
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 200;
+    line-height: 16px;
+    cursor: pointer;
+    outline: none;
+    &__sendingSMS {
+      background-color: #ef3a3a;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
