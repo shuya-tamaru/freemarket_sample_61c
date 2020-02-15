@@ -2,7 +2,7 @@
   = render 'devise/shared/header2'
 
 .products__new
-  = form_with model: Item, local: true, url: products_path, class: "contents" do |f|
+  = form_with model: @item, local: true, url: products_path, class: "contents" do |f|
     .contents__header
       %h2
         商品の情報を入力
@@ -23,9 +23,9 @@
                 ドラッグアンドドロップ
                 %br
                   またはクリックしてファイルをダウンロード
-              .contents__item__upload__image__btn__area
-                = f.file_field :image, class: 'contents__item__upload__image__btn__area__field', type: "file"
-                  
+          .contents__item__upload__image__btn__area
+            = f.fields_for :images do |image| 
+              = image.file_field :image
 
         .contents__item__comment
           .contents__item__comment__name
