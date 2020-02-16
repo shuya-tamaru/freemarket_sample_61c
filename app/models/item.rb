@@ -10,6 +10,8 @@ class Item < ApplicationRecord
   has_one :order​​
   accepts_nested_attributes_for :images, allow_destroy: true
 
+
+  validates_associated :images
   validates :name, presence: true
   validates :discription, presence: true
   validates :item_status, presence: true
@@ -18,7 +20,8 @@ class Item < ApplicationRecord
   validates :region, presence: true
   validates :sipping_days, presence: true
   validates :price, presence: true
-  
-
+  validates :category_id, presence: true
+  validates :brand_id, presence: true
+  validates :images, presence: true
 
 end
