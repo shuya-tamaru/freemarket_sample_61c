@@ -27,8 +27,8 @@
 
       .myinfomations__tabs__contents
         %ul.myinfomations__tabs__contents__notifications.view
-          %li
-            =link_to "#" do
+          =link_to "#" do
+            %li
               =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
               .myinfomations__tabs__contents__notifications__text
                 %label お知らせ１
@@ -37,19 +37,24 @@
                 %span 2 時間前
                 = icon('fas', 'chevron-right',class:"right--icon")
 
-          %li
-            =link_to "#" do
+          %li.all
+            =link_to notifications_path do
               一覧を見る
 
         %ul.myinfomations__tabs__contents__todos
           =link_to "#" do
-            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-            .myinfomations__tabs__contents__todos__text
-              %label やることリスト１
-            .myinfomations__tabs__contents__todos__time
-              %span=icon('far', 'clock',class:"time--icon")
-              %span 2 時間前
-              = icon('fas', 'chevron-right',class:"right--icon")
+            %li
+              =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+              .myinfomations__tabs__contents__todos__text
+                %label やることリスト１
+              .myinfomations__tabs__contents__todos__time
+                %span=icon('far', 'clock',class:"time--icon")
+                %span 2 時間前
+                = icon('fas', 'chevron-right',class:"right--icon")
+          
+          %li.all
+            =link_to todos_path do
+              一覧を見る
 
     .myinfomations__trade
       %h4 購入した商品
@@ -62,23 +67,33 @@
       .myinfomations__trade__contents
         %ul.myinfomations__trade__contents__tradingItems.view
           =link_to "#" do
-            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-            .myinfomations__trade__contents__tradingItems__text
-              %label 取引中１
-            .myinfomations__trade__contents__tradingItems__time
-              %span=icon('far', 'clock',class:"time--icon")
-              %span 3 時間前
-              = icon('fas', 'chevron-right',class:"right--icon")
+            %li
+              =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+              .myinfomations__trade__contents__tradingItems__text
+                %label 取引中１
+              .myinfomations__trade__contents__tradingItems__time
+                %span=icon('far', 'clock',class:"time--icon")
+                %span 3 時間前
+                = icon('fas', 'chevron-right',class:"right--icon")
+              
+          %li.all
+            =link_to trading_items_path do
+              一覧を見る
 
         %ul.myinfomations__trade__contents__boughtItems
           =link_to "#" do
-            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-            .myinfomations__trade__contents__boughtItems__text
-              %label 過去の取引１
-            .myinfomations__trade__contents__boughtItems__time
-              %span=icon('far', 'clock',class:"time--icon")
-              %span 3 時間前
-              = icon('fas', 'chevron-right',class:"right--icon")
+            %li
+              =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+              .myinfomations__trade__contents__boughtItems__text
+                %label 過去の取引１
+              .myinfomations__trade__contents__boughtItems__time
+                %span=icon('far', 'clock',class:"time--icon")
+                %span 3 時間前
+                = icon('fas', 'chevron-right',class:"right--icon")
+
+          %li.all
+            =link_to bought_items_path do
+              一覧を見る
 
 .footer
   = render 'items/footer'
