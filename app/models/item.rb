@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_one :order​​
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  price_validate = /\A\b[3-9][0-9][0-9]\b\Z|\A\b[1-9][0-9][0-9][0-9]\b\z|\A\b[1-9][0-9][0-9][0-9][0-9]\b\z|\A\b[1-9][0-9][0-9][0-9][0-9][0-9]\b\z|\A\b[1-9][0-9][0-9][0-9][0-9][0-9][0-9]\b\z/
 
   validates_associated :images
   validates :name, presence: true
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
   validates :shipping_way, presence: true
   validates :region, presence: true
   validates :sipping_days, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, format: {with: price_validate}
   validates :category_id, presence: true
   validates :brand_id, presence: true
   validates :images, presence: true
