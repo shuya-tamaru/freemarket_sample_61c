@@ -1,17 +1,17 @@
 $(function() {
-  $('.myinfomations__tabs__label li').click(function() {
-    var index = $('.myinfomations__tabs__label li').index(this);
-    $('.myinfomations__tabs__label li').removeClass('active');
+  $('.tabs__label li').click(function() {
+    var index = $('.tabs__label li').index(this);
+    $('.tabs__label li').removeClass('active');
     $(this).addClass('active');
-    $('.myinfomations__tabs__contents ul').removeClass('view').eq(index).addClass('view');
+    $('.tab ul').removeClass('view').eq(index).addClass('view');
   });
 });
 
 $(function() {
-  $('.myinfomations__trade__label li').click(function() {
-    var index = $('.myinfomations__trade__label li').index(this);
-    $('.myinfomations__trade__label li').removeClass('active');
+  $('.trades__label li').click(function() {
+    var index = $('.trades__label li').index(this);
+    $('.trades__label li').removeClass('active');
     $(this).addClass('active');
-    $('.myinfomations__trade__contents ul').removeClass('view').eq(index).addClass('view');
+    $('.trade ul').removeClass('view').eq(index).addClass('view');
   });
 });

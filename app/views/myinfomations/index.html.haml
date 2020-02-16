@@ -6,33 +6,33 @@
     =render "sidebar"
 
   .myinfomations
-    .myinfomations__head
+    .head
       = link_to "#" do
-        .myinfomations__head__inner
-          =image_tag 'member_photo_noimage_thumb.png', class: 'myinfomations__head__inner__image'
-          .myinfomations__head__inner__name
+        .inner
+          =image_tag 'member_photo_noimage_thumb.png', class: 'inner__image'
+          .inner__name
             %h2 *** ***
-          .myinfomations__head__inner__data
+          .inner__data
             %span 評価 0
             %span 出品数 0
               
-      =image_tag 'user-bg-07a3d1eec321479f465363323ddeb262.jpg', class: 'myinfomations__head__backImage'
+      =image_tag 'user-bg-07a3d1eec321479f465363323ddeb262.jpg', class: 'head__backImage'
 
-    .myinfomations__tabs
-      %ul.myinfomations__tabs__label
-        %li.myinfomations__tabs__label.active
+    .tabs
+      %ul.tabs__label
+        %li.tabs__label.active
           %h3 お知らせ
-        %li.myinfomations__tabs__label
+        %li.tabs__label
           %h3 やることリスト
 
-      .myinfomations__tabs__contents
-        %ul.myinfomations__tabs__contents__notifications.view
+      .tab
+        %ul.notifications.view
           =link_to "#" do
             %li
               =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-              .myinfomations__tabs__contents__notifications__text
+              .notifications__text
                 %label お知らせ１
-              .myinfomations__tabs____contentsnotifications__time
+              .notifications__time
                 %span=icon('far', 'clock',class:"time--icon")
                 %span 2 時間前
                 = icon('fas', 'chevron-right',class:"right--icon")
@@ -41,13 +41,13 @@
             =link_to notifications_path do
               一覧を見る
 
-        %ul.myinfomations__tabs__contents__todos
+        %ul.todos
           =link_to "#" do
             %li
               =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-              .myinfomations__tabs__contents__todos__text
+              .todos__text
                 %label やることリスト１
-              .myinfomations__tabs__contents__todos__time
+              .todos__time
                 %span=icon('far', 'clock',class:"time--icon")
                 %span 2 時間前
                 = icon('fas', 'chevron-right',class:"right--icon")
@@ -56,22 +56,22 @@
             =link_to todos_path do
               一覧を見る
 
-    .myinfomations__trade
+    .trades
       %h4 購入した商品
-      %ul.myinfomations__trade__label
-        %li.myinfomations__trade__label.active
+      %ul.trades__label
+        %li.trades__label.active
           %h3 取引中
-        %li.myinfomations__trade__label
+        %li.trades__label
           %h3 過去の取引
 
-      .myinfomations__trade__contents
-        %ul.myinfomations__trade__contents__tradingItems.view
+      .trade
+        %ul.tradingItems.view
           =link_to "#" do
             %li
               =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-              .myinfomations__trade__contents__tradingItems__text
+              .tradingItems__text
                 %label 取引中１
-              .myinfomations__trade__contents__tradingItems__time
+              .tradingItems__time
                 %span=icon('far', 'clock',class:"time--icon")
                 %span 3 時間前
                 = icon('fas', 'chevron-right',class:"right--icon")
@@ -80,13 +80,13 @@
             =link_to trading_items_path do
               一覧を見る
 
-        %ul.myinfomations__trade__contents__boughtItems
+        %ul.boughtItems
           =link_to "#" do
             %li
               =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-              .myinfomations__trade__contents__boughtItems__text
+              .boughtItems__text
                 %label 過去の取引１
-              .myinfomations__trade__contents__boughtItems__time
+              .boughtItems__time
                 %span=icon('far', 'clock',class:"time--icon")
                 %span 3 時間前
                 = icon('fas', 'chevron-right',class:"right--icon")
