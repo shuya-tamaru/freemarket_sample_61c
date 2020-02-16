@@ -25,50 +25,73 @@
 
       .identification__content{
         padding: 64px;
-        margin: 0 auto;
-        &__list{
-          border-bottom: 1px solid #eee;
-          &__name{
-            max-width: 320px;
-            margin: 0 auto;
-          }
-
-          &__add{
-            padding: 24px 0;
-            margin: 0 auto;
-            max-width: 320px;
-            &__btn{
-              background-color: #ea352d;
-              border: 1px solid #ea352d;
-              color: #fff;
-              line-height: 48px;
-              width: 100%;
-              text-align: center;
-              display: block;
-              &:hover{
-                opacity: 0.7;
-              }
-              &--icon{
-                margin-right: 16px;
-              }
+        font-size: 14px;
+        line-height: 20px;
+        &__form {
+          width: 570px;
+          margin: 0 auto;
+          height: 61px;
+          display: flex;
+          justify-content: center;
+          margin: 0 0 0 175px;
+          &__text{
+            height: 48px;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 4px;
+            padding: 0px 40px 0px 16px;
+            margin: 5px 0 0 0;
+            background-color: #ffffff;
+            transition: .2s;
+            font-size: 16px;
+            font-weight: 200px;
+            font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+            &:focus{
+              border: 1px solid #0095ee;
+              outline: none;
             }
           }
         }
-
-        &__method{
-          margin: 40px 0 0;
+        &__link{
           text-align: right;
-          display: block;
-          &__btn{
-            color: #0099e8;
-            font-size: 14px;
-            &:hover{
-              color: #66CCFF;
-              border-bottom: 1px solid #66CCFF;
+          line-height: 40px;
+          a{
+            color: #39a3e4;
+            &:hover {
+              color: #9acceb;
+              border-bottom: 1px solid #9acceb;
             }
           }
+        }
+        %MypageIdentificationContents{
+
+        }
+        &__btn {
+          background-color: #ef3a3a;
+          display: block;
+          height: 50px;
+          margin: 0 auto ;
+          font-size: 15px;
+          color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 200;
+          line-height: 16px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          cursor: pointer;
+          outline: none;
         }
       }
     }
   }
+}
+span.option {
+  background-color: #6f6868f9;
+  font-size: 12px;
+  color: #ffffff;
+  margin: 0 0 0 8px;
+  padding: 3px 5px;
+  border-radius: 2px;
+  vertical-align: top;
 }
