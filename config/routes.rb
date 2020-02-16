@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'personal_informations/index'
   get 'create_accounts/index'
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'cellphones', to: 'users/registrations#new_cellphone'
@@ -36,4 +37,5 @@ Rails.application.routes.draw do
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
   resources :orders, only: [:new]
+  resources :products, only: [:new, :create]
 end
