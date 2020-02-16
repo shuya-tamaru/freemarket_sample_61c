@@ -62,9 +62,6 @@
             }
           }
         }
-        %MypageIdentificationContents{
-
-        }
         &__btn {
           background-color: #ef3a3a;
           display: block;
@@ -94,4 +91,8 @@ span.option {
   padding: 3px 5px;
   border-radius: 2px;
   vertical-align: top;
+}
+
+.idItem{
+  font-weight: 600;
 }
