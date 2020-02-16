@@ -6,10 +6,10 @@
     = link_to new_user_registration_path, class: "contents2__btn contents2__btn__mail" do
       = icon('far', 'envelope fa-lg', class: "contents2__btn__icon1")
       メールアドレスで登録する
-    = link_to root_path, class: "contents2__btn contents2__btn__facebook" do
+    = link_to user_facebook_omniauth_authorize_path, method: :post, class: "contents2__btn contents2__btn__facebook" do
       = icon('fab', 'facebook-square fa-2x', class: "contents2__btn__icon2")
       Facebookで登録する
-    = link_to root_path, class: "contents2__btn contents2__btn__google" do
+    = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "contents2__btn contents2__btn__google" do
       = image_tag 'google_color.png', class: 'contents2__btn__icon3', size: '114x47'
       Googleで登録する
     .contents2__selection__boxwhite
