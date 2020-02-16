@@ -27,14 +27,19 @@
 
       .myinfomations__tabs__contents
         %ul.myinfomations__tabs__contents__notifications.view
-          =link_to "#" do
-            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
-            .myinfomations__tabs__contents__notifications__text
-              %label お知らせ１
-            .myinfomations__tabs____contentsnotifications__time
-              %span=icon('far', 'clock',class:"time--icon")
-              %span 2 時間前
-              = icon('fas', 'chevron-right',class:"right--icon")
+          %li
+            =link_to "#" do
+              =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png",class:"image"
+              .myinfomations__tabs__contents__notifications__text
+                %label お知らせ１
+              .myinfomations__tabs____contentsnotifications__time
+                %span=icon('far', 'clock',class:"time--icon")
+                %span 2 時間前
+                = icon('fas', 'chevron-right',class:"right--icon")
+
+          %li
+            =link_to "#" do
+              一覧を見る
 
         %ul.myinfomations__tabs__contents__todos
           =link_to "#" do
