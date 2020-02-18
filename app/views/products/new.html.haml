@@ -96,7 +96,7 @@
                 発送元の地域
               %span
                 必須
-              = f.select :region,Address.prefectures.keys, class: 'contents__item__shippingWay__right__city__select'
+              = f.collection_select :region, Prefecture.all, :id, :name, class: 'contents__item__shippingWay__right__city__select'
 
 
             .contents__item__shippingWay__right__days
