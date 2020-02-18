@@ -57,6 +57,31 @@ crumb :reviews do
   parent :myinfomations
 end
 
+crumb :supports do
+  link "お問い合わせ", supports_path
+  parent :myinfomations
+end
+
+crumb :sales do
+  link "売上・振込申請", sales_path
+  parent :myinfomations
+end
+
+crumb :points do
+  link "ポイント", points_path
+  parent :myinfomations
+end
+
+crumb :profiles do
+  link "プロフィール", edit_profile_path(current_user)
+  parent :myinfomations
+end
+
+crumb :user do
+  link "ログアウト", user_path(current_user)
+  parent :myinfomations
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
