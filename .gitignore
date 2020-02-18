@@ -30,3 +30,4 @@ ignoretest
 .env
 recaptcha
 /direnv/
+public/uploads/*
