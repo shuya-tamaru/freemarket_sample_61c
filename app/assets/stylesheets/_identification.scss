@@ -15,7 +15,7 @@
       margin: 24px auto 0;
       background-color: #fff;
 
-      .identification__header{
+      &__header{
         font-size: 24px;
         padding: 8px 24px;
         text-align: center;
@@ -23,7 +23,7 @@
         line-height: 1.4;
       } 
 
-      .identification__content{
+      &__content{
         padding: 64px;
         font-size: 14px;
         line-height: 20px;
