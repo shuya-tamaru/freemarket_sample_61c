@@ -53,14 +53,14 @@
                 カテゴリー
               %span
                 必須
-              = f.select :category_id, [["---", ], ["レディース", value = 1.to_i],["メンズ", value = 2.to_i]], class: "contents__item__status__right__category__select"
+              = f.select :category_id, [["---", ""], ["レディース", value = 1.to_i],["メンズ", value = 2.to_i]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__category
               %label
                 ブランド
               %span
                 必須
-              = f.select :brand_id, [["---", ], ["シャネル", value = 1.to_i]], class: "contents__item__status__right__category__select"
+              = f.select :brand_id, [["---", ""], ["シャネル", value = 1.to_i]], class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__condition
               %label
