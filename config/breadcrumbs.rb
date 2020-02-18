@@ -1,9 +1,60 @@
 crumb :root do
-  link "トップページ", root_path
+  link "メルカリ", root_path
 end
 
 crumb :myinfomations do
   link "マイページ", myinfomations_path
+  parent :root
+end
+
+crumb :notifications do
+  link "お知らせ", notifications_path
+  parent :myinfomations
+end
+
+crumb :todos do
+  link "やることリスト", todos_path
+  parent :myinfomations
+end
+
+crumb :likes do
+  link "いいね！一覧", likes_path
+  parent :myinfomations
+end
+
+crumb :products do
+  link "出品した商品 - 出品中", products_path
+  parent :myinfomations
+end
+
+crumb :trading_products do
+  link "出品した商品 - 取引中", trading_products_path
+  parent :myinfomations
+end
+
+crumb :sold_products do
+  link "出品した商品 - 売却済み", sold_products_path
+  parent :myinfomations
+end
+
+crumb :trading_items do
+  link "購入した商品 - 取引中", trading_items_path
+  parent :myinfomations
+end
+
+crumb :bought_items do
+  link "購入した商品 - 過去の取引", bought_items_path
+  parent :myinfomations
+end
+
+crumb :news do
+  link "ニュース一覧", news_index_path
+  parent :myinfomations
+end
+
+crumb :reviews do
+  link "評価一覧", reviews_path
+  parent :myinfomations
 end
 
 # crumb :projects do
