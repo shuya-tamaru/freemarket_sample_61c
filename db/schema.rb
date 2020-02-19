@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_155224) do
+ActiveRecord::Schema.define(version: 2020_02_19_162208) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip_code", null: false
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 2020_02_19_155224) do
     t.datetime "updated_at", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "item_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "text"
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_comments_on_item_id"
+    t.index ["user_id"], name: "index_item_comments_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,6 +136,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_155224) do
   add_foreign_key "cards", "users"
   add_foreign_key "cellphones", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "item_comments", "items"
+  add_foreign_key "item_comments", "users"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "sns_credentials", "users"
