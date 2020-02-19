@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :cellphone
   has_one :address
   has_one :card
+  has_many :item_comments
+  has_many :trade_comments
 
   validates :nickname, presence: true
   validates :last_name, presence: true
