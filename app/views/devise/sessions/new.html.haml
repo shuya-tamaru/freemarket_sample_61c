@@ -12,7 +12,7 @@
     = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "SignInMain__btn SignInMain__btn__google" do
       = image_tag 'google_color.png', class: 'SignInMain__btn__icon3', size: '114x47'
       Googleでログイン
-    = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f|
+    = form_with model: @user, url: user_session_path, id: 'new_user', local: true do |f|
       .field
         %br/
         = f.email_field :email, autocomplete: "email", class: 'SignInMain__form', placeholder: "メールアドレス"

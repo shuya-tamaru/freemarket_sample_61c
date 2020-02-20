@@ -1,8 +1,8 @@
 class AddCustomerIdAndCardIdToCards < ActiveRecord::Migration[5.2]
   def change
 
-    add_column :cards, :customer_id, :string, null:false
-    add_column :cards, :card_id, :string, null:false
+    add_column :cards, :customer_id, :string
+    add_column :cards, :card_id, :string
 
     # 新たに追加した2行について
     # セキュリティーの観点からカード情報そのものをDBに保存することは禁止されている(改正割賦販売法)。
