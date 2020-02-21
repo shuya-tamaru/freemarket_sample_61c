@@ -35,5 +35,5 @@ Rails.application.routes.draw do
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
   resources :orders, only: [:new, :edit, :update]
-  resources :products, only: [:new, :create]
+  resources :products, only: [:new, :create, :show, :edit, :update, :delete]
 end
