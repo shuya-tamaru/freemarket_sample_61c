@@ -3,7 +3,7 @@
   .item
     .item-box
       .item-box__name
-        シャネル クリスタル オードゥ トワレット (ヴァポリザター) 100ml
+        -# = @item.name
       .item-box__description
         『シャネル クリスタル オードゥ トワレット (ヴァポリザター) 100ml』は、800回の取引実績を持つフォロー歓迎☆totoroさんから出品されました。シャネル（メイク道具/化粧小物/コスメ・香水・美容）の商品で、東京都から1~2日で発送されます。
       .item-box__details
@@ -15,7 +15,7 @@
             %tr
               %th 出品者名
               %td.item-box__details__table__td
-                フォロー歓迎username
+                -# = @user.nickname
                 =fas_icon 'grin', class: "grin-icon" 
                 999
                 =fas_icon 'meh-blank', class: "meh-blank-icon"
@@ -27,13 +27,15 @@
               %td.item-box__details__table__td コスメ・香水・美容>メイクアップ>メイク道具/化粧小物
               %tr
                 %th ブランド
-                %td.item-box__details__table__td シャネル
+                %td.item-box__details__table__td
+                  -# = @brand.name
             %tr
               %th 商品のサイズ
               %td.item-box__details__table__td XS
             %tr
               %th 商品の状態
-              %td.item-box__details__table__td 未使用に近い
+              %td.item-box__details__table__td 
+              -# = @item.item_status
             %tr
               %th 配送料の負担
               %td.item-box__details__table__td  配送者負担
@@ -47,7 +49,8 @@
               %th 発送日の目安
               %td.item-box__details__table__td 2~4日で発送
       .item__price
-        %span.item__price__amount ¥ 5,900
+        %span.item__price__amount
+          -# = @items.price
         %span.item__price__tax (税込)
         %span.item__price__ship 送料込み
 
