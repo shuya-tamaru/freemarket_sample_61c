@@ -17,6 +17,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to root_path, notice: "商品を投稿しました"
+  end
+
   private
 
   def item_params
