@@ -17,6 +17,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def item_params
