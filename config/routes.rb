@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'personal_informations/index'
   get 'create_accounts/index'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
