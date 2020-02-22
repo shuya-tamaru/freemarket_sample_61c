@@ -47,7 +47,7 @@ class User < ApplicationRecord
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/
 
-    errors.add :password, '英字と数字両方を含むパスワードかつ7文字以上128文字以下'
+    errors.add :password, '半角英字と数字両方を含むパスワードかつ7文字以上128文字以下'
   end
 
 end
