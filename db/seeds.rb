@@ -723,10 +723,9 @@ c4_12.children.create(name: "七五三")
 c4_12.children.create(name: "お歳暮")
 c4_12.children.create(name: "クリスマス")
 c4_12.children.create(name: "冬一般")
+c4_12.children.create(name: "その他")
 
 c4_13 = c4.children.create(name: "その他")
-
-c4_13.children.create(name: "その他")
 
 
 c5 = Category.create(name: "本・音楽・ゲーム")
@@ -1373,7 +1372,8 @@ c10_8 = c10.children.create(name: "二次創作物")
 
 c10_8.children.create(name: "Ingress")
 c10_8.children.create(name: "クリエイターズ宇宙兄弟")
-c10_8.children.create(name: "その他")
+
+c10_9 = c10.children.create(name: "その他")
 
 
 c11 = Category.create(name: "チケット")
@@ -1448,7 +1448,8 @@ c11_7.children.create(name: "レストラン/食事券")
 c11_7.children.create(name: "フード/ドリンク券")
 c11_7.children.create(name: "宿泊券")
 c11_7.children.create(name: "その他")
-c11_7.children.create(name: "その他")
+
+c11_8 = c11.children.create(name: "その他")
 
 
 c12 = Category.create(name: "自動車・オートバイ")
@@ -1608,7 +1609,6 @@ c13_8.children.create(name: "オフィス家具")
 c13_8.children.create(name: "店舗用品")
 c13_8.children.create(name: "OA機器")
 c13_8.children.create(name: "ラッピング/包装")
+c13_8.children.create(name: "その他")
 
 c13_9 = c13.children.create(name: "その他")
-
-c13_9.children.create(name: "その他")
