@@ -2,7 +2,7 @@
   = render 'devise/shared/header2'
 
 .products__new
-  = form_with model: @item, local: true, url: products_path, class: "contents" do |f|
+  = form_with model: @item, local: true, url: product_path, class: "contents" do |f|
     .contents__header
       %h2
         商品の情報を入力
@@ -155,7 +155,7 @@
                 に同意したことになります。
 
             .contents__item__add__btnTop
-              = f.submit "出品する", class:"contents__item__add__btnTop__submit"
+              = f.submit "商品の編集", class:"contents__item__add__btnTop__submit"
 
             .contents__item__add__btnBack
               = link_to "#", class:"contents__item__add__btnBack__link" do

@@ -19,7 +19,12 @@ class ProductsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @item.images.build
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to root_path, notice: "商品を投稿しました"
   end
 
   private
