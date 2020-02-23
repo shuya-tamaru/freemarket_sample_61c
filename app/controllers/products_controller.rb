@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_item, only: [:edit, :update]
+
   def index
   end
 
@@ -18,19 +20,26 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to root_path, notice: "商品を投稿しました"
+    if current_user.id == @item.saler_user_id && @item.update(item_params)
+      redirect_to root_path, notice: "商品を情報を更新しました"
+    else
+      #更新できなかった場合とりあえず仮でindexに飛ばしてます。
+      redirect_to root_path, notice: "商品を情報を更新できませんでした"
+    end
   end
 
   private
 
   def item_params
     params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1) 
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
   
 end
