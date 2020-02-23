@@ -62,6 +62,12 @@
         }
           &__image{
             margin: 16px auto 0;
+            &__preview {
+              margin: 0 2px 10px 2px;
+              height: auto;
+              width: 100px;
+              height: 100px;
+            }
             &__btn{
               background-color: #f5f5f5;
               border: 1px dashed #ccc;
@@ -90,9 +96,7 @@
                     width: 620px;
                     }
                   }
-                  &__preview{
 
-                  }
                 }
             }
           }
@@ -270,4 +274,5 @@
     }
   }
 }
+
 
