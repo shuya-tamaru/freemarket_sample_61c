@@ -24,8 +24,9 @@
                 %br
                   またはクリックしてファイルをダウンロード
               .contents__item__upload__image__btn__area
+                %label.dropbox__img
                 = f.fields_for :images do |image| 
-                  = image.file_field :image, class: "contents__item__upload__image__btn__area__field"
+                  = image.file_field :image, id: "sell-img", class: "contents__item__upload__image__btn__area__field"
 
         .contents__item__comment
           .contents__item__comment__name
