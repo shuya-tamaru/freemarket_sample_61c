@@ -3,7 +3,7 @@
   .item
     .item-box
       .item-box__name
-        -# = @item.name
+        = @item.name
       .item-box__description
         『シャネル クリスタル オードゥ トワレット (ヴァポリザター) 100ml』は、800回の取引実績を持つフォロー歓迎☆totoroさんから出品されました。シャネル（メイク道具/化粧小物/コスメ・香水・美容）の商品で、東京都から1~2日で発送されます。
       .item-box__details
@@ -35,7 +35,7 @@
             %tr
               %th 商品の状態
               %td.item-box__details__table__td 
-              -# = @item.item_status
+              -# = @items.item_status
             %tr
               %th 配送料の負担
               %td.item-box__details__table__td  配送者負担
@@ -50,34 +50,14 @@
               %td.item-box__details__table__td 2~4日で発送
       .item__price
         %span.item__price__amount
-          -# = @items.price
+          = @item.price
         %span.item__price__tax (税込)
         %span.item__price__ship 送料込み
 
       .item__purchase 購入画面に進む
 
       .item__field 
-        ■CHANEL シャネル■ (フランス製)
-        %br
-        クリスタル EDT VAPORISATEUR
-        %br
-        容量:100ml
-        %br
-        スプレー式のオードトワレです。
-        %br
-        未使用品のつもりで長く保管しておりましたがキャップを外しスプレーの先端を確認してみましたところ画像4枚目のように先端部に色付いておりました。記憶が定かではないのですが所見から数回程度プッシュしたのかもしれず中古として出品致します。未使用に近いと思うのですが残量は画像にてご確認くださいませ。外箱に入れ暗所保管しておりました。
-        %br
-        経年品につき揮発劣化などあるかも知れませんのでご理解いただき細かなことを気になさる方はお控えください。
-        %br
-        メルカリ便コンパクトBoxにてこわれもの指定のうえ大切にお送りします。
-        %br
-        シャネル CHANEL
-        %br
-        DE TOILETE CRISTALLE
-        %br
-        VAORISATEUR
-        %br
-        SPRAY
+        = @item.discription
 
       %ul.item__bottom
         %li.item__bottom__likes いいね!2
