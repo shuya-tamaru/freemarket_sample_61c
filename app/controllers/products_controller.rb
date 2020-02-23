@@ -24,8 +24,12 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    redirect_to root_path, notice: "商品を投稿しました"
+    if current_user.id == @item.saler_user_id && @item.update(item_params)
+      redirect_to root_path, notice: "商品を情報を更新しました"
+    else
+      #更新できなかった場合とりあえず仮でindexに飛ばしてます。
+      redirect_to root_path, notice: "商品を情報を更新できませんでした"
+    end
   end
 
   private
