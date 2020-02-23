@@ -1,0 +1,98 @@
+.main{
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  position: relative;
+  padding: 0 0 40px;
+
+  .index{
+    margin-left: 40px;
+    border-top: 1px solid #eee;
+
+    .identification{
+      width: 700px;
+      margin: 24px auto 0;
+      background-color: #fff;
+
+      &__header{
+        font-size: 24px;
+        padding: 8px 24px;
+        text-align: center;
+        border-bottom: 3px solid #f5f5f5;
+        line-height: 1.4;
+      } 
+
+      &__content{
+        padding: 64px;
+        font-size: 14px;
+        line-height: 20px;
+        &__form {
+          width: 570px;
+          margin: 0 auto;
+          height: 61px;
+          display: flex;
+          justify-content: center;
+          margin: 0 0 0 175px;
+          &__text{
+            height: 48px;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 4px;
+            padding: 0px 40px 0px 16px;
+            margin: 5px 0 0 0;
+            background-color: #ffffff;
+            transition: .2s;
+            font-size: 16px;
+            font-weight: 200px;
+            font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+            &:focus{
+              border: 1px solid #0095ee;
+              outline: none;
+            }
+          }
+        }
+        &__link{
+          text-align: right;
+          line-height: 40px;
+          a{
+            color: #39a3e4;
+            &:hover {
+              color: #9acceb;
+              border-bottom: 1px solid #9acceb;
+            }
+          }
+        }
+        &__btn {
+          background-color: #ef3a3a;
+          display: block;
+          height: 50px;
+          margin: 0 auto ;
+          font-size: 15px;
+          color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 200;
+          line-height: 16px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+span.option {
+  background-color: #6f6868f9;
+  font-size: 12px;
+  color: #ffffff;
+  margin: 0 0 0 8px;
+  padding: 3px 5px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+.idItem{
+  font-weight: 600;
+}
