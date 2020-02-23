@@ -1,0 +1,87 @@
+.header
+  = render 'items/header'
+
+.main
+  .sidebar
+    = render 'myinfomations/sidebar'
+
+  .index
+    .identification
+      .identification__header
+        %h1
+          本人情報の登録
+      .identification__content
+        = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f| #pathは仮
+          %MypageIdentificationMessage
+            お客さまの本人情報をご登録ください。
+            %br/
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          .identification__content__link
+            =link_to "#" do
+              本人確認書類のアップロードについて 〉
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              お名前
+            .idContent
+              メルカリ太郎
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              お名前カナ
+            .idContent
+              メルカリタロウ
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              生年月日
+            .idContent
+              2020/12/12
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              郵便番号
+              %span.option
+                任意
+            = f.text_field :zip_code,{placeholder: "例）1234567 ハイフンなし", class: "identification__content__form identification__content__form__text"}
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              都道府県
+              %span.option
+                任意
+            = f.select :prefecture, Address.prefectures.keys, {}, {class: "identification__content__form identification__content__form__text"}
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              市区町村
+              %span.option
+                任意
+            = f.text_field :city,{placeholder: "例）横浜市緑区", class: "identification__content__form identification__content__form__text"}
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              番地
+              %span.option
+                任意
+            = f.text_field :address,{placeholder: "例）青山1-1-1", class: "identification__content__form identification__content__form__text"}
+          %MypageIdentificationContents
+            %br/
+            .idItem
+              建物名
+              %span.option
+                任意
+            = f.text_field :building,{placeholder: "例）柳ビル103", class: "identification__content__form identification__content__form__text"}
+          .identification__content__btn
+            登録する
+          .identification__content__link
+            =link_to "#" do
+              本人情報の登録について 〉
+
+.footer
+  = render 'items/footer'
+
+.exhibition
+  =link_to new_product_path, class: "exhibition__link" do
+    出品
+    = fas_icon 'camera', class: "exhibition__link__icon"
