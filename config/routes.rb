@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   resources :todos, only: [:index]
   resources :likes, only: [:index]
-  resources :products, only: [:index, :new, :show]
+  resources :products, only: [:index, :new, :show, :edit, :update]
   resources :trading_products, only: [:index]
   resources :sold_products, only: [:index]
   resources :trading_items, only: [:index]
