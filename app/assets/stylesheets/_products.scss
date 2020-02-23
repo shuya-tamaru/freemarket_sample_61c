@@ -71,17 +71,27 @@
               justify-content: center;
               align-items: center;
               text-align: center;
+              
               p{
                 position: absolute;
                 font-size: 14px;
               }
                 &__area{
+                  height: 160px;
+                  width: 620px;
                   &__field{
                     position: relative;
                     height: 160px;
                     width: 620px;
                     opacity: 0;
                     cursor: pointer;
+                    &__fieldjs-file_group{
+                    height: 160px;
+                    width: 620px;
+                    }
+                  }
+                  &__preview{
+
                   }
                 }
             }
