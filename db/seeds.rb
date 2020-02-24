@@ -1755,12 +1755,13 @@ bocchan = "親譲おやゆずりの無鉄砲むてっぽうで小供の時から
 image_length = 367
 bocchan = bocchan.gsub(/\r\n|\r|\n|\s|\t/, "")
 text_length = (bocchan.length / image_length)
-for_length = bocchan.length / text_length
 for number in 1..image_length do
   bocchan.insert(text_length*number+((number-1)*4), " ## ")
 end
 bocchanArray = bocchan.split(" ## ")
-
+user_all_length = User.all.length
+category_all_length = Category.all.length
+brand_all_length = Brand.all.length
 for itemNumber in 0..(bocchanArray.length - 2) do
   item = Item.new(
     {
@@ -1770,13 +1771,13 @@ for itemNumber in 0..(bocchanArray.length - 2) do
       shipping_way: 1,
       discription: bocchanArray[itemNumber],
       buyer_user_id: nil,
-      saler_user_id: User.find(rand(1..User.all.length)).id,
+      saler_user_id: User.find(rand(1..user_all_length)).id,
       fee_side: 1,
       region: "北海道",
       sipping_days: 1,
       transaction_status: 1,
-      category_id: Category.find(rand(1..Category.all.length)).id,
-      brand_id: Brand.find(rand(1..Brand.all.length)).id
+      category_id: Category.find(rand(1..category_all_length)).id,
+      brand_id: Brand.find(rand(1..brand_all_length)).id
     }
   )
   item.images.build(
