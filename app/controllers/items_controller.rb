@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = User.find(@item.saler_user_id)
+    @brand = Brand.find(@item.brand_id)
   end
 
 
@@ -17,5 +19,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(user_id: current_user.id)
   end
-
 end
