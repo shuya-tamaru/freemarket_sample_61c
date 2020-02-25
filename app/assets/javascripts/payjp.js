@@ -12,7 +12,7 @@ $(document).on(function() {
         exp_year: parseInt($("#card_expire_yy").val())
     };
     Payjp.createToken(card, function(status, response) {
-      if (stauts == 200) {
+      if (status == 200) {
         $(".number").removeAttr("name");
         $(".cvc").removeAttr("name");
         $(".exp_month").removeAttr("name");
