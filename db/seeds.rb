@@ -1762,14 +1762,46 @@ bocchanArray = bocchan.split(" ## ")
 user_all_length = User.all.length
 category_all_length = Category.all.length
 brand_all_length = Brand.all.length
-for itemNumber in 0..(bocchanArray.length - 2) do
+parentCategorys = Category.where(ancestry: nil)
+nameNumber = 0
+for parentCategory in 0..(parentCategorys.length-1) do
+  for fifty in 0..14 do
+    item = Item.new(
+      {
+        name: bocchanArray[nameNumber],
+        price: rand(300..1000000),
+        item_status: 1,
+        shipping_way: 1,
+        discription: bocchanArray[nameNumber],
+        buyer_user_id: nil,
+        saler_user_id: User.find(rand(1..user_all_length)).id,
+        fee_side: 1,
+        region: "北海道",
+        sipping_days: 1,
+        transaction_status: 1,
+        category_id: parentCategorys[parentCategory].id,
+        brand_id: Brand.find(rand(1..brand_all_length)).id
+      }
+    )
+    item.images.build(
+      {
+        image: open("./app/assets/images/test/item#{nameNumber}.jpeg")
+      }
+    )
+    item.save!
+    nameNumber+=1
+  end
+end
+
+
+for itemNumber in (parentCategorys.length*15)..(bocchanArray.length - 2) do
   item = Item.new(
     {
-      name: bocchanArray[itemNumber],
+      name: bocchanArray[nameNumber],
       price: rand(300..1000000),
       item_status: 1,
       shipping_way: 1,
-      discription: bocchanArray[itemNumber],
+      discription: bocchanArray[nameNumber],
       buyer_user_id: nil,
       saler_user_id: User.find(rand(1..user_all_length)).id,
       fee_side: 1,
@@ -1782,8 +1814,9 @@ for itemNumber in 0..(bocchanArray.length - 2) do
   )
   item.images.build(
     {
-      image: open("./app/assets/images/test/item#{itemNumber}.jpeg")
+      image: open("./app/assets/images/test/item#{nameNumber}.jpeg")
     }
   )
   item.save!
+  nameNumber+=1
 end
