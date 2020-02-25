@@ -16,7 +16,7 @@
       %li.popular__list__product
         =link_to "#", class: "product" do
           .product__image
-            =image_tag "/uploads/image/image/5/item4.jpeg"
+            = image_tag item_set[1][item].images.to_a[0].pass
             %span
               = "￥#{item_set[1][item].price.to_s(:delimited)}"
           .product__name
