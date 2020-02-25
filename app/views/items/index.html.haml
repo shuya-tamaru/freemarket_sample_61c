@@ -51,9 +51,10 @@
         %li
           =link_to "/", class: "popularCB__container1__list__link" do
             おもちゃ・ホビー・グッズ
+            -# = @items[0].price
     .popularCB__container2
-      - @products_c.each_with_index do |product, index|
-        = render partial: 'product', locals: { index: index, product: product }
+      - @itemCategorys.each_with_index do |itemCategory, index|
+        = render partial: 'product', locals: { index: index, item_set: itemCategory }
   .popularCB
     .popularCB__container1
       %h2.popularCB__container1__title
@@ -72,8 +73,8 @@
           =link_to "/", class: "popularCB__container1__list__link" do
             ナイキ
     .popularCB__container2
-      - @products_b.each_with_index do |product, index|
-        = render partial: 'product', locals: { index: index, product: product }
+      - @item_brands.each_with_index do |item_brand, index|
+        = render partial: 'product', locals: { index: index, item_set: item_brand }
 
 = render "footer"
 .exhibition
