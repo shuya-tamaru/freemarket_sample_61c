@@ -39,10 +39,12 @@
                 = @item.item_status
             %tr
               %th 配送料の負担
-              %td.item-box__details__table__td  配送者負担
+              %td.item-box__details__table__td
+                = @item.fee_side
             %tr
               %th 配送の方法
-              %td.item-box__details__table__td 未定
+              %td.item-box__details__table__td
+                = @item.shipping_way
             %tr
               %th 発送元地域
               %td.item-box__details__table__td
@@ -55,9 +57,19 @@
           ¥
           = @item.price.to_s(:delimited)
         %span.item__price__tax (税込)
-        %span.item__price__ship 送料込み
+        %span.item__price__ship 
+          - if @item.fee_side == "1"
+            送料込み
+          - else 
+            送料別
 
-      .item__purchase 購入画面に進む
+      .item__purchase
+        - if user_signed_in? && current_user.id == @item.saler_user_id
+          = link_to "#" do 
+            購入画面に進む
+        - else
+          = link_to new_user_session_path do
+            購入画面に進む
 
       .item__field 
         = @item.discription
