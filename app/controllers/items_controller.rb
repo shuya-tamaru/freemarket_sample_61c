@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   def index
     @test
     @products_c = ["レディース", "メンズ", "家電・スマホ・カメラ", "おもちゃ・ホビー・グッズ"]
@@ -14,6 +15,11 @@ class ItemsController < ApplicationController
     @brand = Brand.find(@item.brand_id)
   end
 
+  def edit
+  end
+
+  def update
+  end
 
   private
   def item_params
