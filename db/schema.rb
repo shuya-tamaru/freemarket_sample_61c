@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 2020_02_18_100018) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "cellphones", "users"
-  add_foreign_key "sns_credentials", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+  add_foreign_key "sns_credentials", "users"
 end

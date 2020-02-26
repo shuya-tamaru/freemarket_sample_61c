@@ -87,8 +87,8 @@
         %li.side__bar__list__item
           メール/パスワード
           = icon('fas', 'chevron-right',class:"side__bar__list__item--icon")
-      = link_to "#" do
-        %li.side__bar__list__item
+      %li.side__bar__list__item
+        = link_to personal_informations_index_path do
           本人情報
           = icon('fas', 'chevron-right',class:"side__bar__list__item--icon")
       = link_to "#" do
