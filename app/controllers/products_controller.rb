@@ -18,17 +18,16 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # 現状viewからidのvalueを送信出来ないので仮のidを入れています
+    @item = Item.where(id: 1)
+    # @item = Item.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    # if param.key == 0 && current_user.id == Item.saler_user_id[:id]
-      trs = Item.new[:id]
-      trs.save!
-    else render :show
-    end
+
   end
 
   private
