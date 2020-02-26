@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   def index
     @test
     @products_c = ["レディース", "メンズ", "家電・スマホ・カメラ", "おもちゃ・ホビー・グッズ"]
@@ -7,6 +8,7 @@ class ItemsController < ApplicationController
 
   def new
   end
+
 
   def update
     # 現状viewからidのvalueを送信出来ないので仮のidを入れています
@@ -17,6 +19,9 @@ class ItemsController < ApplicationController
     # else
     #   redirect_to controller: 'products', action: 'show', notice: "出品を停止出来ませんでした"  
     # end
+  end
+
+  def edit
   end
 
 end

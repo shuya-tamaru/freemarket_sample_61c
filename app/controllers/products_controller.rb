@@ -26,7 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+
   end
+
 
   def update
     if current_user.id == @item.saler_user_id && @item.update(item_params)
@@ -35,6 +37,7 @@ class ProductsController < ApplicationController
       #更新できなかった場合とりあえず仮でindexに飛ばしてます。
       redirect_to root_path, notice: "商品を情報を更新できませんでした"
     end
+
   end
 
   private
