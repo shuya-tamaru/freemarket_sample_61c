@@ -75,7 +75,14 @@
         = safe_join(@item.discription.split("\n"),tag(:br))
 
       %ul.item__bottom
-        %li.item__bottom__likes いいね!2
+        %li.item__bottom__likes 
+          - if user_signed_in? && current_user.id == @item.saler_user_id
+            = link_to "#" do 
+              いいね!
+
+          - else
+            = link_to new_user_session_path do
+              いいね!
 
       = link_to "#" do
         %li.item__bottom__report 
