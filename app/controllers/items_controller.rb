@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   def index
     @categorys = [1, 200, 893, 680]
     @itemCategorys = []
@@ -25,5 +26,11 @@ class ItemsController < ApplicationController
   end
 
   def new
+  end
+
+  def edit
+  end
+
+  def update
   end
 end
