@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   has_many :likes
   has_many :item_comments
   has_many :trade_comments
-  has_many :sizes
+  belongs_to :size
   belongs_to :category
   belongs_to :brand, optional: true
   has_one :order​​
