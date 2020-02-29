@@ -19,6 +19,7 @@ class User < ApplicationRecord
     with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角カタカナのみで入力して下さい"
   }
+  validate :password_complexity
   # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ }
   # validates :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ }
   validates :birthday_year, presence: true, format: {with: /\A(19|20)\d{2}\z/}
@@ -41,4 +42,12 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+  
+  def password_complexity
+    # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    return if password.blank? || password =~ /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z|\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/
+
+    errors.add :password, '半角英字と数字両方を含むパスワードかつ7文字以上128文字以下'
+  end
+
 end

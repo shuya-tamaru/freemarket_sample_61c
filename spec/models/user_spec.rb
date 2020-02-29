@@ -57,13 +57,6 @@ describe User do
       expect(user.errors[:password]).to include("can't be blank")
     end
 
-    #passwordが存在しても、password_confirmationが空だと登録できない
-    it "is invalid without a password_confirmation although with a password" do
-      user = build(:user, password_confirmation: "")
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
-    end
-
     #birthday_yearが空だと登録できない
     it "is invalid without a birthday_year" do
       user = build(:user, birthday_year: "")
@@ -95,21 +88,21 @@ describe User do
     it "is invalid with a password that has more than 7 characters that aren't half-width alphanumeric" do
       user = build(:user, password: "ａｂｃｄ１２３", password_confirmation: "ａｂｃｄ１２３")
       user.valid?
-      expect(user.errors[:password]).to include("is invalid")
+      expect(user.errors[:password]).to include("半角英字と数字両方を含むパスワードかつ7文字以上128文字以下")
     end
 
     #passwordが7文字以上でも半角数字のみであれば登録できない
     it "is invalid with a password that has more than 7 characters only half-width number" do
       user = build(:user, password: "1234567", password_confirmation: "1234567")
       user.valid?
-      expect(user.errors[:password]).to include("is invalid")
+      expect(user.errors[:password]).to include("半角英字と数字両方を含むパスワードかつ7文字以上128文字以下")
     end
 
     #passwordが7文字以上でも半角英字のみであれば登録できない
     it "is invalid with a password that has more than 7 characters only half-width alphanumeric" do
       user = build(:user, password: "abcdefg", password_confirmation: "abcdefg")
       user.valid?
-      expect(user.errors[:password]).to include("is invalid")
+      expect(user.errors[:password]).to include("半角英字と数字両方を含むパスワードかつ7文字以上128文字以下")
     end
 
     #passwordが6文字以下の半角英数混合だと登録できないこと
@@ -117,13 +110,6 @@ describe User do
       user = build(:user, password: "a0b1c2", password_confirmation: "a0b1c2")
       user.valid?
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
-    end
-
-    #passwordが7文字以上の半角数字混在でもpasswordとpassword_confirmationが不一致なら登録できない
-    it "is invalid that password isn't equal to password_confirmation" do
-      user = build(:user, password: "abcd123", password_confirmation: "abcd321")
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
     #emailが重複していると登録できない
