@@ -9,9 +9,19 @@ class ItemsController < ApplicationController
   def new
   end
 
+
+  def update
+    # 現状viewからidのvalueを送信出来ないので仮のidを入れています
+    @item = Item.where(id: 1)
+    @item.update(transaction_status: 0)
+    # if @item.update_attribute(:transaction_status, 0)
+    #   redirect_to controller: 'products', action: 'show', notice: "出品を停止しました"
+    # else
+    #   redirect_to controller: 'products', action: 'show', notice: "出品を停止出来ませんでした"  
+    # end
+  end
+
   def edit
   end
 
-  def update
-  end
 end
