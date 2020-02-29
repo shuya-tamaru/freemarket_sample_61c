@@ -2,24 +2,24 @@
   - if index == 0
     .popular__topFirst
       %h3.popular__top__title
-        = "#{product}新着アイテム"
+        = "#{item_set[0]}新着アイテム"
       =link_to "#", class: "popular__top__more" do
         もっと見る　＞
   - else
     .popular__top
       %h3.popular__top__title
-        = "#{product}新着アイテム"
+        = "#{item_set[0]}新着アイテム"
       =link_to "#", class: "popular__top__more" do
         もっと見る　＞
   %ul.popular__list
-    - 10.times do
+    - for item in 0..9 do
       %li.popular__list__product
         =link_to "#", class: "product" do
           .product__image
-            =image_tag 'logo-acdd90ac4f472d5a6f7a330d33ab1225.svg'
+            = image_tag item_set[1][item].images.to_a[0].pass
             %span
-              ¥999,999
+              = "￥#{item_set[1][item].price.to_s(:delimited)}"
           .product__name
             %span
-              商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品商品
+              = item_set[1][item].name
           .product__mask

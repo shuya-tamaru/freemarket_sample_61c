@@ -19,6 +19,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    # 現状viewからidのvalueを送信出来ないので仮のidを入れています
+    @item = Item.where(id: 1)
+    # @item = Item.find(params[:id])
+  end
+
   def edit
 
   end
@@ -44,4 +50,7 @@ class ProductsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+  # def stop_params
+  #   params.require(:item).permit(:key).merge(transaction_status: 0) 
+  # end
 end

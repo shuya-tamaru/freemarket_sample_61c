@@ -65,7 +65,7 @@
     height: 390px;
     width: 100vw;
     background: center;
-    background-image: image-url("top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
+    background-image: image-url("top-banner-spring-f85f069965d80a13c16d9cd04fc570b1.jpg");
     position: relative;
     &__subImage{
       display: block;
@@ -182,8 +182,11 @@
     height: calc(100% - 64px);
     background-color: gray;
     position: relative;
+    overflow: hidden;
     > img{
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     > span{
       background-color: rgba(0,0,0,.3);
