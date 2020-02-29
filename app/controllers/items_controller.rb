@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(id: 1)
+    @item = Item.find(1)
     @item.destroy
     # if @item.saler_user_id == current_user.id
     #   @item.destroy
