@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', ()=> {
+$(window).on('load', ()=> {
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="contents__item__upload__image__btn__area__fieldjs-file_group">
                     <input class="js-file" type="file"
@@ -10,9 +10,7 @@ $(document).on('turbolinks:load', ()=> {
 
   const buildImg = (index, url)=> {
     const html = `
-    <div class= "image-box__images__${index}">
-      <img img src="${url}" width="80px" height="80px"></img>
-    </div>`;
+      <img class= "image-box__images__${index}" img src="${url}" width="100px" height="100px"></img>`;
 
     return html;
   }
@@ -24,8 +22,9 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.hidden-destroy').hide();
 
-  $('#image-box').on('change', '.js-file', function(e) {
+  $('#image-box').on('change', function(e) {
     const targetIndex = $(this).parent().data('index');
+    let num = 1;
 
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
@@ -33,9 +32,10 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('image', blobUrl);
     } else {
-      $('#previews').append(buildImg(targetIndex, blobUrl));
+      $('.image-box__images').before(buildImg(num, blobUrl));
+      num = num + 1;
 
-      $('#image-box').append(buildFileField(fileIndex[0]));
+      $('#image-box').prepend(buildFileField(fileIndex[0]));
       fileIndex.shift();
 
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);

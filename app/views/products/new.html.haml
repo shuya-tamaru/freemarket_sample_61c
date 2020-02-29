@@ -8,7 +8,7 @@
         商品の情報を入力
 
       .contents__item
-        .contents__item__upload
+        .contents__item__upload{ id: 'previews' }
           .contents__item__upload__list
             %label
               出品画像
@@ -17,7 +17,7 @@
             %p
               最大10枚までアップロードできます
           .image-box
-            %label.image-box__images{ id: 'previews' }
+            %label.image-box__images
               %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
               = f.fields_for :images do |i|
                 = i.file_field :image, class: "image-box__images__input", id: 'image-box'
