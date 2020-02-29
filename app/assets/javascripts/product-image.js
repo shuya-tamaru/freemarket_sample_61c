@@ -9,8 +9,11 @@ $(document).on('turbolinks:load', ()=> {
   }
 
   const buildImg = (index, url)=> {
-    const html =
-    `<img class="contents__item__upload__image__preview" img data-index="${index}" img src="${url}" width="100px" height="100px"></img>`;
+    const html = `
+    <div class= "image-box__images__${index}">
+      <img img src="${url}" width="80px" height="80px"></img>
+    </div>`;
+
     return html;
   }
 
