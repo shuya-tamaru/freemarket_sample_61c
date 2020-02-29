@@ -10,22 +10,6 @@
     .slide__images__link.slideImage2
       =link_to "/" do
         .slideImage2__mainImage
-          =image_tag 'top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png', class: 'slideImage2__mainImage__subImage'
-          .slideImage2__mainImage__title
-            スマホで かんたん
-            %br
-            フリマアプリ
-          %p.slideImage2__mainImage__explanation
-            メルカリはスマホカメラからすぐに出品できる
-            %br
-            購入時も安心な独自システムのアプリです
-          %object
-            =link_to "/" do
-              =image_tag 'app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg', class: "slideImage2__mainImage__app"
-          %object
-            =link_to "/" do
-              =image_tag 'google-play-495575abb895b405aa6336b2a4304958.svg', class: "slideImage2__mainImage__google"
-
   =image_tag 'carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png', class: 'slide__navLeft'
   =image_tag 'carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png', class: 'slide__navRight'
   -# どちらの画像が表示されてるかを示してる小さい丸
@@ -51,9 +35,10 @@
         %li
           =link_to "/", class: "popularCB__container1__list__link" do
             おもちゃ・ホビー・グッズ
+            -# = @items[0].price
     .popularCB__container2
-      - @products_c.each_with_index do |product, index|
-        = render partial: 'product', locals: { index: index, product: product }
+      - @itemCategorys.each_with_index do |itemCategory, index|
+        = render partial: 'product', locals: { index: index, item_set: itemCategory }
   .popularCB
     .popularCB__container1
       %h2.popularCB__container1__title
@@ -72,8 +57,8 @@
           =link_to "/", class: "popularCB__container1__list__link" do
             ナイキ
     .popularCB__container2
-      - @products_b.each_with_index do |product, index|
-        = render partial: 'product', locals: { index: index, product: product }
+      - @item_brands.each_with_index do |item_brand, index|
+        = render partial: 'product', locals: { index: index, item_set: item_brand }
 
 = render "footer"
 .exhibition

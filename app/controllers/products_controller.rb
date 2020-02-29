@@ -19,9 +19,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-    
+  def show
+    # 現状viewからidのvalueを送信出来ないので仮のidを入れています
+    @item = Item.where(id: 1)
+    # @item = Item.find(params[:id])
   end
+
+  def edit
+
+  end
+
 
   def update
     if current_user.id == @item.saler_user_id && @item.update(item_params)
@@ -30,6 +37,7 @@ class ProductsController < ApplicationController
       #更新できなかった場合とりあえず仮でindexに飛ばしてます。
       redirect_to root_path, notice: "商品を情報を更新できませんでした"
     end
+
   end
 
   private
@@ -42,4 +50,7 @@ class ProductsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+  # def stop_params
+  #   params.require(:item).permit(:key).merge(transaction_status: 0) 
+  # end
 end
