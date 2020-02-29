@@ -1934,6 +1934,7 @@ user_all_length = User.all.length
 category_all_length = Category.all.length
 brand_all_length = Brand.all.length
 parentCategorys = Category.where(ancestry: nil)
+size_all_length = Size.all.length
 nameNumber = 0
 for parentCategory in 0..(parentCategorys.length-1) do
   for fifty in 0..14 do
@@ -1951,7 +1952,8 @@ for parentCategory in 0..(parentCategorys.length-1) do
         sipping_days: 1,
         transaction_status: 1,
         category_id: parentCategorys[parentCategory].id,
-        brand_id: Brand.find(rand(1..brand_all_length)).id
+        brand_id: Brand.find(rand(1..brand_all_length)).id,
+        size_id: Size.find(rand(1..size_all_length)).id
       }
     )
     item.images.build(
@@ -1980,7 +1982,8 @@ for itemNumber in (parentCategorys.length*15)..(bocchanArray.length - 2) do
       sipping_days: 1,
       transaction_status: 1,
       category_id: Category.find(rand(1..category_all_length)).id,
-      brand_id: Brand.find(rand(1..brand_all_length)).id
+      brand_id: Brand.find(rand(1..brand_all_length)).id,
+      size_id: Size.find(rand(1..size_all_length)).id
     }
   )
   item.images.build(
