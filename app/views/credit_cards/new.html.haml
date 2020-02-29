@@ -90,3 +90,8 @@
 
 .footer
   = render 'items/footer'
+
+.exhibition
+  =link_to new_product_path, class: "exhibition__link" do
+    出品
+    = fas_icon 'camera', class: "exhibition__link__icon"

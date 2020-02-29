@@ -1,3 +1,185 @@
-// Place all the styles related to the myinfomations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.myinfomations{
+  width: 700px;
+  margin:24px 0 0 40px;
+  .head{
+    position: relative;
+    .inner{
+      position: absolute;
+      width: 100%;
+      top: 50px;
+      text-align: center;
+      h2,span{
+        font-size: 14px;
+        margin: 8px 0;
+      }
+      &__image{
+        width: 60px;
+        border-radius: 50%;
+      }
+      &:hover {
+        opacity: 0.7;
+        h2{
+          text-decoration: underline;
+          opacity: 0.7;
+        }
+      }
+    }
+    &__backImage{
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  .tabs{
+    &__label{
+      width: 100%;
+      display: flex;
+      line-height: 74px;
+      background-color: #eee;
+      text-align: center;
+      cursor: pointer;
+      h3{
+        margin: auto;
+      }
+      .active{
+        background-color: #fff;
+        border-top: 2px solid #ea352d;
+      }
+    }
+
+    .tab{
+      background-color: #eee;
+      .view{
+        li{
+          background-color: #fff;
+          display: block;
+          border-bottom: 1px solid #eee;
+          padding: 16px;
+          min-height: 80px;
+          position: relative;
+          img{
+            width: 48px;
+            float: left;
+          }
+          div{
+            margin: 0 40px 0 68px;
+            label{
+              font-size: 14px;
+            }
+            span{
+              color: #888;
+              margin-right: 8px;
+              font-size: 14px;
+            }
+          }
+          .right--icon{
+            position: absolute;
+            right: 16px;
+          }
+          &:hover {
+            background: #fafafa;
+            text-decoration: none;
+            opacity: 1;
+          }
+        }
+        li.all{
+          background-color: #fff;
+          a{
+            display: block;
+            background: #eee;
+            line-height: 56px;
+            text-align: center;
+            &:hover {
+              background: rgba(243, 237, 237, 0.301);
+            }
+          }
+        }
+      }
+      ul li{
+        display: none;
+      }
+    }
+  }
+
+  .trades{
+    margin: 40px 0 0;
+    background: #fff;
+    h4{
+      padding: 0 16px;
+      background: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+    }
+    &__label{
+      width: 100%;
+      display: flex;
+      line-height: 74px;
+      background-color: #eee;
+      text-align: center;
+      cursor: pointer;
+      h3{
+        margin: auto;
+      }
+      .active{
+        background-color: #fff;
+        border-top: 2px solid #ea352d;
+      }
+    }
+
+    .trade{
+      width: 100%;
+      height: 100%;
+      background-color: #eee;
+      .view{
+        li{
+          background-color: #fff;
+          display: block;
+          border-bottom: 1px solid #eee;
+          padding: 16px;
+          min-height: 80px;
+          position: relative;
+          img{
+            width: 48px;
+            float: left;
+          }
+          div{
+            margin: 0 40px 0 68px;
+          label{
+            font-size: 14px;
+          }
+          span{
+            color: #888;
+            margin-right: 8px;
+            font-size: 14px;
+          }
+          }
+          .right--icon{
+            position: absolute;
+            right: 16px;
+          }
+          &:hover {
+            background: #fafafa;
+            text-decoration: none;
+            opacity: 1;
+          }
+        }
+        li.all{
+          background-color: #fff;
+          a{
+            display: block;
+            background: #eee;
+            line-height: 56px;
+            text-align: center;
+            &:hover {
+              background: rgba(243, 237, 237, 0.301);
+            }
+          }
+        }
+      }
+      ul li{
+        display: none;
+      }
+    }
+  }
+}
+    
