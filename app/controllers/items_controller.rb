@@ -32,6 +32,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = User.find(@item.saler_user_id)
     @brand = Brand.find(@item.brand_id)
+    @category = Category.find(@item.category_id)
+    @category2 = Category.find(@category.ancestry.match(/[0-9]+$/).to_s.to_i)
+    @category3 = Category.find(@category.ancestry.match(/[0-9]+/).to_s.to_i)
   end
 
   def edit

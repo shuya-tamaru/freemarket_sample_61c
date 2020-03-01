@@ -24,7 +24,21 @@
                 999
             %tr
               %th カテゴリー
-              %td.item-box__details__table__td コスメ・香水・美容>メイクアップ>メイク道具/化粧小物
+              %td.item-box__details__table__td
+                = link_to "#", class:"td__link" do
+                  = @category3.name
+
+                %br
+                = link_to "#", class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @category2.name
+                
+                %br
+                = link_to "#",  class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @category.name
+
+
               %tr
                 %th ブランド
                 %td.item-box__details__table__td
