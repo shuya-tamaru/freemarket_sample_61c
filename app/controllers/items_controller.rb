@@ -30,11 +30,13 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @items = Item.where(transaction_status: '1').limit(6)
     @user = User.find(@item.saler_user_id)
     @brand = Brand.find(@item.brand_id)
     @category = Category.find(@item.category_id)
     @category2 = Category.find(@category.ancestry.match(/[0-9]+$/).to_s.to_i)
     @category3 = Category.find(@category.ancestry.match(/[0-9]+/).to_s.to_i)
+    @image = Image.find_by(item_id:@item.id)
   end
 
   def edit

@@ -300,7 +300,9 @@
         font-size: 22px;
         font-weight: 600;
         width:700px;
-        color: #0099e8;
+        a{
+          color: #0099e8;
+        }
       }
       .show-box{
         margin: 10px 20px;
@@ -309,7 +311,10 @@
         background-color: white;
         width:190px;
         &__image{
-          margin: 24px 0 8px 0;
+          img{
+            width: 190px;
+            height: 152px;
+          }
         }
         &__text{
           float: left;
