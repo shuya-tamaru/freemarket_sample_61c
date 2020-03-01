@@ -54,6 +54,16 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def destroy
+    @item = Item.find(1)
+    @item.destroy
+    # if @item.saler_user_id == current_user.id
+    #   @item.destroy
+    # else
+    #   redirect_to controller: 'products', action: 'show', notice: "商品を削除出来ませんでした"
+    # end
+  end
+
   private
   def item_params
     params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(user_id: current_user.id)

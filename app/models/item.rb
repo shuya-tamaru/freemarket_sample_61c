@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   belongs_to_active_hash :prefecture
   belongs_to :user, optional: true
-  has_many :images
+  has_many :images, dependent: :destroy
   has_many :evaluations
   has_many :likes
   has_many :item_comments
