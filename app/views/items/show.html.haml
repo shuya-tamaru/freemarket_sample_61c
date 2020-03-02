@@ -126,80 +126,30 @@
   .container__show
     %div.container__show__list
       %p.other
-        = link_to "#{@user.nickname}さんのその他の出品", ""
+        = link_to "#{@user.nickname}さんのその他の出品"
         
       - @items.each do |item|
         .show-box
           .show-box__image
-            =image_tag @image.image.to_s
+            =image_tag item.images.to_a[0].pass
           .show-box__text
             .show-box__text__name
               = item.name
             .show-box__text__price
               ¥
               = item.price.to_s(:delimited)
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
+
+    .container__show
+      %div.container__show__list
+        %p.other
+          = link_to "#{@user.nickname}さんのその他の出品"
+        .show-box
+          .show-box__image
+            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
+          .show-box__text
+            .show-box__text__name
+              ChannelNoFregrance
+            .show-box__text__price
+              ¥ 9,999円
+
 = render "footer"
