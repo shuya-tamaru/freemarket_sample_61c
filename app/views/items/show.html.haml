@@ -34,10 +34,6 @@
                   = icon('fas', 'chevron-right')
                   = @categorys.name
                                  
-                    
-
-
-
               %tr
                 %th ブランド
                 %td.item-box__details__table__td
@@ -138,13 +134,15 @@
               ¥
               = item.price.to_s(:delimited)
 
-    .container__show
-      %div.container__show__list
-        %p.other
-          = link_to "#{@user.nickname}さんのその他の出品"
+  .container__show
+    %div.container__show__list
+      %p.other
+        = link_to "#{@brand.name}の#{@categorys.name}その他の出品"
+        
+      - @subitems.each do |subitem|
         .show-box
           .show-box__image
-            =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
+            =image_tag subitem.images.to_a[0].pass
           .show-box__text
             .show-box__text__name
               ChannelNoFregrance
