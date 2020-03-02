@@ -26,17 +26,16 @@
               %th カテゴリー
               %td.item-box__details__table__td
                 = link_to "#", class:"td__link" do
-                  = @category3.name
+                  = @categorys.parent.parent.name
+                  %br
+                  = icon('fas', 'chevron-right')
+                  = @categorys.parent.name
+                  %br
+                  = icon('fas', 'chevron-right')
+                  = @categorys.name
+                                 
+                    
 
-                %br
-                = link_to "#", class:"td__link" do
-                  = icon('fas', 'chevron-right')
-                  = @category2.name
-                
-                %br
-                = link_to "#",  class:"td__link" do
-                  = icon('fas', 'chevron-right')
-                  = @category.name
 
 
               %tr

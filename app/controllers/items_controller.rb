@@ -33,10 +33,7 @@ class ItemsController < ApplicationController
     @user = User.find(@item.saler_user_id)
     @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
     @brand = Brand.find(@item.brand_id)
-    @category = Category.find(@item.category_id)
-    @category2 = Category.find(@category.ancestry.match(/[0-9]+$/).to_s.to_i)
-    @category3 = Category.find(@category.ancestry.match(/[0-9]+/).to_s.to_i)
-    @image = Image.find_by(item_id:@item.id)
+    @categorys = Category.find(@item.category_id)
   end
 
   def edit
