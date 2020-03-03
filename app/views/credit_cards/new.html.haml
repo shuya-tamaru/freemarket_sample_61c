@@ -6,7 +6,6 @@
     = render 'myinfomations/sidebar'
   .new
     .new__card
-      -# = form_with url:pay_credit_cards_path, method: :post, id: 'charge-form', name: "CardForm", local: true do |f|
       = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form', name: "CardForm") do
         
         .new__card__header
@@ -21,7 +20,6 @@
               %span
                 必須
               .new__card__create__formgroup__number__form
-                -# = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16", id: "card_number", name: "number"
                 = text_field_tag "number", "", class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16", id: "card_number"
               .new__card__create__formgroup__number__image
                 %li
@@ -80,7 +78,6 @@
               %span
                 必須
               .new__card__create__formgroup__securityNumber__form
-                -# = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4", id: "cvc", name: "cvc"
                 = text_field_tag "cvc", "", class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4", id: "cvc"
             
               .new__card__create__formgroup__securityNumber__question

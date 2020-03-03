@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
       Payjp.createToken(card, (status, response) => {
         //createToken(card, callback)：PAY.JPのサーバーと通信し、カード情報の認証を行い、トークンを作成。cardは必須、Object型、カード情報であり、number exp_year exp_monthが必須、cvcは任意でいずれもstr型。callbackは必須、レスポンス取得時に呼ばれるコールバック関数、第1引数にHTTPステータス、第2引数にtokenオブジェクト。
         if (status === 200) {
-          // 出力（本来はサーバへ送信）
-          document.getElementById('card_token').innerHTML = response.card.id;
           $("#card_number").removeAttr("name");
           $("#cvc").removeAttr("name");
           $("#exp_month").removeAttr("name");
