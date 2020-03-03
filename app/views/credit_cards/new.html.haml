@@ -6,7 +6,8 @@
     = render 'myinfomations/sidebar'
   .new
     .new__card
-      = form_with url:root_path do |f|
+      -# = form_with url:pay_credit_cards_path, method: :post, id: 'charge-form', name: "CardForm", local: true do |f|
+      = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form', name: "CardForm") do
         
         .new__card__header
           %h1
@@ -20,7 +21,8 @@
               %span
                 必須
               .new__card__create__formgroup__number__form
-                = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16", id: "card_number"
+                -# = f.text_field :text, class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16", id: "card_number", name: "number"
+                = text_field_tag "number", "", class:"new__card__create__formgroup__number__form__text", placeholder: "半角数字のみ",maxlength: "16", id: "card_number"
               .new__card__create__formgroup__number__image
                 %li
                   = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_Visa.svg/2000px-Logo_Visa.svg.png", alt: "visa", size: '45x17')
@@ -44,7 +46,7 @@
                 必須
               .new__card__create__formgroup__validatedDate__select
                 .new__card__create__formgroup__validatedDate__select__month
-                  %select.new__card__create__formgroup__validatedDate__select__month__box{id: "exp_month", type: "text"}
+                  %select.new__card__create__formgroup__validatedDate__select__month__box{id: "exp_month", name: "exp_month", type: "text"}
                     %option{value: "1"} 01
                     %option{value: "2"} 02
                     %option{value: "3"} 03
@@ -60,7 +62,7 @@
                   %label
                     月
                 .new__card__create__formgroup__validatedDate__select__year
-                  %select.new__card__create__formgroup__validatedDate__select__year__box{id: "exp_year", type: "text"}
+                  %select.new__card__create__formgroup__validatedDate__select__year__box{id: "exp_year", name: "exp_year", type: "text"}
                     %option{value: "2020"} 20
                     %option{value: "2021"} 21
                     %option{value: "2022"} 22
@@ -78,15 +80,18 @@
               %span
                 必須
               .new__card__create__formgroup__securityNumber__form
-                = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4", id: "cvc"
+                -# = f.text_field :text, class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4", id: "cvc", name: "cvc"
+                = text_field_tag "cvc", "", class:"new__card__create__formgroup__securityNumber__form__text", placeholder: "カード背面4桁もしくは3桁の番号",maxlength: "4", id: "cvc"
             
               .new__card__create__formgroup__securityNumber__question
                 = icon('fas', 'question-circle',class:"new__card__create__formgroup__securityNumber__question--icon")
                 カード裏面の番号とは？
+              
+              .new__card__create__formgroup__add
+                = submit_tag "追加する", id: "token", class: "new__card__create__formgroup__add__btn"
 
-            .new__card__create__formgroup__add
-              = link_to "#", class: "new__card__create__formgroup__add__btn", id: "token" do
-                追加する
+            -# .actions
+            -#   = f.submit "追加する", class: "new__card__create__formgroup__add new__card__create__formgroup__add__btn", id: "token"
             生成されたトークン：
             #card_token
 
