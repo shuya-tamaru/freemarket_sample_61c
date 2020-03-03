@@ -30,13 +30,13 @@ class CreditCardsController < ApplicationController
   end
 
   def show #DBのカード情報をpayjpに送り、customer情報を取り出す。
-    card = Card.where(user_id: current_user.id).first #ログイン中ユーザの１番目のカードを取る。
-    if card.blank?
+    @card = Card.where(user_id: current_user.id).first #ログイン中ユーザの１番目のカードを取る。
+    if @card.blank?
       redirect_to action: "new" #カードがなければnewへ
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id) #カードのcustomer情報をpayjpに送り、取り出した情報を変数customerに入れる。
-      @default_card_information = customer.cards.retrieve(card.card_id) #変数customerのカードのカードIDをデフォルトにする。default_card_informationはhamlで使います。
+      customer = Payjp::Customer.retrieve(@card.customer_id) #カードのcustomer情報をpayjpに送り、取り出した情報を変数customerに入れる。
+      @default_card_information = customer.cards.retrieve(@card.card_id) #変数customerのカードのカードIDをデフォルトにする。default_card_informationはhamlで使います。
     end
   end
 

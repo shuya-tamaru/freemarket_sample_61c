@@ -33,8 +33,9 @@
                 = exp_month + " / " + exp_year
           
             .card__content__list__register__delete
-              = link_to "delete_credit_cards_path", class: "card__content__list__register__delete__btn", method: :post, id: 'charge-form', name: "CardForm" do
-                削除する
+              = form_tag(delete_credit_cards_path, method: :post, id: 'charge-form',  name: "CardForm") do
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button{class: "card__content__list__register__delete__btn"} 削除する
 
         .card__content__method
           = link_to "#", class: "card__content__method__btn" do
