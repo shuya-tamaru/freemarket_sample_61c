@@ -27,10 +27,12 @@
               %td.item-box__details__table__td
                 = link_to "#", class:"td__link" do
                   = @categorys.parent.parent.name
-                  %br
+                %br
+                = link_to "#", class:"td__link" do
                   = icon('fas', 'chevron-right')
                   = @categorys.parent.name
-                  %br
+                %br
+                = link_to "#", class:"td__link" do
                   = icon('fas', 'chevron-right')
                   = @categorys.name
                                  
@@ -96,7 +98,11 @@
       = link_to "#" do
         %li.item__bottom__report 
           不適切な商品の報告
-        %li.item__bottom__policy あんしん・あんぜんへの取り組み
+      = link_to "#" do
+        %li.item__bottom__policy 
+          = icon('fas', 'lock')
+          あんしん・あんぜんへの取り組み
+          
   .container__form
     %p.warning 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
     %textarea.inputs
@@ -118,6 +124,7 @@
       %li
         %a.pinterest
           = fab_icon 'pinterest', class: "pinterest__icon"
+
   .container__show
     %div.container__show__list
       %p.other
@@ -145,8 +152,9 @@
             =image_tag subitem.images.to_a[0].pass
           .show-box__text
             .show-box__text__name
-              ChannelNoFregrance
+              = subitem.name
             .show-box__text__price
-              ¥ 9,999円
+              ¥
+              = subitem.price.to_s(:delimited)
 
 = render "footer"
