@@ -1,18 +1,21 @@
 $(window).on('load', ()=> {
   const buildFileField = (num)=> {
-    const html = `<div data-index="${num}" class="contents__item__upload__image__btn__area__fieldjs-file_group">
-                    <input class="js-file" type="file"
-                    name="item[images_attributes][${num}][image]"
-                    id="item_images_attributes_${num}_image"><br>
-                  </div>`;
+    const html = `
+                  <input class="image-box__images__input" type="file"
+                  name="item[images_attributes][${num}][image]"
+                  id="item_images_attributes_${num}_image">
+                  `;
     return html;
   }
 
   const buildImg = (index, url)=> {
-    const html = `
-      <img class= "image-box__images__${index}" img src="${url}" width="100px" height="100px"></img>`;
-
-    return html;
+    const html2 = `
+    <div class= "image-box__images__box">
+      <img class= "image-box__images__box__image${index}" img src="${url}" width="110px" height="120px"></img>
+      <div class= "image-box__images__box__delete" width="110px" height="20px">削除</div>
+    </div>
+      `;
+    return html2;
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
@@ -20,11 +23,15 @@ $(window).on('load', ()=> {
   lastIndex = $('.contents__item__upload__image__btn__area__field:last').data('index');
   fileIndex.splice(0, lastIndex);
 
+  $(document).on("click", ".image-box__images__box__delete", function() {
+    $(this).closest(".image-box__images__box").remove();
+  });
+
   $('.hidden-destroy').hide();
 
   $('#image-box').on('change', function(e) {
     const targetIndex = $(this).parent().data('index');
-    let num = 1;
+    const num = $(".image-box__images__box").length;
 
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
@@ -33,12 +40,18 @@ $(window).on('load', ()=> {
       img.setAttribute('image', blobUrl);
     } else {
       $('.image-box__images').before(buildImg(num, blobUrl));
-      num = num + 1;
 
       $('#image-box').prepend(buildFileField(fileIndex[0]));
       fileIndex.shift();
 
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+
+      $('.text').hide();
+      
+      if (num == 9){
+        $('.image-box__images__input').remove();
+      }
+
     }
   });
 
