@@ -6,8 +6,8 @@ class CreditCardsController < ApplicationController
   end
 
   def new # カード情報の追加
-    card = Card.where(user_id: current_user.id) #Cardモデルからログイン中ユーザの情報を変数cardに入れる。
-    redirect_to action: "show" if card.exists? #すでにcardが存在していればshowアクションへ飛ぶ。
+    cards = Card.where(user_id: current_user.id) #Cardモデルからログイン中ユーザの情報を変数cardに入れる。
+    redirect_to action: "show" if cards.exists? #すでにcardが存在していればshowアクションへ飛ぶ。
   end
 
   def pay #payjpとCardのDBを作成
