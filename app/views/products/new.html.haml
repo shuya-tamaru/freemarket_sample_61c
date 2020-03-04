@@ -23,27 +23,6 @@
                 = f.fields_for :images do |i|
                   = i.file_field :image, class: "image-box__images__input", id: 'image-box'
 
-          -# .contents__item__upload__image
-          -#   .contents__item__upload__image__btn{ id: 'image-box' }
-          -#     %p
-          -#       ドラッグアンドドロップ
-          -#       %br
-          -#         またはクリックしてファイルをダウンロード
-          -#     .contents__item__upload__image__btn__area{ id: 'previews' }
-          -#       .contents__item__upload__image__btn__area__field
-          -#         -# - if @item.persisted?
-          -#         -# - @item.images.each_with_index do |image, i|
-          -#         -#   = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
-          -#       = f.fields_for :images do |image|
-          -#         .contents__item__upload__image__btn__area__fieldjs-file_group{"data-index" => "#{image.index}"}
-          -#         = image.file_field :image, class: 'js-file'
-          -#         -#     %br/
-          -#         -# - if @item.persisted?
-          -#         -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-          -#         -#     = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
-
-
-
         .contents__item__comment
           .contents__item__comment__name
             %label
@@ -52,7 +31,6 @@
               必須
             .contents__item__comment__name__form
               = f.text_field :name, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
-        
           .contents__item__comment__description
             %label
               商品の説明
