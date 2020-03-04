@@ -15,12 +15,12 @@ class CreditCardsController < ApplicationController
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      customer = Payjp::Customer.create(
+      customer = Payjp::Customer.create( #Payjp::Customer.create：メールアドレスやIDなどを指定して顧客を作成するメソッド
         description: '登録テストです。', #なくてもいいがわかりやすいので。
         card: params['payjp-token'], #payjpでクレジットカードからトークンに変換されると、その情報はpayjp-tokenという名前でPOSTされる。
         metadata: {user_id: current_user.id} #なくてもいいがわかりやすいので。単なる説明文みたいなものです。
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card) #customer.idを自分たちのDBに保存することで、次回からカード情報を入力することなく、customer.idを指定して支払いできるようになる。default_cardはpayjpのレスポンスなので、ここでは定義していない。
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card) #customer.idを自分たちのDBに保存することで、次回からカード情報を入力することなく、customer.idを指定して支払いできるようになる。default_cardはpayjpのレスポンスなので、ここでは定義していないが、payjpでは最初に情報入力したカードがdefault_cardになる。
       if @card.save
         redirect_to action: "show"
       else
@@ -35,7 +35,7 @@ class CreditCardsController < ApplicationController
       redirect_to action: "new" #カードがなければnewへ
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@card.customer_id) #カードのcustomer情報をpayjpに送り、取り出した情報を変数customerに入れる。
+      customer = Payjp::Customer.retrieve(@card.customer_id) #カードのcustomer情報をpayjpに送り、取り出した情報を変数customerに入れる。 Payjp::Customer.retrieve()：引数に指定したidで顧客情報を取得するメソッド。
       @default_card_information = customer.cards.retrieve(@card.card_id) #変数customerのカードのカードIDをデフォルトにする。default_card_informationはhamlで使います。
     end
   end

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       
       // トークン生成
       Payjp.createToken(card, (status, response) => {
-        //createToken(card, callback)：PAY.JPのサーバーと通信し、カード情報の認証を行い、トークンを作成。cardは必須、Object型、カード情報であり、number exp_year exp_monthが必須、cvcは任意でいずれもstr型。callbackは必須、レスポンス取得時に呼ばれるコールバック関数、第1引数にHTTPステータス、第2引数にtokenオブジェクト。
+        //createToken(card, callback)：PAY.JPのサーバーと通信し、カード情報の認証を行い、トークンを作成。cardはObject型でカード情報を示している。number、exp_year、exp_monthが必須、cvcは任意でいずれもstr型。callbackは必須でレスポンス取得時に呼ばれるコールバック関数、第1引数にHTTPステータス、第2引数にtokenオブジェクト。
         if (status === 200) {
           $("#card_number").removeAttr("name");
           $("#cvc").removeAttr("name");
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
           //以上4つのデータを自サーバにpostしないようにparamsの値として含まれないようにする
           $("#card_token").append(
             $('<input type="hidden" name="payjp-token">').val(response.id)
-          ); //コントローラにトークンIDをparamsとして渡せるようにする。通信が成功し、statusが200になったとき、typeがhiddenとなっているinput要素が追加される。これが値として変数tokenを取得しているのでresponse.idがコントローラでparams[:payjp-token]として受け取ることが可能になる。
+          ); //Payjp.createTokenメソッドで返されたトークン情報がresponseであり、response.idというのはこのトークンオブジェクトのidを参照している。通信が成功し、statusが200になったとき、typeがhiddenとなっているトークンIDがコントローラに渡されるようになる。渡されたトークンIDはコントローラでparams[:payjp-token]として受け取ることが可能になる。
           document.CardForm.submit();
           alert("登録が完了しました");
         } else {
-          alert("登録失敗です。。");
+          alert("登録が失敗しました");
         }
       });
     });
