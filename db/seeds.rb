@@ -93,27 +93,6 @@ Address.create(
   ]
 )
 
-#クレジッド
-# Card.create(
-#   [
-#     #ユーザー１
-#     {
-#       number:               1234567890123456,
-#       validated_date_year:  22,
-#       validated_date_month: 10,
-#       security_number:      111,
-#       user_id:              1,
-#     },
-#     #ユーザー2
-#     {
-#       number:               1111111111111111,
-#       validated_date_year:  24,
-#       validated_date_month: 2,
-#       security_number:      222,
-#       user_id:              2,
-#     }
-#   ]
-# )
 c1 = Category.create(name:"レディース")
 
 c1_1 = c1.children.create(name: "トップス")
