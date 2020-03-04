@@ -30,7 +30,7 @@ class CreditCardsController < ApplicationController
   end
 
   def show #DBのカード情報をpayjpに送り、customer情報を取り出す。
-    @card = Card.where(user_id: current_user.id).first #ログイン中ユーザの１番目のカードを取る。
+    @card = Card.find_by(user_id: current_user.id) #ログイン中ユーザの１番目のカードを取る。
     if @card.blank?
       redirect_to action: "new" #カードがなければnewへ
     else
@@ -41,7 +41,7 @@ class CreditCardsController < ApplicationController
   end
 
   def delete #payjpとCardのDBを削除
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     if card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
