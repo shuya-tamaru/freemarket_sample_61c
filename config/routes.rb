@@ -42,6 +42,12 @@ Rails.application.routes.draw do
   resources :sales, only: [:index]
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
-  resources :orders, only: [:new, :edit, :update]
+  resources :orders, only: [:new, :edit, :update] do
+    collection do
+      get 'new', to: 'orders#new'
+      post 'pay', to: 'orders#pay'
+      get 'done', to: 'orders#done'
+    end
+  end
   resources :products, only: [:new, :create, :show, :edit, :update, :delete]
 end

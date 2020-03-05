@@ -11,4 +11,10 @@ class OrdersController < ApplicationController
   def update
   end
 
+  def pay
+  end
+
+  def done
+  end
+
 end
