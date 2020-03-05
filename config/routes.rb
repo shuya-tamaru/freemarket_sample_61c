@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :categorized_items, only: [:index]
   resources :branded_items, only: [:index]
-  resources :credit_cards, only: [:index,:new,:show]
+  resources :credit_cards, only: [:index,:new,:show] do
+    collection do
+      post 'show', to: 'credit_cards#show'
+      post 'pay', to: 'credit_cards#pay'
+      post 'delete', to: 'credit_cards#delete'
+    end
+  end
   resources :create_accounts, only: [:index]
   resources :myinfomations, only: [:index]
   resources :notifications, only: [:index]
