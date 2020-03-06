@@ -11,6 +11,14 @@ class OrdersController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
+
+    @item = Item.find(params[:id])
+    item = @item
+    @image = Image.find_by(params[:item_id])
+
+    @address = current_user.address
+    @user = current_user
+
   end
 
   def create
@@ -24,16 +32,18 @@ class OrdersController < ApplicationController
 
   def pay
     @card = Card.find_by(user_id: current_user.id)
+    @item = Item.find(params[:id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-      amount: 7500, #支払い金額
+      amount: @item.price, #支払い金額
       customer: @card.customer_id, #顧客ID
       currency: 'jpy' #日本円
     )
-    redirect_to action: "done" #購入完了画面に遷移
+    redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
   end
 
   def done
+    @item = Item.find(params[:id])
   end
 
 end
