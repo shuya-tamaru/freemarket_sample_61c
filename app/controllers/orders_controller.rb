@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 
     @item = Item.find(params[:id])
     item = @item
-    @image = Image.find_by(params[:item_id])
+    @image = Image.find_by(params[:item_id]) #複数画像のうち最初の１枚をとる。
 
     @address = current_user.address
     @user = current_user
