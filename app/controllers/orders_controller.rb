@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   require 'payjp'
 
   def new
-    @card = Card.where(user_id: current_user.id).first #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
+    @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
     if @card.blank?
       redirect_to controller: "credit_cards", action: "new" #登録された情報がない場合、クレジットカード登録画面に移動。
     else #以下はcredit_cards_controllerの内容にもあるので意味はそちらをご参照。
