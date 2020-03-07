@@ -26,7 +26,9 @@ $(window).on('load', ()=> {
   $(document).on("click", ".image-box__images__box__delete", function(event) {
     event.preventDefault();
     const num = $(".image-box__images__box").length;
+    const deleteId = ("#item_images_attributes_"+num+"_image")
     $(this).closest(".image-box__images__box").remove();
+    $(deleteId).remove();
     if (num == 9){
       $('#image-box').prepend(buildFileField(9))
     }
@@ -40,19 +42,14 @@ $(window).on('load', ()=> {
 
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    if (num != 10){
-      console.log(num);
+    if (num != 9){
       $('.image-box__images').before(buildImg(num, blobUrl));
 
-      $('#image-box').prepend(buildFileField(fileIndex[0]));
-      fileIndex.shift();
-
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      $('#image-box').prepend(buildFileField(num+1));
 
       $('.text').remove();
       } else {
-        console.log("readread");
-        $('#item_images_attributes_10_image').remove();
+        $('.image-box__images').before(buildImg(num, blobUrl));
       }
   });
 
