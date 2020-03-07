@@ -23,7 +23,8 @@ $(window).on('load', ()=> {
   lastIndex = $('.contents__item__upload__image__btn__area__field:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  $(document).on("click", ".image-box__images__box__delete", function() {
+  $(document).on("click", ".image-box__images__box__delete", function(event) {
+    event.preventDefault();
     const num = $(".image-box__images__box").length;
     $(this).closest(".image-box__images__box").remove();
     if (num == 9){
