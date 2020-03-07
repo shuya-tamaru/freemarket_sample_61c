@@ -51,9 +51,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_cellphone(@cellphone.attributes)
     @user.build_address(@address.attributes)
-    session["address"] = @address.attributes
-    @card = @user.build_card
-    render :new_card
+    @user.save
+    sign_in(:user, @user)
+    redirect_to root_path
+    # session["address"] = @address.attributes
+    # @card = @user.build_card
+    # render :new_card
   end
 
 
@@ -112,9 +115,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:address).permit(:zip_code, :prefecture, :city, :address, :building, :phone_tell)
   end
 
-  def card_params
-    params.require(:card).permit(:number, :validated_date_year, :validated_date_month, :security_number)
-  end
+  # def card_params
+  #   params.require(:card).permit(:number, :validated_date_year, :validated_date_month, :security_number)
+  # end
 
 
 
