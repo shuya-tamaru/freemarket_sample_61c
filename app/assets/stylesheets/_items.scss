@@ -7,10 +7,9 @@
   .item{
     width: 700px;
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding: 24px 40px 20px 40px;
+    background: #fff;
     .item-box{
-      padding: 24px 40px 40px;
-      background: #fff;
       &__name{
         font-size: 24px;
         text-align: center;
@@ -24,41 +23,56 @@
         line-height: 1.5;
       }
       &__details{
-        height: 420px;
+        margin-top: 16px;
         &__image{
           position: relative;
           float: left;
-          width: 300px;
-          height: 375px;
+          height: 400px;
           &__top{
-            max-width: 300px;
-            height: auto;
+            img{
+              width: 300px;
+              height: 300px;
+            }
+          }
+          &__list{
+            display: block;
+            float: left;
+            li{
+              list-style: none;
+              width: 300px;
+              img{
+                width: 56px;
+                height: 56px;
+                max-height: none;
+              }
+            }
           }
         }
         &__table{
           border-color: #fafafa;
           float: right;
           width: 320px;
-          height: 420px;
+          height: 400px;
           margin: 0 auto;
           vertical-align: inherit;
           tr {
             background-repeat: no-repeat;
             margin: 0;
             padding: 0;
+            border: 1px solid #f5f5f5;
           }
             th {
-              font-size: 12px;
+              font-size: 14px;
               width: 39%;
               text-align: left;
               font-weight: 400;
               background-color: #fafafa;
-              padding: 8px;
+              padding: 10px;
             }
               td {
                 display: table-cell;
                 vertical-align: inherit;
-                font-size: 12px;
+                font-size: 14px;
                 width: 39%;
                 text-align: left;
                 font-weight: 400;
@@ -91,7 +105,6 @@
   }
   &__price{
     text-align: center;
-    width: 700px;
     
     &__amount{
     font-weight: 600;
