@@ -1,9 +1,9 @@
 $(window).on('load', ()=> {
   const buildFileField = (num)=> {
     const html = `
-                  <input class="image-box__images__input" type="file"
-                  name="item[images_attributes][${num}][image]"
-                  id="item_images_attributes_${num}_image">
+                  <input class="image-box__images__input"
+                  id="item_images_attributes_${num}_image" type="file"
+                  name="item[images_attributes][${num}][image]">
                   `;
     return html;
   }
@@ -46,7 +46,7 @@ $(window).on('load', ()=> {
 
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
 
-      $('.text').hide();
+      $('.text').remove();
       
       if (num == 9){
         $('.image-box__images__input').remove();

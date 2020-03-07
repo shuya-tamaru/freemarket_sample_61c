@@ -18,10 +18,10 @@
               最大10枚までアップロードできます
           .image-box
             %label
-              .image-box__images
+              .image-box__images{ id: 'image-box' }
                 %p.text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
                 = f.fields_for :images do |i|
-                  = i.file_field :image, class: "image-box__images__input", id: 'image-box'
+                  = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
 
         .contents__item__comment
           .contents__item__comment__name
@@ -158,3 +158,5 @@
 
 .footer2
   = render 'devise/shared/footer2'
+
+
