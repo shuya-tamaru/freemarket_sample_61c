@@ -24,7 +24,11 @@ $(window).on('load', ()=> {
   fileIndex.splice(0, lastIndex);
 
   $(document).on("click", ".image-box__images__box__delete", function() {
+    const num = $(".image-box__images__box").length;
     $(this).closest(".image-box__images__box").remove();
+    if (num == 9){
+      $('#image-box').prepend(buildFileField(9))
+    }
   });
 
   $('.hidden-destroy').hide();
@@ -35,10 +39,8 @@ $(window).on('load', ()=> {
 
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('image', blobUrl);
-    } else {
+    if (num != 10){
+      console.log(num);
       $('.image-box__images').before(buildImg(num, blobUrl));
 
       $('#image-box').prepend(buildFileField(fileIndex[0]));
@@ -47,12 +49,10 @@ $(window).on('load', ()=> {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
 
       $('.text').remove();
-      
-      if (num == 9){
-        $('.image-box__images__input').remove();
+      } else {
+        console.log("readread");
+        $('#item_images_attributes_10_image').remove();
       }
-
-    }
   });
 
 });
