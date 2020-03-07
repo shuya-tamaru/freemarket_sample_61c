@@ -6,8 +6,9 @@
         = @item.name
       .item-box__details
         .item-box__details__image
-          .item-box__details__image__top
-            =image_tag 'test/item0.jpeg'
+          %ul.item-box__details__image__top
+            %li
+              =image_tag 'test/item0.jpeg'
           %ul.item-box__details__image__list
             %li
               =image_tag 'test/item1.jpeg'
