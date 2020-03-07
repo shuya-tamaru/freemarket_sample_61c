@@ -10,13 +10,11 @@ class ProductsController < ApplicationController
   end
 
   def create
-    begin
-      item = Item.new(item_params)
-      item.save!
-      redirect_to root_path, notice: "商品を投稿しました"
-    rescue ActiveRecord::RecordInvalid => e
-      redirect_to new_product_path, status: 400, notice: "error"
-    end
+    item = Item.new(item_params)
+    item.save!
+    redirect_to root_path, notice: "商品を投稿しました"
+    rescue
+    redirect_to new_product_path, status: 400, notice: "error"
   end
 
   def show
@@ -43,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
+    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
   end
 
   def set_item
