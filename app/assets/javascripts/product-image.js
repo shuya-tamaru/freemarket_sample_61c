@@ -31,7 +31,7 @@ $(window).on('load', ()=> {
 
   $('#image-box').on('change', function(e) {
     const targetIndex = $(this).parent().data('index');
-    const num = $(".image-box__images__box").length;
+    const num = $(".box").length;
 
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
@@ -41,7 +41,7 @@ $(window).on('load', ()=> {
     } else {
       $('.image-box__images').before(buildImg(num, blobUrl));
 
-      $('#image-box').prepend(buildFileField(fileIndex[0]));
+      $('.box').prepend(buildFileField(fileIndex[0]));
       fileIndex.shift();
 
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);

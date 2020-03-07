@@ -21,7 +21,11 @@
               .image-box__images
                 %p.text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
                 = f.fields_for :images do |i|
-                  = i.file_field :image, class: "image-box__images__input", id: 'image-box'
+                  -# .box{"data-index" => "#{i.index}"}
+                  .box
+                    = i.file_field :image, class: "image-box__images__input", id: 'image-box'
+
+                    -# = i.file_field :image, class: "image-box__images__input", id: 'image-box'
 
         .contents__item__comment
           .contents__item__comment__name
