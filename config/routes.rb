@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :categorized_items, only: [:index]
   resources :branded_items, only: [:index]
-  resources :credit_cards, only: [:index,:new,:show]
+  resources :credit_cards, only: [:index,:new,:show] do
+    collection do
+      post 'show', to: 'credit_cards#show'
+      post 'pay', to: 'credit_cards#pay'
+      post 'delete', to: 'credit_cards#delete'
+    end
+  end
   resources :create_accounts, only: [:index]
   resources :myinfomations, only: [:index]
   resources :notifications, only: [:index]
@@ -36,6 +42,12 @@ Rails.application.routes.draw do
   resources :sales, only: [:index]
   resources :points, only: [:index]
   resources :profiles, only: [:edit]
-  resources :orders, only: [:new, :edit, :update]
+  resources :orders, only: [:new, :edit, :update] do
+    collection do
+      get 'new', to: 'orders#new'
+      post 'pay', to: 'orders#pay'
+      get 'done', to: 'orders#done'
+    end
+  end
   resources :products, only: [:new, :create, :show, :edit, :update, :delete]
 end

@@ -24,15 +24,18 @@
           
             .card__content__list__register__number
               %li
-                ************2002
+                = "**** **** ****" + @default_card_information.last4
           
             .card__content__list__register__validatedDate
               %li
-                03/21
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
           
             .card__content__list__register__delete
-              = link_to "#", class: "card__content__list__register__delete__btn" do
-                削除する
+              = form_with url:delete_credit_cards_path, method: :post, html: { name: "CardForm" }, local:true do |f|
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button{class: "card__content__list__register__delete__btn"} 削除する
 
         .card__content__method
           = link_to "#", class: "card__content__method__btn" do

@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
   def new
   end
 
-
   def update
     # 現状viewからidのvalueを送信出来ないので仮のidを入れています
     @item = Item.where(id: 1)
@@ -41,6 +40,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @item = Item.find(1)
+    @item.destroy
+    # if @item.saler_user_id == current_user.id
+    #   @item.destroy
+    # else
+    #   redirect_to controller: 'products', action: 'show', notice: "商品を削除出来ませんでした"
+    # end
   end
 
 end
