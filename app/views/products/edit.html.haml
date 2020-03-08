@@ -30,7 +30,7 @@
                     = i.check_box :_destroy, data:{ index: i.index }, class: 'idden-destroy'
                 - if @item.persisted?
                   .js-file_group{"data-index" => "#{@item.images.count}"}
-                    = file_field_tag :image, name: "product[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+                    = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
                     .js-remove 削除
         .contents__item__comment
           .contents__item__comment__name

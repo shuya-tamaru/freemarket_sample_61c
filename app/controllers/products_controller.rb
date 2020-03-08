@@ -24,7 +24,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @image = Image.find(params[:id])
   end
 
 
