@@ -10,7 +10,18 @@ FactoryBot.define do
     region {1}
     sipping_days {1}
     transaction_status{1}
-    category_id {1}
-    brand_id {1}
+    category
+    brand {brand_id}
+    # category_id {1}
+    # brand_id {1}
+    image
   end
+
+  factory :item_with_image, class: Item do
+    image {File.open("#{Rails.root}/public/images/test.png")}
+
+    after( :create ) do |item|
+      create :image, item: item
+    end
+  end  
 end
