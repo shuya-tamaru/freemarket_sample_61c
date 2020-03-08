@@ -18,6 +18,7 @@ $(function() {
   //slickスライダー初期化
   $(slider).slick({
   arrows: false,
+  waitForAnimate:false,
   speed:1000,
   infinite: false //これはつけましょう。
   });
