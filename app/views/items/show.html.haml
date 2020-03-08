@@ -6,20 +6,50 @@
         = @item.name
       .item-box__details
         .item-box__details__image
-          %ul.item-box__details__image__top
-            %li
-              =image_tag 'test/item0.jpeg'
-          %ul.item-box__details__image__list
-            %li
+          .item-box__details__image__top
+            %ul.slider
+              %li.slider__item
+                =image_tag 'test/item1.jpeg'
+              %li.slider__item
+                =image_tag 'test/item2.jpeg'
+              %li.slider__item
+                =image_tag 'test/item3.jpeg'
+              %li.slider__item
+                =image_tag 'test/item4.jpeg'
+              %li.slider__item
+                =image_tag 'test/item5.jpeg'
+              %li.slider__item
+                =image_tag 'test/item6.jpeg'
+              %li.slider__item
+                =image_tag 'test/item7.jpeg'
+              %li.slider__item
+                =image_tag 'test/item8.jpeg'
+              %li.slider__item
+                =image_tag 'test/item9.jpeg'
+              %li.slider__item
+                =image_tag 'test/item10.jpeg'
+
+          .item-box__details__image__list
+            %ul.thumb
+            %li.thumb__item
               =image_tag 'test/item1.jpeg'
+            %li.thumb__item
               =image_tag 'test/item2.jpeg'
+            %li.thumb__item
               =image_tag 'test/item3.jpeg'
+            %li.thumb__item
               =image_tag 'test/item4.jpeg'
+            %li.thumb__item
               =image_tag 'test/item5.jpeg'
+            %li.thumb__item
               =image_tag 'test/item6.jpeg'
+            %li.thumb__item
               =image_tag 'test/item7.jpeg'
+            %li.thumb__item
               =image_tag 'test/item8.jpeg'
+            %li.thumb__item
               =image_tag 'test/item9.jpeg'
+            %li.thumb__item
               =image_tag 'test/item10.jpeg'
         .item-box__details__table
           %table{border: "1", style: "border-collapse: collapse"}

@@ -1,25 +1,37 @@
-$(document).on('turbolinks:load', function(){
-  var slider = ".item-box__details__image__top li img";
-  var thumbnailItem = ".item-box__details__image__list li img";
+$(function() {
+  var slider = ".slider"; // スライダー
+  var thumbnailItem = ".thumb__item"; // サムネイル画像アイテム
 
+  // サムネイル画像アイテムに data-index でindex番号を付与
   $(thumbnailItem).each(function(){
-    var index = $(thumbnailItem).index(this);
-    $(this).attr("data-index",index);
-   });
-
-   $(slider).slick({
-    arrows: false,
-    infinite: false
+  var index = $(thumbnailItem).index(this);
+  $(this).attr("data-index",index);
   });
 
-  $(thumbnailItem).on('click',function(){
-    var index = $(this).attr("data-index");
-    $(slider).slick("slickGoTo",index);
+  // スライダー初期化後、カレントのサムネイル画像にクラス「thumbnail-current」を付ける
+  // 「slickスライダー作成」の前にこの記述は書いてください。
+  $(slider).on('init',function(slick){
+  var index = $(".slider__item.slick-slide.slick-current").attr("data-slick-index");
+  $(thumbnailItem+'[data-index="'+index+'"]').addClass("thumbnail-current");
   });
 
+  //slickスライダー初期化
+  $(slider).slick({
+  arrows: false,
+  speed:1000,
+  infinite: false //これはつけましょう。
+  });
+  //サムネイル画像アイテムをクリックしたときにスライダー切り替え
+  $(thumbnailItem).on('mouseover',function(){
+  var index = $(this).attr("data-index");
+  $(slider).slick("slickGoTo",index,false);
+  });
 
-  // $(function() {
-  //   $('.item-box__details__image__list li img').mouseover(function(){
-  //     $('.item-box__details__image__top img').attr('src', $(this).attr('src'));
-  //   });
+  //サムネイル画像のカレントを切り替え
+  $(slider).on('beforeChange',function(event,slick, currentSlide,nextSlide){
+  $(thumbnailItem).each(function(){
+  $(this).removeClass("thumbnail-current");
+  });
+  $(thumbnailItem+'[data-index="'+nextSlide+'"]').addClass("thumbnail-current");
+  });
 });

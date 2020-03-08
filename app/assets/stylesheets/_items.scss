@@ -28,22 +28,30 @@
           position: relative;
           float: left;
           height: 400px;
+          width: 300px;
           &__top{
             img{
               width: 300px;
               height: 300px;
+              display: flex;
             }
           }
           &__list{
             display: block;
-            float: left;
-            li{
+            width: 300px;
+            .thumb__item{
               list-style: none;
-              width: 300px;
+              float: left;
               img{
-                width: 56px;
-                height: 56px;
+                width: 60px;
+                height: 60px;
                 max-height: none;
+                opacity: 0.5;
+              }
+            }
+            .thumb__item.thumbnail-current{
+              img{
+                opacity: 1;
               }
             }
           }
@@ -67,7 +75,7 @@
               text-align: left;
               font-weight: 400;
               background-color: #fafafa;
-              padding: 10px;
+              padding: 12px;
             }
               td {
                 display: table-cell;
