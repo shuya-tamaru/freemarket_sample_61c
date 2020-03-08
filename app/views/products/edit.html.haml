@@ -16,16 +16,16 @@
               必須
             %p
               最大10枚までアップロードできます
-            
-          .contents__item__upload__image
-            .contents__item__upload__image__btn
-              %p
-                ドラッグアンドドロップ
-                %br
-                  またはクリックしてファイルをダウンロード
-              .contents__item__upload__image__btn__area
-                = f.fields_for :images do |image| 
-                  = image.file_field :image, class: "contents__item__upload__image__btn__area__field"
+          .image-box
+            %label
+              .image-box__images{ id: 'image-box' }
+                .image-box__images__box
+                  #previews
+                    - if @item.persisted?
+                      - @item.images.each_with_index do |image, i|
+                        = image_tag image.image.url, data: { index: i }, width: "110", height: '120'
+                = f.fields_for :images do |i|
+                  = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
 
         .contents__item__comment
           .contents__item__comment__name
@@ -35,7 +35,6 @@
               必須
             .contents__item__comment__name__form
               = f.text_field :name, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
-        
           .contents__item__comment__description
             %label
               商品の説明
@@ -67,7 +66,7 @@
                 商品の状態
               %span
                 必須
-              = f.select :item_status, [["---", ""], ["新品、未使用", value = "1"],["未使用に近い", value = "2"], ["目立った傷や汚れなし", value = "3"], ["やや傷や汚れあり", value = "4"], ["傷や汚れあり", value = "5"], ["全体的に状態が悪い", value = "6"]], class: "contents__item__status__right__condition__select"
+              = f.select :item_status, [["---", ""], ["新品、未使用", value = 1],["未使用に近い", value = 2], ["目立った傷や汚れなし", value = 3], ["やや傷や汚れあり", value = 4], ["傷や汚れあり", value = 5], ["全体的に状態が悪い", value = 6]], class: "contents__item__status__right__condition__select"
               
         .contents__item__shippingWay
           %h3
@@ -81,7 +80,7 @@
                 配送料の負担
               %span
                 必須
-              = f.select :fee_side, [["---", ""], ["送料込み(出品者負担)", value = "1"],["着払い(購入者負担)", value = "2"]], class: "contents__item__shippingWay__right__burden__select"
+              = f.select :fee_side, [["---", ""], ["送料込み(出品者負担)", value = 1],["着払い(購入者負担)", value = 2]], class: "contents__item__shippingWay__right__burden__select"
 
           .contents__item__shippingWay__right
             .contents__item__shippingWay__right__burden
@@ -89,14 +88,14 @@
                 配送料の負担
               %span
                 必須
-              = f.select :shipping_way, [["---", ""], ["未定", value = "1"],["ヤマト", value = "2"]], class: "contents__item__shippingWay__right__burden__select"
+              = f.select :shipping_way, [["---", ""], ["未定", value = 1],["らくらくメルカリ便", value = 2],["ゆうメール", value = 3]], class: "contents__item__shippingWay__right__burden__select"
 
             .contents__item__shippingWay__right__city
               %label
                 発送元の地域
               %span
                 必須
-              = f.select :region,Address.prefectures.keys, class: 'contents__item__shippingWay__right__city__select'
+              = f.collection_select :region, Prefecture.all, :id, :name, class: 'contents__item__shippingWay__right__city__select'
 
 
             .contents__item__shippingWay__right__days
@@ -163,3 +162,5 @@
 
 .footer2
   = render 'devise/shared/footer2'
+
+
