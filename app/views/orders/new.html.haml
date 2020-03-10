@@ -6,15 +6,19 @@
     .order__info
       .order__info__box
         .order-image
-          =image_tag "m48176654670_1.jpg", class: "photo"
+          %img{src: "#{@image.image}", type: 'image/jpeg', class: "photo", alt:"[申し訳ありません。画像が表示されません。]"}/
         .order-text
           .order-text__name
-            Acne studios ビッグシルエットギンガムチェックシャツ 46
-          .order-text__price ¥7,500 （税込）送料込み
+          = @item.name
+          .order-text__price
+          - price = @item.price.to_s(:delimited)
+          = " ¥ " + price + "（税込）送料込"
     .order__amount
       .order__amount__price
         %p.amount-text 支払金額:
-        %p.amount-price ¥7,500
+        %p.amount-price
+        - price = @item.price.to_s(:delimited)
+        = " ¥ " + price
         %br
       .order__amount__point ポイントを使用(所持ポイント:0)
     .order__payment-method
@@ -36,13 +40,19 @@
         %p.address 配送先
         %p.address-change 変更する
         %p.postcode 
-          〒 000-0000
+          - postcode_head = @address.zip_code.to_s.slice(0..2)
+          - postcode_bottom = @address.zip_code.to_s.slice(3..6)
+          = " 〒 " +  postcode_head + " - " + postcode_bottom
           %br
-          東京都 千代田区 hogehoge 1-1-1
+          - prefecture = @address.prefecture
+          - city = @address.city
+          - address = @address.address
+          - building = @address.building
+          = prefecture + " " + city + " " + address + " " + building
           %br
-          Name Namae
+          = @user.last_name + " " + @user.first_name
       %br
       .order__btn
-        = form_with url: pay_orders_path, action: :pay, method: :post, local: true do |f|
+        = form_with url: pay_order_path, action: :pay, method: :post, local: true do |f|
           = f.submit "購入する", class: "order__btn__box"
   =render "devise/shared/footer2"
