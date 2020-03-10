@@ -50,7 +50,7 @@
           - building = @address.building
           = prefecture + " " + city + " " + address + " " + building
           %br
-          = @user.last_name + " " + @user.first_name
+          = current_user.last_name + " " + current_user.first_name
       %br
       .order__btn
         = form_with url: pay_order_path, action: :pay, method: :post, local: true do |f|

@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
     end
     @image = @item.images.last(params[:item_id]) #複数画像のうち最初の１枚をとる。
     @address = current_user.address
-    @user = current_user
   end
 
   def create
