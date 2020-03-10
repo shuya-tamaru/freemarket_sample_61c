@@ -1783,8 +1783,8 @@ popular_brand_ids = [1, 2, 3, 4]
 parent_categorys = Category.where(ancestry: nil)
 grandchild_categorys = []
 parent_categorys.each do |pc|
-  pc.children.each do |p|
-    grandchild_categorys << p.children
+  pc.children.each do |gcc|
+    grandchild_categorys << gcc.child_ids
     grandchild_categorys.flatten!
   end
 end
@@ -1807,7 +1807,7 @@ popular_brand_ids.each do |pbi|
         region: rand(1..47),
         sipping_days: 1,
         transaction_status: 1,
-        category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)].id,
+        category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)],
         brand_id: pbi
       }
     )
@@ -1840,7 +1840,7 @@ end
       region: rand(1..47),
       sipping_days: 1,
       transaction_status: 1,
-      category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)].id,
+      category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)],
       brand_id: rand(1..brand_all_length)
     }
   )
