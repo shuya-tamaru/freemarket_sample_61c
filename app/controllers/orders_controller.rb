@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 
   require 'payjp'
+  before_action :set_card, only: [:new, :pay]
 
   def new
-    @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
     if @card.blank?
       redirect_to controller: "credit_cards", action: "new" #登録された情報がない場合、クレジットカード登録画面に移動。
     else #以下はcredit_cards_controllerの内容にもあるので意味はそちらをご参照。
@@ -31,7 +31,6 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @card = Card.find_by(user_id: current_user.id)
     @item = Item.find(params[:id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
@@ -44,6 +43,12 @@ class OrdersController < ApplicationController
 
   def done
     @item = Item.find(params[:id])
+  end
+
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
   end
 
 end
