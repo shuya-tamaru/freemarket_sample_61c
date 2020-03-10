@@ -7,6 +7,16 @@ crumb :myinfomations do
   parent :root
 end
 
+crumb :branded_items do
+  link "ブランド一覧", branded_items_path
+  parent :root
+end
+
+crumb :categorized_items do
+  link "カテゴリー一覧", categorized_items_path
+  parent :root
+end
+
 crumb :notifications do
   link "お知らせ", notifications_path
   parent :myinfomations
@@ -57,6 +67,11 @@ crumb :reviews do
   parent :myinfomations
 end
 
+crumb :guides do
+  link "ガイド", reviews_path
+  parent :myinfomations
+end
+
 crumb :supports do
   link "お問い合わせ", supports_path
   parent :myinfomations
@@ -74,6 +89,16 @@ end
 
 crumb :profiles do
   link "プロフィール", edit_profile_path(current_user)
+  parent :myinfomations
+end
+
+crumb :credit_cards do
+  link "支払い方法", credit_cards_path(current_user)
+  parent :myinfomations
+end
+
+crumb :personal_informations do
+  link "本人情報の登録", personal_informations_index_path(current_user)
   parent :myinfomations
 end
 
