@@ -6,7 +6,7 @@
     .order__info
       .order__info__box
         .order-image
-          %img{src: "#{@image.image}", type: 'image/jpeg', class: "photo", alt:"[申し訳ありません。画像が表示されません。]"}/
+          = image_tag("#{@image.image}", class: "photo", alt:"[申し訳ありません。画像が表示されません。]")
         .order-text
           .order-text__name
           = @item.name
