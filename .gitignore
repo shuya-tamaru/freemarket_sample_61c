@@ -31,4 +31,5 @@ ignoretest
 recaptcha
 /direnv/
 public/uploads/*
+
 .DS_Store
