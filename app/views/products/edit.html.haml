@@ -17,20 +17,22 @@
             %p
               最大10枚までアップロードできます
           .image-box
-            %label
-              .image-box__images{ id: 'image-box' }
-                .image-box__images__box
-                  #previews
-                    - if @item.persisted?
-                      - @item.images.each_with_index do |image, i|
-                        = image_tag image.image.url, data: { index: i }, width: "110", height: '120'
-                = f.fields_for :images do |i|
-                  = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
+            .image-box__images{ id: 'image-box' }
+              .image-box__images__box
+                #previews
                   - if @item.persisted?
-                    = i.check_box :_destroy, data:{ index: i.index }, class: 'idden-destroy'
+                    - @item.images.each_with_index do |image, i|
+                      = image_tag image.image.url, data: { index: i }, width: "110", height: '120',id: "img"
+                      .img_delete{"data-index" => "#{i}"}
+                        消去
+              = f.fields_for :images do |i|
+                = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
                 - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
                   .js-file_group{"data-index" => "#{@item.images.count}"}
-                    = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+                    = file_field_tag :image, name: "item[images_attributes][#{@item.images.count + i}][image]", class: 'js-file'
                     .js-remove 削除
         .contents__item__comment
           .contents__item__comment__name

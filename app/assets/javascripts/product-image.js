@@ -18,6 +18,16 @@ $(window).on('load', ()=> {
     return html2;
   }
 
+  // const editFileField = (num)=> {
+  //   const html = `  
+  //                   <input class="js__input"
+  //                   id="item_images_attributes_${num}_image" type="file"
+  //                   name="item[images_attributes][${num}][image]">
+  //                 `;
+  //   return html;
+  // }
+
+
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   lastIndex = $('.contents__item__upload__image__btn__area__field:last').data('index');
@@ -52,5 +62,14 @@ $(window).on('load', ()=> {
         $('.image-box__images').before(buildImg(num, blobUrl));
       }
   });
+
+  $('#image-box').on('click', '.img_delete', function() {
+    const targetIndex = $(this).data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
+  });
+
 
 });
