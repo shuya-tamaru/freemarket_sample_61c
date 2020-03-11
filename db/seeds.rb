@@ -1731,71 +1731,125 @@ bocchan = "親譲おやゆずりの無鉄砲むてっぽうで小供の時から
 いよいよ約束が極まって、もう立つと云う三日前に清を尋たずねたら、北向きの三畳に風邪かぜを引いて寝ていた。おれの来たのを見て起き直るが早いか、坊ぼっちゃんいつ家うちをお持ちなさいますと聞いた。卒業さえすれば金が自然とポッケットの中に湧いて来ると思っている。そんなにえらい人をつらまえて、まだ坊っちゃんと呼ぶのはいよいよ馬鹿気ている。おれは単簡に当分うちは持たない。田舎へ行くんだと云ったら、非常に失望した容子ようすで、胡麻塩ごましおの鬢びんの乱れをしきりに撫なでた。あまり気の毒だから「行ゆく事は行くがじき帰る。来年の夏休みにはきっと帰る」と慰なぐさめてやった。それでも妙な顔をしているから「何を見やげに買って来てやろう、何が欲しい」と聞いてみたら「越後えちごの笹飴ささあめが食べたい」と云った。越後の笹飴なんて聞いた事もない。第一方角が違う。「おれの行く田舎には笹飴はなさそうだ」と云って聞かしたら「そんなら、どっちの見当です」と聞き返した。「西の方だよ」と云うと「箱根はこねのさきですか手前ですか」と問う。随分持てあました。
 出立の日には朝から来て、いろいろ世話をやいた。来る途中とちゅう小間物屋で買って来た歯磨はみがきと楊子ようじと手拭てぬぐいをズックの革鞄かばんに入れてくれた。そんな物は入らないと云ってもなかなか承知しない。車を並べて停車場へ着いて、プラットフォームの上へ出た時、車へ乗り込んだおれの顔をじっと見て「もうお別れになるかも知れません。随分ご機嫌きげんよう」と小さな声で云った。目に涙なみだが一杯いっぱいたまっている。おれは泣かなかった。しかしもう少しで泣くところであった。汽車がよっぽど動き出してから、もう大丈夫だいしょうぶだろうと思って、窓から首を出して、振り向いたら、やっぱり立っていた。何だか大変小さく見えた。"
 
+
 image_length = 367
-bocchan = bocchan.gsub(/\r\n|\r|\n|\s|\t/, "")
-text_length = (bocchan.length / image_length)
-for number in 1..image_length do
-  bocchan.insert(text_length*number+((number-1)*4), " ## ")
-end
-bocchanArray = bocchan.split(" ## ")
+bocchan_length = bocchan.length
+# データベースのidは1からなので以下でOK
 user_all_length = User.all.length
-category_all_length = Category.all.length
 brand_all_length = Brand.all.length
-parentCategorys = Category.where(ancestry: nil)
-nameNumber = 0
-for parentCategory in 0..(parentCategorys.length-1) do
-  for fifty in 0..14 do
+popular_category_ids = [1,200,680,893]
+popular_categorys = Category.find(popular_category_ids)
+popular_categorys.each do |pci|
+  gc_categorys = []
+  pci.children.each do |p|
+    gc_categorys << p.children
+    gc_categorys.flatten!
+  end
+  10.times do
+    n_ran_length = rand(3..20)
+    n_ran_start = rand(0..(bocchan_length-1-n_ran_length))
+    d_ran_length = rand(10..30)
+    d_ran_start = rand(0..(bocchan_length-1-n_ran_length))
     item = Item.new(
       {
-        name: bocchanArray[nameNumber],
+        # 坊ちゃんの文字列から20文字いないで適当に抽出
+        name: bocchan.slice(n_ran_start..(n_ran_start+n_ran_length)),
         price: rand(300..1000000),
         item_status: 1,
         shipping_way: 1,
-        discription: bocchanArray[nameNumber],
+        discription: bocchan.slice(d_ran_start..(d_ran_start+d_ran_length)),
         buyer_user_id: nil,
         saler_user_id: User.find(rand(1..user_all_length)).id,
         fee_side: 1,
         region: rand(1..47),
         sipping_days: 1,
         transaction_status: 1,
-        category_id: parentCategorys[parentCategory].id,
-        brand_id: Brand.find(rand(1..brand_all_length)).id
+        category_id: gc_categorys[rand(0..gc_categorys.length-1)].id,
+        brand_id: rand(1..brand_all_length)
       }
     )
-    item.images.build(
-      {
-        image: open("./app/assets/images/test/item#{nameNumber}.jpeg")
-      }
-    )
+    rand(1..10).times do
+      item.images.build(
+        {
+          image: open("./app/assets/images/test/item#{rand(0..(image_length-1))}.jpeg")
+        }
+      )
+    end
     item.save!
-    nameNumber+=1
   end
 end
 
+popular_brand_ids = [1, 2, 3, 4]
+parent_categorys = Category.where(ancestry: nil)
+grandchild_categorys = []
+parent_categorys.each do |pc|
+  pc.children.each do |gcc|
+    grandchild_categorys << gcc.child_ids
+    grandchild_categorys.flatten!
+  end
+end
+popular_brand_ids.each do |pbi|
+  10.times do
+    n_ran_length = rand(3..20)
+    n_ran_start = rand(0..(bocchan_length-1-n_ran_length))
+    d_ran_length = rand(10..30)
+    d_ran_start = rand(0..(bocchan_length-1-n_ran_length))
+    item = Item.new(
+      {
+        name: bocchan.slice(n_ran_start..(n_ran_start+n_ran_length)),
+        price: rand(300..1000000),
+        item_status: 1,
+        shipping_way: 1,
+        discription: bocchan.slice(d_ran_start..(d_ran_start+d_ran_length)),
+        buyer_user_id: nil,
+        saler_user_id: User.find(rand(1..user_all_length)).id,
+        fee_side: 1,
+        region: rand(1..47),
+        sipping_days: 1,
+        transaction_status: 1,
+        category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)],
+        brand_id: pbi
+      }
+    )
+    rand(1..10).times do
+      item.images.build(
+        {
+          image: open("./app/assets/images/test/item#{rand(0..(image_length-1))}.jpeg")
+        }
+      )
+    end
+    item.save!
+  end
+end
 
-for itemNumber in (parentCategorys.length*15)..(bocchanArray.length - 2) do
+100.times do
+  n_ran_length = rand(3..20)
+  n_ran_start = rand(0..(bocchan_length-1-n_ran_length))
+  d_ran_length = rand(10..30)
+  d_ran_start = rand(0..(bocchan_length-1-n_ran_length))
   item = Item.new(
     {
-      name: bocchanArray[nameNumber],
+      name: bocchan.slice(n_ran_start..(n_ran_start+n_ran_length)),
       price: rand(300..1000000),
       item_status: 1,
       shipping_way: 1,
-      discription: bocchanArray[nameNumber],
+      discription: bocchan.slice(d_ran_start..(d_ran_start+d_ran_length)),
       buyer_user_id: nil,
       saler_user_id: User.find(rand(1..user_all_length)).id,
       fee_side: 1,
       region: rand(1..47),
       sipping_days: 1,
       transaction_status: 1,
-      category_id: Category.find(rand(1..category_all_length)).id,
-      brand_id: Brand.find(rand(1..brand_all_length)).id
+      category_id: grandchild_categorys[rand(0..grandchild_categorys.length-1)],
+      brand_id: rand(1..brand_all_length)
     }
   )
-  item.images.build(
-    {
-      image: open("./app/assets/images/test/item#{nameNumber}.jpeg")
-    }
-  )
+  rand(1..10).times do
+    item.images.build(
+      {
+        image: open("./app/assets/images/test/item#{rand(0..(image_length-1))}.jpeg")
+      }
+    )
+  end
   item.save!
-  nameNumber+=1
 end
