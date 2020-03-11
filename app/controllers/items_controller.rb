@@ -3,11 +3,17 @@ class ItemsController < ApplicationController
   def index
     @categorys = [1, 200, 893, 680]
     @itemCategorys = []
-    @categorys.each_with_index do |category, i|
+    @categorys.each_with_index do |category_id, i|
       @itemCategorys[i] = []
-      @itemCategorys[i] << Category.find(category).name
+      @itemCategorys[i] << Category.find(category_id).name
       @items = []
-      @items << Item.where(category_id: category).last(10).reverse
+      grandchild_categorys = []
+      category = Category.find(category_id)
+      category.children.each do |gcc|
+        grandchild_categorys << gcc.child_ids
+        grandchild_categorys.flatten!
+      end
+      @items << Item.where(category_id: grandchild_categorys).last(10).reverse
       @items.each do |item|
         @itemCategorys[i] << item
       end
