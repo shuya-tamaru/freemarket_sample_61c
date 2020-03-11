@@ -9,48 +9,13 @@
           .item-box__details__image__top
             %ul.slider
               %li.slider__item
-                =image_tag 'test/item1.jpeg'
-              %li.slider__item
-                =image_tag 'test/item2.jpeg'
-              %li.slider__item
-                =image_tag 'test/item3.jpeg'
-              %li.slider__item
-                =image_tag 'test/item4.jpeg'
-              %li.slider__item
-                =image_tag 'test/item5.jpeg'
-              %li.slider__item
-                =image_tag 'test/item6.jpeg'
-              %li.slider__item
-                =image_tag 'test/item7.jpeg'
-              %li.slider__item
-                =image_tag 'test/item8.jpeg'
-              %li.slider__item
-                =image_tag 'test/item9.jpeg'
-              %li.slider__item
-                =image_tag 'test/item10.jpeg'
+                = image_tag @item.images.to_a[0].pass
 
           .item-box__details__image__list
             %ul.thumb
-            %li.thumb__item
-              =image_tag 'test/item1.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item2.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item3.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item4.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item5.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item6.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item7.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item8.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item9.jpeg'
-            %li.thumb__item
-              =image_tag 'test/item10.jpeg'
+              %li.thumb__item
+                =image_tag @item.images.to_a[0].pass
+
         .item-box__details__table
           %table{border: "1", style: "border-collapse: collapse"}
             %tr
@@ -108,20 +73,20 @@
               %td.item-box__details__table__td 
                 = @item.sipping_days
 
-    .item__price
-      %span.item__price__amount
-        ¥
-        = @item.price.to_s(:delimited)
-      %span.item__price__tax (税込)
-      %span.item__price__ship 
-        - if @item.fee_side == "1"
-          送料込み
-        - else 
-          送料別
+      .item__price
+        %span.item__price__amount
+          ¥
+          = @item.price.to_s(:delimited)
+        %span.item__price__tax (税込)
+        %span.item__price__ship 
+          - if @item.fee_side == "1"
+            送料込み
+          - else 
+            送料別
 
       .item__purchase
         - if user_signed_in? && current_user.id == @item.saler_user_id
-          = link_to "#" do 
+          = link_to "#" do
             購入画面に進む
         - else
           = link_to new_user_session_path do
@@ -140,16 +105,18 @@
             = link_to new_user_session_path do
               いいね!
 
-      = link_to "#" do
-        %li.item__bottom__report 
-          不適切な商品の報告
-      = link_to "#" do
-        %li.item__bottom__policy 
-          = icon('fas', 'lock')
-          あんしん・あんぜんへの取り組み
+        = link_to "#" do
+          %li.item__bottom__report 
+            不適切な商品の報告
+          
+        = link_to "#" do
+          %li.item__bottom__policy 
+            = icon('fas', 'lock')
+            あんしん・あんぜんへの取り組み
           
   .container__form
-    %p.warning 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %p.warning 
+      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
     %textarea.inputs
     %form.message-form
     = link_to "#" do

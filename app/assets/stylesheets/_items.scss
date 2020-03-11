@@ -16,18 +16,13 @@
         word-wrap: break-word;
         line-height: 1.4;
       }
-      &__description{
-        margin: 8px 0 0;
-        font-size: 14px;
-        color: #888;
-        line-height: 1.5;
-      }
+
       &__details{
         margin-top: 16px;
+        height: 400px;
         &__image{
           position: relative;
           float: left;
-          height: 400px;
           width: 300px;
           &__top{
             img{
@@ -113,7 +108,7 @@
   }
   &__price{
     text-align: center;
-    
+    margin: 24px 0 0;
     &__amount{
     font-weight: 600;
     font-size: 40px;
@@ -155,7 +150,6 @@
   &__bottom{
     float: left;
     list-style: none;
-    margin-bottom: 20px;
     &__likes{
       display: inline-block;
       background-color: #f5f5f5;
@@ -167,7 +161,6 @@
     &__report{
       display: inline-block;
       margin-left: 20px;
-      display: inline-block;
       background-color: #f5f5f5;
       padding: 8px 16px;
       border-radius: 40px;
@@ -178,8 +171,7 @@
       display: inline-block;
       color: #0099e8;
       font-size: 14px;
-      float: right;
-      margin: 8px 0 0;
+      margin: 0 0 0 110px;
       &:hover {
         opacity: 0.7;
         text-decoration: underline;
@@ -195,12 +187,11 @@
     .warning{
       margin: 0 auto;
       width:660px;
-      height: 40px;
       color: #333;
       font-size: 14px;
       background: #fff6de;
-      margin-bottom: 10px;
-      padding: 2px;
+      margin: 10px;
+      padding: 8px;
     }
     textarea{
       margin: 0 auto;
