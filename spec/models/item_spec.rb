@@ -11,17 +11,12 @@ describe Item do
       item.valid?
       expect(item.errors[:name])
     end
-    it "is invalid with empty name" do
-      item = build(:item, name: "")
-      item.valid?
-      expect(item.errors[:name])
-    end
     it "is invalid with empty category_id" do
       item = build(:item, category_id: "")
       item.valid?
       expect(item.errors[:category_id])
     end
-    it "is invalid with empty category_id" do
+    it "is invalid with empty saler_user_id" do
       item = build(:item, saler_user_id: "")
       item.valid?
       expect(item.errors[:saler_user_id])
@@ -51,7 +46,7 @@ describe Item do
       item.valid?
       expect(item.errors[:region])
     end
-    it "is invalid with empty sipping_days" do
+    it "is invalid with empty price" do
       item = build(:item, price: "")
       item.valid?
       expect(item.errors[:price])
