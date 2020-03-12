@@ -37,3 +37,4 @@ public/uploads/*
 /app/assets/.DS_Store
 /app/assets/images/.DS_Store
 /app/assets/images/test/.DS_Store
+/spec/.DS_Store
