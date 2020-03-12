@@ -5,8 +5,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @item =Item.new
-    @item.images.build
+    if current_user
+      @item =Item.new
+      @item.images.build
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
