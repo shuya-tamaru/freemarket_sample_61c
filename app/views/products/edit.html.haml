@@ -17,23 +17,22 @@
             %p
               最大10枚までアップロードできます
           .image-box
-            .image-box__images{ id: 'image-box' }
-              .image-box__images__box
-                #previews
-                  - if @item.persisted?
-                    - @item.images.each_with_index do |image, i|
+            %label{for: "item_images_attributes_#{@item.images.count}_image", class: "label-box", id: "label-box--#{@item.images.count}"}
+              .image-box__images{ id: 'image-box' }
+                - if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    .image-box__images__box
                       = image_tag image.image.url, data: { index: i }, width: "110", height: '120',id: "img"
-                      .img_delete{"data-index" => "#{i}"}
-                        消去
+                      .image__delete{"data-index" => "#{i}"}
+                        削除
+              - if @item.persisted?
+                = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'image-box__images__input', id:"item_images_attributes_#{@item.images.count}_image"
+                .js-remove 
               = f.fields_for :images do |i|
                 = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
                 - if @item.persisted?
                   = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
-              - if @item.persisted?
-                - @item.images.each_with_index do |image, i|
-                  .js-file_group{"data-index" => "#{@item.images.count}"}
-                    = file_field_tag :image, name: "item[images_attributes][#{@item.images.count + i}][image]", class: 'js-file'
-                    .js-remove 削除
+
         .contents__item__comment
           .contents__item__comment__name
             %label
@@ -49,7 +48,7 @@
               必須
             .contents__item__comment__description__form
               = f.text_area :discription, class:"contents__item__comment__description__form__text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など） 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",maxlength: "1000"
-        
+
         .contents__item__status
           %h3
             商品の詳細
