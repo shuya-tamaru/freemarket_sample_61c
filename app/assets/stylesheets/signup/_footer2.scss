@@ -41,15 +41,9 @@
         bottom: 50px;
         left: calc(50% - 32px);
         &__image {
-          height: 67px;
+          height: 57px;
           width: 64px;
-          background: url('mercari_gray.png');
-          background-size: 63px;
-        }
-        &__image:hover {
-          height: 67px;
-          width: 64px;
-          background: url('mercari_grayw.png');
+          background: url('square_gray_logo.svg');
           background-size: 63px;
         }
       }
