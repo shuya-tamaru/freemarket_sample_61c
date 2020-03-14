@@ -47,27 +47,20 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # 現状viewからidのvalueを送信出来ないので仮のidを入れています
-    @item = Item.where(id: 1)
-    @item.update(transaction_status: 0)
-    # if @item.update_attribute(:transaction_status, 0)
-    #   redirect_to controller: 'products', action: 'show', notice: "出品を停止しました"
-    # else
-    #   redirect_to controller: 'products', action: 'show', notice: "出品を停止出来ませんでした"  
-    # end
+    @item = Item.find(params[:id])
+    if @item.transaction_status == 1
+      @item.update(transaction_status: 0)
+    elsif @item.transaction_status == 0
+      @item.update(transaction_status: 1)
+    end
+    redirect_to controller: 'products', action: 'show', id: @item.id
   end
 
   def edit
   end
 
   def destroy
-    @item = Item.find(1)
-    @item.destroy
-    # if @item.saler_user_id == current_user.id
-    #   @item.destroy
-    # else
-    #   redirect_to controller: 'products', action: 'show', notice: "商品を削除出来ませんでした"
-    # end
+
   end
 
   private
