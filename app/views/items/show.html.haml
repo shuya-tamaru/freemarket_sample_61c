@@ -8,13 +8,15 @@
         .item-box__details__image
           .item-box__details__image__top
             %ul.slider
-              %li.slider__item
-                = image_tag @item.images.to_a[0].pass
+              - @item.images.each do |image|
+                %li.slider__item
+                  = image_tag image.pass
 
           .item-box__details__image__list
             %ul.thumb
+            - @item.images.each do |image|
               %li.thumb__item
-                =image_tag @item.images.to_a[0].pass
+                =image_tag image.pass
 
         .item-box__details__table
           %table{border: "1", style: "border-collapse: collapse"}
