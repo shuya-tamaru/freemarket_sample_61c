@@ -23,13 +23,15 @@
                   - @item.images.each_with_index do |image, i|
                     .image-box__images__box
                       = image_tag image.image.url, data: { index: i }, width: "110", height: '120',id: "img"
-                      .image__delete{"data-index" => "#{i}"}
+                      .image-box__images__box__delete{"data-index" => "#{i}"}
                         削除
+                      -# .image__delete{"data-index" => "#{i}"}
+                      
               - if @item.persisted?
                 = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'image-box__images__input', id:"item_images_attributes_#{@item.images.count}_image"
                 .js-remove 
               = f.fields_for :images do |i|
-                = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
+                = i.file_field :image, class: "image-box__images__input", id:'item_images_attributes_0_image'
                 - if @item.persisted?
                   = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
 
