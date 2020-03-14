@@ -1,3 +1,117 @@
-=link_to '出品を停止する', item_path(@item), method: :put
-%br
-=link_to 'この商品を削除する', item_path(@item), method: :delete
+= render "items/header"
+.container
+  .item
+    .item-box
+      %h1.item-box__name
+        = @item.name
+      .item-box__details
+        .item-box__details__image
+          .item-box__details__image__top
+            %ul.slider
+              - @item.images.each do |image|
+                %li.slider__item
+                  = image_tag image.pass
+
+          .item-box__details__image__list
+            %ul.thumb
+            - @item.images.each do |image|
+              %li.thumb__item
+                =image_tag image.pass
+
+        .item-box__details__table
+          %table{border: "1", style: "border-collapse: collapse"}
+            %tr
+              %th 出品者名
+              %td.item-box__details__table__td
+                = link_to "#", class:"td__link" do
+                  = @user.nickname
+                %br
+                =fas_icon 'grin', class: "grin-icon" 
+                999
+                =fas_icon 'meh-blank', class: "meh-blank-icon"
+                999
+                =fas_icon 'angry', class: "angry-icon"
+                999
+            %tr
+              %th カテゴリー
+              %td.item-box__details__table__td
+                = link_to "#", class:"td__link" do
+                  = @categorys.parent.parent.name
+                %br
+                = link_to "#", class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @categorys.parent.name
+                %br
+                = link_to "#", class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @categorys.name
+                                 
+              %tr
+                %th ブランド
+                %td.item-box__details__table__td
+                  = link_to "#", class:"td__link" do
+                    = @brand.name
+            %tr
+              %th 商品のサイズ
+              %td.item-box__details__table__td XS
+            %tr
+              %th 商品の状態
+              %td.item-box__details__table__td 
+                = @item.item_status
+            %tr
+              %th 配送料の負担
+              %td.item-box__details__table__td
+                = @item.fee_side
+            %tr
+              %th 配送の方法
+              %td.item-box__details__table__td
+                = @item.shipping_way
+            %tr
+              %th 発送元地域
+              %td.item-box__details__table__td
+                = @item.region
+            %tr
+              %th 発送日の目安
+              %td.item-box__details__table__td 
+                = @item.sipping_days
+
+      .item__price
+        %span.item__price__amount
+          ¥
+          = @item.price.to_s(:delimited)
+        %span.item__price__tax (税込)
+        %span.item__price__ship 
+          - if @item.fee_side == "1"
+            送料込み
+          - else 
+            送料別
+            %br
+
+      -# .item__purchase
+      -#   - if user_signed_in? && current_user.id == @item.saler_user_id
+      -#     = link_to "#" do
+      -#       購入画面に進む
+      -#   - else
+      -#     = link_to new_user_session_path do
+      -#       購入画面に進む
+
+      .item__field 
+        = safe_join(@item.discription.split("\n"),tag(:br))
+  .container__manage
+    .container__manage__box
+      .container__manage__box__edit
+        =link_to '商品の編集', item_path(@item), method: :edit, class: "container__manage__box__text"
+      %p.or or
+      - if @item.transaction_status == 0
+        .container__manage__box__resume
+          =link_to '出品を再開する', item_path(@item), method: :put, class: "container__manage__box__text"
+      - elsif @item.transaction_status == 1
+        .container__manage__box__suspend
+          =link_to '出品を一旦停止する', item_path(@item), method: :put, class: "container__manage__box__text"
+      - else
+
+      .container__manage__box__delete
+        =link_to 'この商品を削除する', item_path(@item), method: :delete, class: "container__manage__box__text"
+
+= render "items/footer"
+
