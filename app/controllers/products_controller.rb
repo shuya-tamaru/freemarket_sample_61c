@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
   end
@@ -18,12 +18,22 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @user = User.find(@item.saler_user_id)
     @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
     @brand = Brand.find(@item.brand_id)
     @categorys = Category.find(@item.category_id)
     @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
+
+    # @item = Item.find(params[:id])
+    # if @item.saler_user_id == current_user.id
+    #   @user = User.find(@item.saler_user_id)
+    #   @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
+    #   @brand = Brand.find(@item.brand_id)
+    #   @categorys = Category.find(@item.category_id)
+    #   @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
+    # else
+    #   redirect_to root_path
+    # end
   end
 
   def edit
