@@ -362,4 +362,97 @@
       }
     }
   }
+  &__manage{
+    margin-top: 25px;
+    padding-bottom: 25px;
+    &__box{
+      &__text{
+        color: white;
+        font-weight: lighter;
+
+      }
+      font-weight: lighter;
+      width: 700px;
+      height: 270px;
+      margin: 0 auto;
+      padding: 10px;
+      background: #fff;
+      text-align: center;
+      &__edit{
+        color: white;
+        display: block;
+        margin-top: 16px;
+        background: #ea352d;
+        line-height: 56px;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.5s ease 0s;
+        margin-bottom: 10px;
+        color: white;
+      }
+      &__edit:hover{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.5;
+      }
+      .or{
+        font-size: 15px;
+      }
+      &__suspend{
+        display: block;
+        margin-top: 16px;
+        background: lightgray;
+        line-height: 56px;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.5s ease 0s;
+        margin-bottom: 10px;        
+      }
+      &__suspend:hover{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.5;        
+      }
+      &__resume{
+        color: white;
+        display: block;
+        margin-top: 16px;
+        background: #ea352d;
+        line-height: 56px;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.5s ease 0s;
+        margin-bottom: 10px;
+        color: white;
+      }
+      &__resume:hover{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.5;
+      }
+      &__delete{
+        display: block;
+        margin-top: 16px;
+        background: lightgray;
+        line-height: 56px;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.5s ease 0s;
+        margin-bottom: 10px;        
+      }
+      &__delete:hover{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0.5;
+      }
+    }
+  }
 }
