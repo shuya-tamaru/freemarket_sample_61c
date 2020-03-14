@@ -60,10 +60,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    begin
-      @item.destroy
+    if @item.destroy
       redirect_to root_path
-    rescue
+    else
       redirect_to controller: 'products', action: 'show', id: @item.id, notice: "削除出来ませんでした"
     end
   end
