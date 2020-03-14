@@ -1,5 +1,4 @@
 $(window).on('load', ()=> {
-  // const buildFileField = (num)=> {
   const buildFileField = (num)=> {
 
     const html = `
@@ -20,16 +19,6 @@ $(window).on('load', ()=> {
     return html2;
   }
 
-// //  edit用の要素
-//   const buildImg_edit = (index, url)=> {
-//     const html2 = `
-//     <div class= "image-box__images__box">
-//       <img class= "image-box__images__box__image${index}" img src="${url}" width="110px" height="120px"></img>
-//       <div class= "image-box__images__box__delete${index}" width="110px" height="20px">削除</div>
-//     </div>
-//       `;
-//     return html2;
-//   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
@@ -44,7 +33,6 @@ $(window).on('load', ()=> {
 
     $(document).on("click", ".image-box__images__box__delete", function(event) {
       event.preventDefault();
-      console.log(222)
       const num = $(".image-box__images__box").length;
       const deleteId = ("#item_images_attributes_"+num+"_image")
       $(this).closest(".image-box__images__box").remove();
@@ -53,7 +41,6 @@ $(window).on('load', ()=> {
         $('#image-box').prepend(buildFileField(9))
       }
     });
-  // if(nowurl.match(/new/)){
 
     $('#image-box').on('change', function(e) {
       const targetIndex = $(this).parent().data('index');
@@ -80,7 +67,6 @@ $(window).on('load', ()=> {
       const num = $(".image-box__images__box").length;
       const file = e.target.files[0];
       const blobUrl = window.URL.createObjectURL(file);
-      console.log("hello")
 
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $('.label-box').attr({id: `label-box--${Number(id)+1}`,for: `item_images_attributes_${Number(id)+1}_image`});
@@ -93,29 +79,32 @@ $(window).on('load', ()=> {
           $('.image-box__images').append(buildImg(num, blobUrl));
         }
     });
-  
+
     $('#image-box').on('click', '.image-box__images__box__delete', function(e) {
-    // $('#image-box').on('click', '.image__delete', function(e) {
 
       event.preventDefault();
       const num = $(".image-box__images__box").length;
       const targetIndex = $(this).data('index')
-
-      console.log(targetIndex)
-      console.log("111")
+      const id = $(".label-box").attr('id').match(/\d{1,2}/)
       
       const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
 
-      // const deleteId = ("#item_images_attributes_"+num+"_image")
-      // $(deleteId).remove();
+      const deleteId = ("#item_images_attributes_"+Number(id-1)+"_image")
+      $(deleteId).remove();
+
+      if (num == 10){
+        const targetIndex = $(this).data('index')
+        const id = $(".label-box").attr('id').match(/\d{1,2}/)
+        $('.image-box__images').after(buildFileField(Number(id)+1));
+        
+        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+        $('.label-box').attr({id: `label-box--${Number(ids)+1}`,for: `item_images_attributes_${Number(ids)+1}_image`});
+      }
 
       if (hiddenCheck) hiddenCheck.prop('checked', true);
         $(this).parent().remove();
         $(`img[data-index="${targetIndex}"]`).remove();
-      // if (num == 10){
-      //   console.log("33333")
-      //   $('.image-box__images').after(buildFileField(20));
-      // }
+
     });
   }
 });
