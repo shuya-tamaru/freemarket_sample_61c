@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :set_item, only: [:show, :update, :destroy]
+
   def index
     @categorys = [1, 200, 893, 680]
     @itemCategorys = []
@@ -35,7 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @user = User.find(@item.saler_user_id)
     @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
     @brand = Brand.find(@item.brand_id)
@@ -60,14 +60,20 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
-
+    begin
+      @item.destroy
+      redirect_to root_path
+    rescue
+      redirect_to controller: 'products', action: 'show', id: @item.id, notice: "削除出来ませんでした"
+    end
   end
 
   private
   def item_params
     params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
