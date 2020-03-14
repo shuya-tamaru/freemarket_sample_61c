@@ -8,15 +8,9 @@
     line-height: 80px;
     transform: translateY(93.5%) translateX(-0.5%);
     &__image {
-      height: 46px;
+      height: 54px;
       width: 184px;
-      background: url('mercari1.png');
-      background-size: 184px;
-    }
-    &__image:hover {
-      height: 46px;
-      width: 184px;
-      background: url('mercari1w.png');
+      background: url('fmarket_logo_red.svg');
       background-size: 184px;
     }
   }
