@@ -81,6 +81,7 @@ $(window).on('load', ()=> {
 
 
   if(nowurl.match(/edit/)){
+
     // 新規のものを追加する処理
     $('.label-box').on('change', function(e) {
       const targetIndex = $(this).parent().data('index');
@@ -92,11 +93,11 @@ $(window).on('load', ()=> {
       $('.label-box').attr({id: `label-box--${Number(id)+1}`,for: `item_images_attributes_${Number(id)+1}_image`});
 
       if (num != 9){
-        $('.image-box__images').append(buildImg_edit(num, blobUrl));
+        $('.image-box__images').append(buildImg_edit(id, blobUrl));
         $('.image-box__images').after(buildFileField_edit(Number(id)+1));
         $('.text').remove();
         } else {
-          $('.image-box__images').append(buildImg_edit(num, blobUrl));
+          $('.image-box__images').append(buildImg_edit(id, blobUrl));
         }
     });
 
@@ -106,10 +107,16 @@ $(window).on('load', ()=> {
       event.preventDefault();
       const targetIndex = $(this).data('index')
       const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`); 
-
+      const num = $(".image-box__images__box").length;
       if (hiddenCheck) hiddenCheck.prop('checked', true);
         $(this).parent().remove();
         $(`img[data-index="${targetIndex}"]`).remove();
+
+      if (num == 10){
+        const label_id = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+        console.log(label_id)
+        $('.image-box__images').after(buildFileField_edit(Number(label_id)));
+      }
 
     });
 
@@ -119,29 +126,30 @@ $(window).on('load', ()=> {
       event.preventDefault();
       const num = $(".image-box__images__box").length;
       const id = $(this).attr('id').match(/\d{1,2}/)
-      const result = Number( id ) + 1
+      const result = Number( id )
       const emptyform = ("#item_images_attributes_"+id+"_image")
       const deleteId = ("#item_images_attributes_"+result+"_image")
       if (num != 10){
         $(emptyform).val("");
         $(deleteId).remove();
         $(this).parent().remove();
-        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
-        $('.label-box').attr({id: `label-box--${Number(ids)-1}`,for: `item_images_attributes_${Number(ids)-1}_image`});
       }
 
       if (num == 10){
-        const targetIndex = $(this).data('index')
-        const id = $(".label-box").attr('id').match(/\d{1,2}/)
-        $("#item_images_attributes_9_image").val("");
-        $(this).parent().remove();
-        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
-        $('.label-box').attr({id: `label-box--${Number(ids)-1}`,for: `item_images_attributes_${Number(ids)-1}_image`});
-      }
 
-      // if (hiddenCheck) hiddenCheck.prop('checked', true);
-      //   $(this).parent().remove();
-      //   $(`img[data-index="${targetIndex}"]`).remove();
+        const picture_id = $(this).attr('id').match(/\d{1,2}/)
+        const label_id = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+
+        if (label_id == Number(picture_id)+1){
+          $('.label-box').attr({id: `label-box--${Number(label_id)-1}`,for: `item_images_attributes_${Number(label_id)-1}_image`});
+          $("#item_images_attributes_"+picture_id+"_image").val("")
+          $(this).parent().remove();
+        }else{
+          $("#item_images_attributes_"+picture_id+"_image").val("")
+          $(this).parent().remove();
+          $('.image-box__images').after(buildFileField_edit(Number(label_id)));
+        }
+      }
 
     });
   }
