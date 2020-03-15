@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
 
   def done
     @item = Item.find(params[:id])
-    if current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+    if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
     else
       redirect_to root_path
     end
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
 
   def set_card
     @item = Item.find(params[:id])
-    if current_user.id != @item.saler_user_id && @item.transaction_status == 1
+    if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 1
       @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
     else
       redirect_to root_path
