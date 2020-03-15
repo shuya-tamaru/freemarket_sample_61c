@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :item do
     name {"テストの商品"}
-    # image = Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'no_image.png'))
-    # image {image}
-    images {[FactoryBot.build(:image, item: nil)]}
+    images {Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'no_image.png'))}
+    # images {[FactoryBot.build(:image, item: nil)]}
     discription {"hogeeeeeeeefugaaaaaaaaaaaa"}
     category_id {1}
     brand_id {1}
@@ -19,5 +18,6 @@ FactoryBot.define do
     sipping_days {1}
     price {20000}
     region {1}
+    transaction_status {1}
   end
 end
