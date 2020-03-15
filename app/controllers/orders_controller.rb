@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:id])
     if current_user.id != @item.saler_user_id && @item.transaction_status == 2
     else
+      redirect_to root_path
     end
   end
 
