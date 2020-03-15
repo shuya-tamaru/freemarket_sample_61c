@@ -24,6 +24,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if current_user.id != @item.saler_user_id
+      redirect_to root_path
+    end
   end
 
 
