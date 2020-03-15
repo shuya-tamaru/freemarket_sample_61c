@@ -41,11 +41,20 @@ class OrdersController < ApplicationController
   private
 
   def set_card
-    @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
+    @item = Item.find(params[:id])
+    if current_user.id == @item.saler_user_id && @item.transaction_status == 1
+      @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
+    else
+      redirect_to root_path
+    end
   end
 
   def set_item
     @item = Item.find(params[:id])
+    if current_user.id == @item.saler_user_id && @item.transaction_status == 1
+    else
+      redirect_to root_path
+    end
   end
 
 end
