@@ -51,30 +51,38 @@ $(window).on('load', ()=> {
 
   if(nowurl.match(/new/)){
 
+    // 消去する処理
     $(document).on("click", ".image-box__images__box__delete", function(event) {
       event.preventDefault();
       const num = $(".image-box__images__box").length;
-      const deleteId = ("#item_images_attributes_"+num+"_image")
+      const deleteId = $(this).prev().attr('class').replace(/[^0-9]/g, '');
+      const deleteform =  ("#item_images_attributes_"+deleteId+"_image")
+      const label_id = $(".label-box").attr('id').replace(/[^0-9]/g, '');
       $(this).closest(".image-box__images__box").remove();
-      $(deleteId).remove();
-      if (num == 9){
-        $('#image-box').prepend(buildFileField(9))
+
+      $(deleteform).remove();
+      if (num == 10){
+        $('.label-box').attr({id: `label-box--${(Number(label_id))}`,for: `item_images_attributes_${(Number(label_id))}_image`});
+        $('#image-box').prepend(buildFileField(Number(label_id)))
       }
     });
 
+    // 新規のものを追加する処理
     $('#image-box').on('change', function(e) {
       const targetIndex = $(this).parent().data('index');
       const num = $(".image-box__images__box").length;
       const file = e.target.files[0];
       const blobUrl = window.URL.createObjectURL(file);
+      const label_id = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+
       if (num != 9){
-        $('.image-box__images').before(buildImg(num, blobUrl));
-
-        $('#image-box').prepend(buildFileField(num+1));
-
+        $('.label-box').attr({id: `label-box--${(Number(label_id) + 1)}`,for: `item_images_attributes_${(Number(label_id) + 1)}_image`});
+        $('.image-box__images').before(buildImg(label_id, blobUrl));
+        $('#image-box').prepend(buildFileField(Number(label_id)+1));
         $('.text').remove();
         } else {
-          $('.image-box__images').before(buildImg(num, blobUrl));
+          $('.image-box__images').before(buildImg(Number(label_id), blobUrl));
+          $('.label-box').attr({id: `label-box--${(Number(label_id) + 1)}`,for: `item_images_attributes_${(Number(label_id) + 1)}_image`});
         }
     });
   }
@@ -114,7 +122,6 @@ $(window).on('load', ()=> {
 
       if (num == 10){
         const label_id = $(".label-box").attr('id').replace(/[^0-9]/g, '');
-        console.log(label_id)
         $('.image-box__images').after(buildFileField_edit(Number(label_id)));
       }
 
