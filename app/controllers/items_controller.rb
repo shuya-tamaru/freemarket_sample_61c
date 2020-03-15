@@ -34,6 +34,18 @@ class ItemsController < ApplicationController
   def new
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @user = User.find(@item.saler_user_id)
+    @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
+    @brand = Brand.find(@item.brand_id)
+    @categorys = Category.find(@item.category_id)
+    @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
+  end
+
+  def edit
+  end
+
   def update
     # 現状viewからidのvalueを送信出来ないので仮のidを入れています
     @item = Item.where(id: 1)
@@ -58,4 +70,8 @@ class ItemsController < ApplicationController
     # end
   end
 
+  private
+  def item_params
+    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(user_id: current_user.id)
+  end
 end
