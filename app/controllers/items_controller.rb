@@ -41,10 +41,6 @@ class ItemsController < ApplicationController
     @brand = Brand.find(@item.brand_id)
     @categorys = Category.find(@item.category_id)
     @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
-    if user_signed_in? && user_logcurrent_user.id != @item.saler_user_id && @item.transaction_status == 1
-    else
-      redirect_to root_path
-    end
   end
 
   def edit
