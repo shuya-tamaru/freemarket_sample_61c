@@ -25,6 +25,7 @@
                       = image_tag image.image.url, data: { index: i }, width: "110", height: '120',id: "img"
                       .image-box__images__box__delete{"data-index" => "#{i}"}
                         削除
+                      -# .image-box__images__box__delete{id: "image-box__images__box__delete__#{i}"}
                       
               - if @item.persisted?
                 = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'image-box__images__input', id:"item_images_attributes_#{@item.images.count}_image"
@@ -59,14 +60,14 @@
                 カテゴリー
               %span
                 必須
-              = f.select :category_id, [["---", ""], ["レディース", value = 1.to_i],["メンズ", value = 2.to_i]], class: "contents__item__status__right__category__select"
+              = f.select :category_id, Category.all.map{|category| [category.name, category.id]}, class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__category
               %label
                 ブランド
               %span
                 必須
-              = f.select :brand_id, [["---", ""], ["シャネル", value = 1.to_i]], class: "contents__item__status__right__category__select"
+              = f.select :brand_id, Brand.all.map{|brand| [brand.name, brand.id]}, class: "contents__item__status__right__category__select"
 
             .contents__item__status__right__condition
               %label

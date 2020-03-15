@@ -13,10 +13,30 @@ $(window).on('load', ()=> {
     const html2 = `
     <div class= "image-box__images__box">
       <img class= "image-box__images__box__image${index}" img src="${url}" width="110px" height="120px"></img>
-      <div class= "image-box__images__box__delete" width="110px" height="20px">削除</div>
+      <div class= "image-box__images__box__delete" id="image-box__images__box__delete" width="110px" height="20px">削除</div>
     </div>
       `;
     return html2;
+  }
+
+  const buildFileField_edit = (id)=> {
+
+    const html3 = `
+                  <input class="image-box__images__input"
+                  id="item_images_attributes_${id}_image" type="file"
+                  name="item[images_attributes][${id}][image]">
+                  `;
+    return html3;
+  }
+
+  const buildImg_edit = (index, url)=> {
+    const html4 = `
+    <div class= "image-box__images__box">
+      <img class= "image-box__images__box__image${index}" img src="${url}" width="110px" height="120px"></img>
+      <div class= "image-box__images__box__delete__edit" id="image-box__images__box__delete__${index}" width="110px" height="20px">削除</div>
+    </div>
+      `;
+    return html4;
   }
 
 
@@ -61,7 +81,7 @@ $(window).on('load', ()=> {
 
 
   if(nowurl.match(/edit/)){
-    
+    // 新規のものを追加する処理
     $('.label-box').on('change', function(e) {
       const targetIndex = $(this).parent().data('index');
       const num = $(".image-box__images__box").length;
@@ -72,40 +92,58 @@ $(window).on('load', ()=> {
       $('.label-box').attr({id: `label-box--${Number(id)+1}`,for: `item_images_attributes_${Number(id)+1}_image`});
 
       if (num != 9){
-        $('.image-box__images').append(buildImg(num, blobUrl));
-        $('.image-box__images').after(buildFileField(Number(id)+1));
+        $('.image-box__images').append(buildImg_edit(num, blobUrl));
+        $('.image-box__images').after(buildFileField_edit(Number(id)+1));
         $('.text').remove();
         } else {
-          $('.image-box__images').append(buildImg(num, blobUrl));
+          $('.image-box__images').append(buildImg_edit(num, blobUrl));
         }
     });
 
+    // 既存のものを消去する処理
     $('#image-box').on('click', '.image-box__images__box__delete', function(e) {
 
       event.preventDefault();
-      const num = $(".image-box__images__box").length;
       const targetIndex = $(this).data('index')
-      const id = $(".label-box").attr('id').match(/\d{1,2}/)
-      
-      const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-
-      const deleteId = ("#item_images_attributes_"+Number(id-1)+"_image")
-      $(deleteId).remove();
-
-      if (num == 10){
-        const targetIndex = $(this).data('index')
-        const id = $(".label-box").attr('id').match(/\d{1,2}/)
-        $('.image-box__images').after(buildFileField(Number(id)+1));
-        
-        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
-        $('.label-box').attr({id: `label-box--${Number(ids)+1}`,for: `item_images_attributes_${Number(ids)+1}_image`});
-      }
+      const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`); 
 
       if (hiddenCheck) hiddenCheck.prop('checked', true);
         $(this).parent().remove();
         $(`img[data-index="${targetIndex}"]`).remove();
 
     });
-  }
-});
 
+    // 新規のものを消去する処理
+    $('#image-box').on('click', '.image-box__images__box__delete__edit', function(e) {
+
+      event.preventDefault();
+      const num = $(".image-box__images__box").length;
+      const id = $(this).attr('id').match(/\d{1,2}/)
+      const result = Number( id ) + 1
+      const emptyform = ("#item_images_attributes_"+id+"_image")
+      const deleteId = ("#item_images_attributes_"+result+"_image")
+      if (num != 10){
+        $(emptyform).val("");
+        $(deleteId).remove();
+        $(this).parent().remove();
+        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+        $('.label-box').attr({id: `label-box--${Number(ids)-1}`,for: `item_images_attributes_${Number(ids)-1}_image`});
+      }
+
+      if (num == 10){
+        const targetIndex = $(this).data('index')
+        const id = $(".label-box").attr('id').match(/\d{1,2}/)
+        $("#item_images_attributes_9_image").val("");
+        $(this).parent().remove();
+        var ids = $(".label-box").attr('id').replace(/[^0-9]/g, '');
+        $('.label-box').attr({id: `label-box--${Number(ids)-1}`,for: `item_images_attributes_${Number(ids)-1}_image`});
+      }
+
+      // if (hiddenCheck) hiddenCheck.prop('checked', true);
+      //   $(this).parent().remove();
+      //   $(`img[data-index="${targetIndex}"]`).remove();
+
+    });
+  }
+
+});
