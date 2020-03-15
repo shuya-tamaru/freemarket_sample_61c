@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
 
   require 'payjp'
   before_action :set_card, only: [:new, :pay]
-  before_action :set_item, only: [:new, :pay, :done]
 
   def new
     if @card.blank?
@@ -32,29 +31,34 @@ class OrdersController < ApplicationController
       customer: @card.customer_id, #顧客ID
       currency: 'jpy' #日本円
     )
+    @item.update(transaction_status: 2) #購入済ステータスにupdate
     redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
   end
 
   def done
+    @item = Item.find(params[:id])
+    if current_user.id != @item.saler_user_id && @item.transaction_status == 2
+    else
+    end
   end
 
   private
 
   def set_card
     @item = Item.find(params[:id])
-    if current_user.id == @item.saler_user_id && @item.transaction_status == 1
+    if current_user.id != @item.saler_user_id && @item.transaction_status == 1
       @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
     else
       redirect_to root_path
     end
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-    if current_user.id == @item.saler_user_id && @item.transaction_status == 1
-    else
-      redirect_to root_path
-    end
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  #   if current_user.id == @item.saler_user_id && @item.transaction_status == 1
+  #   else
+  #     redirect_to root_path
+  #   end
+  # end
 
 end
