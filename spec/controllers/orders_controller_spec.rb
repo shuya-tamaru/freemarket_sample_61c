@@ -20,7 +20,7 @@ describe OrdersController do
         get :new, params:{id: @item[:id]}
       end
       it "- newテンプレートの表示成功" do
-        allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer)
+        allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer) #payjp推奨の方法であり、テスト時にpayjpのような外部APIのレスポンスを要する場合はモックを使い、フェイクのレスポンスを取得するようにする。
         expect(response).to render_template :new
       end
 
