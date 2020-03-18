@@ -31,17 +31,20 @@ class OrdersController < ApplicationController
       customer: @card.customer_id, #顧客ID
       currency: 'jpy' #日本円
     )
-    @item.update(transaction_status: 2) #購入済ステータスにupdate
     @item.update(buyer_user_id: current_user.id) #購入者のIDを保存
-    redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+      redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
+    else
+    end
+    @item.update(transaction_status: 2) #購入済ステータスにupdate
   end
 
   def done
     @item = Item.find(params[:id])
-    if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
-    else
-      redirect_to root_path
-    end
+    # if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+    # else
+    #   redirect_to root_path
+    # end
   end
 
   private
