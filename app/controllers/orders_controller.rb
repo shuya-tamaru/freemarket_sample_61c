@@ -25,14 +25,20 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    Payjp::Charge.create(
-      amount: @item.price, #支払い金額
-      customer: @card.customer_id, #顧客ID
-      currency: 'jpy' #日本円
-    )
+    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    # Payjp::Charge.create(
+    #   amount: @item.price, #支払い金額
+    #   customer: @card.customer_id, #顧客ID
+    #   currency: 'jpy' #日本円
+    # )
     @item.update(buyer_user_id: current_user.id) #購入者のIDを保存
     unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp::Charge.create(
+        amount: @item.price, #支払い金額
+        customer: @card.customer_id, #顧客ID
+        currency: 'jpy' #日本円
+      )
       redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
     else
     end
