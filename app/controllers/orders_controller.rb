@@ -15,14 +15,14 @@ class OrdersController < ApplicationController
     @address = current_user.address
   end
 
-  def create
-  end
+  # def create
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
   def pay
     # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -47,10 +47,10 @@ class OrdersController < ApplicationController
 
   def done
     @item = Item.find(params[:id])
-    # if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
-    # else
-    #   redirect_to root_path
-    # end
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+      redirect_to root_path
+    else
+    end
   end
 
   private
