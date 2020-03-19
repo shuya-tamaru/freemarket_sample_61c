@@ -87,7 +87,7 @@
             送料別
 
       .item__purchase
-        - if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 1
+        - if user_signed_in? && current_user.id != @item.saler_user_id
           = link_to order_path(id: @item.id) do
             購入画面に進む
         - else
