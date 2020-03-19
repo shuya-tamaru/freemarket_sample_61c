@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 
   def done
     @item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status != 1 && request.referer&.include?("/orders/#{@item.id}/new")
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
       redirect_to root_path
     else
     end
