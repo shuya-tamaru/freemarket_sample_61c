@@ -15,24 +15,9 @@ class OrdersController < ApplicationController
     @address = current_user.address
   end
 
-  # def create
-  # end
-
-  # def edit
-  # end
-
-  # def update
-  # end
-
   def pay
-    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    # Payjp::Charge.create(
-    #   amount: @item.price, #支払い金額
-    #   customer: @card.customer_id, #顧客ID
-    #   currency: 'jpy' #日本円
-    # )
     @item.update(buyer_user_id: current_user.id) #購入者のIDを保存
-    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status != 1 && request.referer&.include?("/orders/#{@item.id}/new")
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       Payjp::Charge.create(
         amount: @item.price, #支払い金額
@@ -47,7 +32,7 @@ class OrdersController < ApplicationController
 
   def done
     @item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status != 1 && request.referer&.include?("/orders/#{@item.id}/new")
       redirect_to root_path
     else
     end
@@ -63,13 +48,5 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # def set_item
-  #   @item = Item.find(params[:id])
-  #   if current_user.id == @item.saler_user_id && @item.transaction_status == 1
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
 
 end
