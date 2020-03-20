@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :brand do
-    brand {"aaaa"}
+    name {"aaaa"}
   end
 end

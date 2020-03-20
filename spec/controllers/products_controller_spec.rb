@@ -24,29 +24,25 @@ RSpec.describe ProductsController, type: :controller do
   # end
 
   describe 'Get #edit' do
-    before do
-      # params = { images_attributes: [ FactoryBot.attributes_for( :image ) ] }
-      # item =FactoryBot.attributes_for( :item ).merge( params )
-      # @item = build(:item, id:"1")
-      # @item = FactoryBot.create( :item_with_image )
+    let(:user) {
+      FactoryBot.create(:user, id:1)
+    }
 
-      # @image = FactoryBot.create(:image)
-      # @item = FactoryBot.create(:item, images_attributes: @image)
+    before do
+      sign_in user
     end
+
     it "assigns the requested item to @item" do
-      item = create(:item_with_image)
+      item = create(:item)
       get :edit, params: { id: item }
       expect(assigns(:item)).to eq item
     end
-    # it 'リクエストは200 OKとなること' do
-    #   get 'edit', params: { id: 1 }
-    #   expect(response.status).to eq 200
-    # end
-    # it '@itemに要求されたユーザーを割り当てること' do
-    #   expect(assigns(:item)).to eq @item
-    # end
-    # it ':editテンプレートを表示すること' do
-    #   expect(response).to render_template :edit
-    # end
+
+    it "renders the :edit template" do
+      item = create(:item)
+      get :edit, params: { id: item }
+      expect(response).to render_template :edit
+    end
+
   end
 end
