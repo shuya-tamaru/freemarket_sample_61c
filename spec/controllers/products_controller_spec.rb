@@ -24,24 +24,48 @@ RSpec.describe ProductsController, type: :controller do
   # end
 
   describe 'Get #edit' do
-    let(:user) {
-      FactoryBot.create(:user, id:1)
-    }
+    context "current_user.id==sailer_user.id" do
+      let(:user) {
+        FactoryBot.create(:user, id:1)
+      }
 
-    before do
-      sign_in user
+      before do
+        sign_in user
+      end
+
+      it "assigns the requested item to @item" do
+        item = create(:item)
+        get :edit, params: { id: item }
+        expect(assigns(:item)).to eq item
+      end
+
+      it "renders the :edit template" do
+        item = create(:item)
+        get :edit, params: { id: item }
+        expect(response).to render_template :edit
+      end
     end
 
-    it "assigns the requested item to @item" do
-      item = create(:item)
-      get :edit, params: { id: item }
-      expect(assigns(:item)).to eq item
-    end
+    context "current_user.id!=sailer_user.id" do
+      let(:user) {
+        FactoryBot.create(:user, id:2)
+      }
 
-    it "renders the :edit template" do
-      item = create(:item)
-      get :edit, params: { id: item }
-      expect(response).to render_template :edit
+      before do
+        sign_in user
+      end
+
+      it "assigns the requested item to @item" do
+        item = create(:item)
+        get :edit, params: { id: item }
+        expect(assigns(:item)).to eq item
+      end
+
+      it "renders the :edit template" do
+        item = create(:item)
+        get :edit, params: { id: item }
+        expect(response).to redirect_to (root_path)
+      end
     end
 
   end
