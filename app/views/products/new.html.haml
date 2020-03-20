@@ -16,16 +16,12 @@
               必須
             %p
               最大10枚までアップロードできます
-            
-          .contents__item__upload__image
-            .contents__item__upload__image__btn
-              %p
-                ドラッグアンドドロップ
-                %br
-                  またはクリックしてファイルをダウンロード
-              .contents__item__upload__image__btn__area
-                = f.fields_for :images do |image| 
-                  = image.file_field :image, class: "contents__item__upload__image__btn__area__field"
+          .image-box
+            %label
+              .image-box__images{ id: 'image-box' }
+                %p.text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                = f.fields_for :images do |i|
+                  = i.file_field :image, class: "image-box__images__input", id: 'item_images_attributes_0_image'
 
         .contents__item__comment
           .contents__item__comment__name
@@ -35,7 +31,6 @@
               必須
             .contents__item__comment__name__form
               = f.text_field :name, class:"contents__item__comment__name__form__text", placeholder: "商品名（必須40文字まで）",maxlength: "40"
-        
           .contents__item__comment__description
             %label
               商品の説明
@@ -163,3 +158,5 @@
 
 .footer2
   = render 'devise/shared/footer2'
+
+

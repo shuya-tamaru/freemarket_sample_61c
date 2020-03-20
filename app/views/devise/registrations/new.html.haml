@@ -3,7 +3,7 @@
     = link_to root_path do
       .header3__logo__image
     .header3__logo__progress
-      = image_tag "step1.png", class: "image", size: "450x35"
+      = image_tag "step1_r2.png", class: "image", size: "400x35"
 .contents3
   .contents3__title
     会員情報入力
@@ -30,7 +30,7 @@
             = f.label "パスワード"
             %span.must 必須
             %br/
-            = f.password_field :password, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", autocomplete: "new-password"
+            = f.password_field :password, placeholder: "7文字以上の半角英数字", class: "contents3__form__text", autocomplete: "new-password", id: 'js-password'
         .contents3__entry__message1
           ※英字と数字の両方を含めて設定してください
         %p
