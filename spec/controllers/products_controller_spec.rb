@@ -67,6 +67,39 @@ RSpec.describe ProductsController, type: :controller do
         expect(response).to redirect_to (root_path)
       end
     end
+  end
+
+  describe 'Patch #update' do
+    let(:user) {
+      FactoryBot.create(:user, id:1)
+    }
+
+      before do
+        sign_in user
+        @item = create(:item)
+        @item_params = @item.attributes
+      end
+
+      context "can update" do
+        it 'item can be updated' do
+          patch :update, params: {id: @item,item: @item_params}
+          expect(assigns(:item)).to eq(@item)
+        end
+
+        it "changes @item's attributes" do
+          @item_params["name"] = "アップデート"
+          patch :update, params: {id: @item,item: @item_params}
+          @item.reload
+          expect(@item.name).to eq("アップデート")
+        end
+
+        it "redirects to root_path" do
+          patch :update, params: {id: @item,item: @item_params}
+          expect(response).to redirect_to(root_path)
+        end
+      end
 
   end
+
+
 end
