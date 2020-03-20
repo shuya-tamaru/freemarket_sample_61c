@@ -24,14 +24,15 @@ RSpec.describe ProductsController, type: :controller do
   # end
 
   describe 'Get #edit' do
+
+    before do
+      sign_in user
+    end
+
     context "current_user.id==sailer_user.id" do
       let(:user) {
         FactoryBot.create(:user, id:1)
       }
-
-      before do
-        sign_in user
-      end
 
       it "assigns the requested item to @item" do
         item = create(:item)
@@ -51,10 +52,6 @@ RSpec.describe ProductsController, type: :controller do
         FactoryBot.create(:user, id:2)
       }
 
-      before do
-        sign_in user
-      end
-
       it "assigns the requested item to @item" do
         item = create(:item)
         get :edit, params: { id: item }
@@ -70,13 +67,17 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe 'Patch #update' do
+    let(:user) {
+      FactoryBot.create(:user, id:1)
+    }
+
+    before do
+      sign_in user
+    end
+
     context "can update" do
-      let(:user) {
-        FactoryBot.create(:user, id:1)
-      }
 
         before do
-          sign_in user
           @item = create(:item)
           @item_params = @item.attributes
         end
@@ -100,12 +101,8 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       context "can't be updated" do
-        let(:user) {
-          FactoryBot.create(:user, id:1)
-        }
   
           before do
-            sign_in user
             @item = create(:item, saler_user_id: 2)
             @item_params = @item.attributes
           end
