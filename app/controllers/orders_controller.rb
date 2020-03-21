@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @item.update(buyer_user_id: current_user.id) #購入者のIDを保存
     unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status != 1 && request.referer&.include?("/orders/#{@item.id}/new")
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       Payjp::Charge.create(
@@ -26,7 +25,7 @@ class OrdersController < ApplicationController
       )
       redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
     end
-    @item.update(transaction_status: 2) #購入済ステータスにupdate
+    @item.update(buyer_user_id: current_user.id, transaction_status: 2) #購入者のIDを保存と、購入済ステータスにupdate
   end
 
   def done
