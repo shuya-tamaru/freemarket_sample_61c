@@ -14,7 +14,7 @@
   %ul.popular__list
     - for item in 0..9 do
       %li.popular__list__product
-        =link_to "#", class: "product" do
+        =link_to "/items/#{item_set[1][item].id}", class: "product" do
           .product__image
             = image_tag item_set[1][item].images.to_a[0].pass
             %span
