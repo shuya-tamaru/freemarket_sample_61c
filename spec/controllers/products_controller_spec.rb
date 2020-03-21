@@ -15,8 +15,15 @@ RSpec.describe ProductsController, type: :controller do
   describe "GET #new without user logged_in" do
     it "redirect_to new_user_session_path" do
       get :new
-      expect(response).to have_http_status "302"
+      # expect(response).to have_http_status "302"
       expect(subject).to redirect_to(new_user_session_path)
+    end
+  end
+
+  describe "GET #new without user logged_in" do
+    it "returns 302" do
+      get :new
+      expect(response).to have_http_status "302"
     end
   end
 
