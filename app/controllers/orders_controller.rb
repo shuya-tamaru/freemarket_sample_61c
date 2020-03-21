@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
         currency: 'jpy' #日本円
       )
       redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
-    else
     end
     @item.update(transaction_status: 2) #購入済ステータスにupdate
   end
@@ -34,7 +33,6 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:id])
     unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
       redirect_to root_path
-    else
     end
   end
 
