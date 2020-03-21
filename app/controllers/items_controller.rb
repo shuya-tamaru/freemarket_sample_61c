@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy]
+  before_action :to_products_show, only: [:show]
 
   def index
     @categorys = [1, 200, 893, 680]
@@ -74,5 +75,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def to_products_show
+    if Item.find(params[:id]).saler_user_id == current_user.id
+      redirect_to product_path(params[:id])
+    end
   end
 end
