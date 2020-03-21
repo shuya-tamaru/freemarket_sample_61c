@@ -2,20 +2,30 @@
 .container
   .item
     .item-box
-      .item-box__name
-        シャネル クリスタル オードゥ トワレット (ヴァポリザター) 100ml
-      .item-box__description
-        『シャネル クリスタル オードゥ トワレット (ヴァポリザター) 100ml』は、800回の取引実績を持つフォロー歓迎☆totoroさんから出品されました。シャネル（メイク道具/化粧小物/コスメ・香水・美容）の商品で、東京都から1~2日で発送されます。
+      %h1.item-box__name
+        = @item.name
       .item-box__details
-        .item-box__details__image{width: "285", height:"400"}
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .item-box__details__image__top
+        .item-box__details__image
+          .item-box__details__image__top
+            %ul.slider
+              - @item.images.each do |image|
+                %li.slider__item
+                  = image_tag image.pass
+
+          .item-box__details__image__list
+            %ul.thumb
+            - @item.images.each do |image|
+              %li.thumb__item
+                =image_tag image.pass
+
         .item-box__details__table
           %table{border: "1", style: "border-collapse: collapse"}
             %tr
               %th 出品者名
               %td.item-box__details__table__td
-                フォロー歓迎username
+                = link_to "#", class:"td__link" do
+                  = @user.nickname
+                %br
                 =fas_icon 'grin', class: "grin-icon" 
                 999
                 =fas_icon 'meh-blank', class: "meh-blank-icon"
@@ -24,67 +34,96 @@
                 999
             %tr
               %th カテゴリー
-              %td.item-box__details__table__td コスメ・香水・美容>メイクアップ>メイク道具/化粧小物
+              %td.item-box__details__table__td
+                = link_to "#", class:"td__link" do
+                  = @categorys.parent.parent.name
+                %br
+                = link_to "#", class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @categorys.parent.name
+                %br
+                = link_to "#", class:"td__link" do
+                  = icon('fas', 'chevron-right')
+                  = @categorys.name
+                                 
               %tr
                 %th ブランド
-                %td.item-box__details__table__td シャネル
+                %td.item-box__details__table__td
+                  = link_to "#", class:"td__link" do
+                    = @brand.name
             %tr
               %th 商品のサイズ
               %td.item-box__details__table__td XS
             %tr
               %th 商品の状態
-              %td.item-box__details__table__td 未使用に近い
+              %td.item-box__details__table__td 
+                = @item.item_status
             %tr
               %th 配送料の負担
-              %td.item-box__details__table__td  配送者負担
+              %td.item-box__details__table__td
+                = @item.fee_side
             %tr
               %th 配送の方法
-              %td.item-box__details__table__td 未定
+              %td.item-box__details__table__td
+                = @item.shipping_way
             %tr
               %th 発送元地域
-              %td.item-box__details__table__td 東京都
+              %td.item-box__details__table__td
+                = @item.region
             %tr
               %th 発送日の目安
-              %td.item-box__details__table__td 2~4日で発送
-      .item__price
-        %span.item__price__amount ¥ 5,900
-        %span.item__price__tax (税込)
-        %span.item__price__ship 送料込み
+              %td.item-box__details__table__td 
+                = @item.sipping_days
 
-      .item__purchase 購入画面に進む
+      .item__price
+        %span.item__price__amount
+          ¥
+          = @item.price.to_s(:delimited)
+        %span.item__price__tax (税込)
+        %span.item__price__ship 
+          - if @item.fee_side == "1"
+            送料込み
+          - else 
+            送料別
+
+      .item__purchase
+        - if user_signed_in? && current_user.id != @item.saler_user_id
+          = link_to order_path(id: @item.id) do
+            購入画面に進む
+        - else
+          = link_to new_user_session_path do
+            購入画面に進む
 
       .item__field 
-        ■CHANEL シャネル■ (フランス製)
-        %br
-        クリスタル EDT VAPORISATEUR
-        %br
-        容量:100ml
-        %br
-        スプレー式のオードトワレです。
-        %br
-        未使用品のつもりで長く保管しておりましたがキャップを外しスプレーの先端を確認してみましたところ画像4枚目のように先端部に色付いておりました。記憶が定かではないのですが所見から数回程度プッシュしたのかもしれず中古として出品致します。未使用に近いと思うのですが残量は画像にてご確認くださいませ。外箱に入れ暗所保管しておりました。
-        %br
-        経年品につき揮発劣化などあるかも知れませんのでご理解いただき細かなことを気になさる方はお控えください。
-        %br
-        メルカリ便コンパクトBoxにてこわれもの指定のうえ大切にお送りします。
-        %br
-        シャネル CHANEL
-        %br
-        DE TOILETE CRISTALLE
-        %br
-        VAORISATEUR
-        %br
-        SPRAY
+        = safe_join(@item.discription.split("\n"),tag(:br))
 
       %ul.item__bottom
-        %li.item__bottom__likes いいね!2
-        %li.item__bottom__report 不適切な商品の報告
-        %li.item__bottom__policy あんしん・あんぜんへの取り組み
+        %li.item__bottom__likes 
+          - if user_signed_in? && current_user.id == @item.saler_user_id
+            = link_to "#" do 
+              いいね!
+
+          - else
+            = link_to new_user_session_path do
+              いいね!
+
+        = link_to "#" do
+          %li.item__bottom__report 
+            不適切な商品の報告
+          
+        = link_to "#" do
+          %li.item__bottom__policy 
+            = icon('fas', 'lock')
+            あんしん・あんぜんへの取り組み
+          
   .container__form
-    %p.warning 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %p.warning 
+      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
     %textarea.inputs
     %form.message-form
-    .container__form__btn コメントする
+    = link_to "#" do
+      .container__form__btn
+        コメントする
   .container__sns
     .container__sns__box
       %li
@@ -99,80 +138,40 @@
       %li
         %a.pinterest
           = fab_icon 'pinterest', class: "pinterest__icon"
+
   .container__show
     %div.container__show__list
       %p.other
-        シャネルの他の出品
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
-      .show-box
-        .show-box__image
-          =image_tag "mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .show-box__text
-          .show-box__text__name
-            ChannelNoFregrance
-          .show-box__text__price
-            ¥ 9,999円
+        = link_to "#{@user.nickname}さんのその他の出品"
+        
+      - @items.each do |item|
+        .show-box
+          = link_to item_path(item) do
+            .show-box__image
+              =image_tag item.images.to_a[0].pass
+            .show-box__text
+              .show-box__text__name
+                = item.name
+              .show-box__text__price
+                ¥
+                = item.price.to_s(:delimited)
+
+  - if @subitems.present?
+    .container__show
+      %div.container__show__list
+        %p.other
+          = link_to "#{@brand.name}の#{@categorys.name}その他の出品"
+      
+        - @subitems.each do |subitem|
+          .show-box
+            = link_to item_path(subitem) do
+              .show-box__image
+                =image_tag subitem.images.to_a[0].pass
+              .show-box__text
+                .show-box__text__name
+                  = subitem.name
+                .show-box__text__price
+                  ¥
+                  = subitem.price.to_s(:delimited)
+
 = render "footer"
