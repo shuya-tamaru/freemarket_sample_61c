@@ -20,6 +20,10 @@
     font-weight: 700;
     text-align: center;
     line-height: 50px;
+    .profile__background{
+      height: 156px;
+      width: 700px;
+    }
   }
   &__main{
     width: 100%;
@@ -27,7 +31,6 @@
     &__user{
       width: 100%;
       height: 156px;
-      background-image: url(profile_background.jpg);
       display: flex;
       justify-content: center;
      
