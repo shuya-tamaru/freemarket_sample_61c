@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-
-  before_action :set_item, only: [:edit, :update, :show]
   before_action :move_to_signup, except: [:index, :show]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
   end
