@@ -1,4 +1,7 @@
-= render "header"
+- if user_signed_in?
+  = render "header"
+-else
+  = render "header_unlogined"
 .container
   .item
     .item-box
