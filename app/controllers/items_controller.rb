@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
         grandchild_categorys << gcc.child_ids
         grandchild_categorys.flatten!
       end
-      @items << Item.where(category_id: grandchild_categorys).last(10).reverse
+      @items << Item.where(category_id: grandchild_categorys, transaction_status: 1).last(10).reverse
       @items.each do |item|
         @itemCategorys[i] << item
       end
