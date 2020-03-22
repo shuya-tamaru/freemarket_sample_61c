@@ -1,12 +1,17 @@
 class ProductsController < ApplicationController
+  before_action :move_to_signup, except: [:index, :show]
   before_action :set_item, only: [:edit, :update, :show]
 
   def index
   end
 
   def new
-    @item =Item.new
-    @item.images.build
+    if current_user
+      @item =Item.new
+      @item.images.build
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -60,6 +65,10 @@ class ProductsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_signup
+    redirect_to new_user_session_path unless user_signed_in?
   end
   
   # def stop_params
