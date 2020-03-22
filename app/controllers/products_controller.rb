@@ -36,7 +36,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    if current_user.id != @item.saler_user_id
+      redirect_to root_path
+    end
   end
 
 
@@ -53,7 +55,7 @@ class ProductsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
+    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :_destroy, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
   end
 
   def set_item
