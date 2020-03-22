@@ -20,6 +20,12 @@ RSpec.describe ProductsController, type: :controller do
     end
   end
 
+<<<<<<< HEAD
+  describe "GET #new without user logged_in" do
+    it "returns 302" do
+      get :new
+      expect(response).to have_http_status "302"
+=======
   # describe "GET #show" do
   #   it "returns http success" do
   #     get :show
@@ -67,6 +73,7 @@ RSpec.describe ProductsController, type: :controller do
         get :edit, params: { id: item }
         expect(response).to redirect_to (root_path)
       end
+>>>>>>> origin/ユーザー登録のコントローラーテスト
     end
   end
 
