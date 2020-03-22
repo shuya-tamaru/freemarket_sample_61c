@@ -23,21 +23,15 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.saler_user_id)
-    @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
-    @brand = Brand.find(@item.brand_id)
-    @categorys = Category.find(@item.category_id)
-    @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
-    # 以下のコードが正ですが、動作確認のためにコメントアウトしています
-    # if @item.saler_user_id == current_user.id
-    #   @user = User.find(@item.saler_user_id)
-    #   @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
-    #   @brand = Brand.find(@item.brand_id)
-    #   @categorys = Category.find(@item.category_id)
-    #   @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
-    # else
-    #   redirect_to root_path
-    # end
+    if @item.saler_user_id == current_user.id
+      @user = User.find(@item.saler_user_id)
+      @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
+      @brand = Brand.find(@item.brand_id)
+      @categorys = Category.find(@item.category_id)
+      @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
+    else
+      redirect_to controller: 'items', action: 'show', id: @item.id
+    end
   end
 
   def edit
