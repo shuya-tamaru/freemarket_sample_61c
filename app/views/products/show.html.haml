@@ -100,7 +100,7 @@
   .container__manage
     .container__manage__box
       .container__manage__box__edit
-        =link_to '商品の編集', item_path(@item), method: :edit, class: "container__manage__box__text"
+        =link_to '商品の編集', edit_product_path(@item), class: "container__manage__box__text"
       %p.or or
       - if @item.transaction_status == 0
         .container__manage__box__resume
