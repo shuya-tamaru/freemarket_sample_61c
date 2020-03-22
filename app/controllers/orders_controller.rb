@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 1
       @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
     else
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 

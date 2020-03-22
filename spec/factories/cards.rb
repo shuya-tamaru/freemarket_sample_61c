@@ -6,6 +6,7 @@ FactoryBot.define do
     validated_date_month {Faker::Number.between(from: 1, to: 12)}
     security_number     {Faker::Number.number(digits: 3)}
     user_id             { 1 }
+    customer_id         {'cus_121673955bd7aa144de5a8f6c262'}
   end
 
 end
