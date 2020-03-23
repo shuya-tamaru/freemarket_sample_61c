@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
 
   require 'payjp'
   before_action :set_card, only: [:new, :pay]
-  before_action :set_item, only: [:new, :pay, :done]
 
   def new
     if @card.blank?
@@ -16,36 +15,35 @@ class OrdersController < ApplicationController
     @address = current_user.address
   end
 
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
   def pay
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    Payjp::Charge.create(
-      amount: @item.price, #支払い金額
-      customer: @card.customer_id, #顧客ID
-      currency: 'jpy' #日本円
-    )
-    redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status != 1 && request.referer&.include?("/orders/#{@item.id}/new")
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp::Charge.create(
+        amount: @item.price, #支払い金額
+        customer: @card.customer_id, #顧客ID
+        currency: 'jpy' #日本円
+      )
+      redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
+    end
+    @item.update(buyer_user_id: current_user.id, transaction_status: 2) #購入者のIDを保存と、購入済ステータスにupdate
   end
 
   def done
+    @item = Item.find(params[:id])
+    unless user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 2 && request.referer&.include?("/orders/#{@item.id}/new")
+      redirect_to root_path
+    end
   end
 
   private
 
   def set_card
-    @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
-  end
-
-  def set_item
     @item = Item.find(params[:id])
+    if user_signed_in? && current_user.id != @item.saler_user_id && @item.transaction_status == 1
+      @card = Card.find_by(user_id: current_user.id) #credit_cards_controllerで使用したCardテーブルからpayjpの顧客IDを検索
+    else
+      redirect_to root_path
+    end
   end
 
 end
