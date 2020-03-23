@@ -7,6 +7,7 @@ FactoryBot.define do
     address    {"八広"}
     building   {"青葉ビル"}
     phone_tel  {Faker::Number.number(digits: 10)}
+    user
   end
 
 end
