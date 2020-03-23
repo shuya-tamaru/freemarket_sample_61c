@@ -24,8 +24,11 @@ class OrdersController < ApplicationController
         currency: 'jpy' #日本円
       )
       redirect_to ({action: 'done', id: @item.id})  #購入完了画面に遷移
+      @item.update(buyer_user_id: current_user.id, transaction_status: 2) #購入者のIDを保存と、購入済ステータスにupdate
     end
-    @item.update(buyer_user_id: current_user.id, transaction_status: 2) #購入者のIDを保存と、購入済ステータスにupdate
+    #以下は購入処理に失敗した例外処理
+    rescue => e
+      redirect_to new_order_path(@item), alert: '商品の購入に失敗しました。お手数をおかけ致しますが、XXX-XXXX-XXXXまでご連絡をお願いいたします。'
   end
 
   def done

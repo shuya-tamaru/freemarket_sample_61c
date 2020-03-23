@@ -19,5 +19,6 @@ FactoryBot.define do
     price {20000}
     region {1}
     transaction_status {1}
+    buyer_user_id {nil}
   end
 end
