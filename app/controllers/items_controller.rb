@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if @item.saler_user_id == current_user.id
+    if user_signed_in? && @item.saler_user_id == current_user.id
       redirect_to controller: 'products', action: 'show', id: @item.id
     else
       @user = User.find(@item.saler_user_id)
@@ -82,7 +82,7 @@ class ItemsController < ApplicationController
   end
 
   def to_products_show
-    if Item.find(params[:id]).saler_user_id == current_user.id
+    if user_signed_in? && Item.find(params[:id]).saler_user_id == current_user.id
       redirect_to product_path(params[:id])
     end
   end
