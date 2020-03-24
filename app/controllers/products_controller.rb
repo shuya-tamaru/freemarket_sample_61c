@@ -1,12 +1,17 @@
 class ProductsController < ApplicationController
+  before_action :move_to_signup, except: [:index, :show]
   before_action :set_item, only: [:edit, :update, :show]
 
   def index
   end
 
   def new
-    @item =Item.new
-    @item.images.build
+    if current_user
+      @item =Item.new
+      @item.images.build
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -18,25 +23,21 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.saler_user_id)
-    @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
-    @brand = Brand.find(@item.brand_id)
-    @categorys = Category.find(@item.category_id)
-    @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
-    # 以下のコードが正ですが、動作確認のためにコメントアウトしています
-    # if @item.saler_user_id == current_user.id
-    #   @user = User.find(@item.saler_user_id)
-    #   @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
-    #   @brand = Brand.find(@item.brand_id)
-    #   @categorys = Category.find(@item.category_id)
-    #   @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
-    # else
-    #   redirect_to root_path
-    # end
+    if @item.saler_user_id == current_user.id
+      @user = User.find(@item.saler_user_id)
+      @items = Item.where.not(id: params[:id]).where(saler_user_id: @user, transaction_status: 1).last(6).reverse
+      @brand = Brand.find(@item.brand_id)
+      @categorys = Category.find(@item.category_id)
+      @subitems = Item.where.not(id: params[:id]).where(category_id: @categorys).where(brand_id: @brand, transaction_status: 1).last(6).reverse
+    else
+      redirect_to controller: 'items', action: 'show', id: @item.id
+    end
   end
 
   def edit
-
+    if current_user.id != @item.saler_user_id
+      redirect_to root_path
+    end
   end
 
 
@@ -53,11 +54,15 @@ class ProductsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
+    params.require(:item).permit(:fee_side, :category_id, :name, :discription, :brand_id, :item_status, :shipping_charge, :shipping_way, :sipping_days, :price, :region, images_attributes:[:image, :_destroy, :id]).merge(saler_user_id: current_user.id.to_i, transaction_status: 1)
   end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_signup
+    redirect_to new_user_session_path unless user_signed_in?
   end
   
   # def stop_params
