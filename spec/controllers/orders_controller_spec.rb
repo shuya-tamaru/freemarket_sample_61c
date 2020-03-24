@@ -6,8 +6,6 @@ RSpec.describe OrdersController, type: :controller do
   let(:category) { create(:category) }
   let(:brand) { create(:brand) }
   let(:item) { create(:item, saler_user_id: users.last.id, category_id: category.id, brand_id: brand.id) }
-  # let(:image) { create(:image, item_id: item.id) }
-  # let(:address) { create(:address, user_id: users.first.id) }
   let(:card) { create(:card, user_id: users.first.id, customer_id: "cus_121673955bd7aa144de5a8f6c262", card_id: "car_6845da1a8651f889bc432362dfcb") }
 
   describe 'GET #new' do
@@ -15,33 +13,11 @@ RSpec.describe OrdersController, type: :controller do
       before do
         login users.first
         @item = item
-        # @images = @item.images
-        # @address = address
-        # @card = card
         get :new, params:{id: @item[:id]}
-        # prepare_customer = double("Payjp::Customer")
-        # allow(Payjp::Customer).to receive(:retrieve).and_return(PayjpMock.prepare_customer)
       end
       example "- newテンプレートの表示成功" do
         expect(response).to render_template :new
       end
-
-      # example "- 変数@itemが正しく定義されている" do
-      #   expect(assigns(:item)).to eq @item
-      #   # orders_controller.rbのnewアクションで定義されている@itemと、テスト内で作成したitemというテストデータが同じであることを検証する。
-      # end
-
-      # # example "- 変数@imagesが正しく定義されている" do
-      # #   expect(assigns(:image)).to eq(@images)
-      # # end
-
-      # # example "- 変数@cardが正しく定義されている" do
-      # #   expect(assigns(:card)).to eq @card
-      # # end
-
-      # example "- 変数@addressが正しく定義されている" do
-      #   expect(assigns(:address)).to eq @address
-      # end
 
     end
 
@@ -62,11 +38,11 @@ RSpec.describe OrdersController, type: :controller do
       context 'アクション成功' do
         before do
           @item = item
-          # @address = address
           @card = card
           allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer)
           allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_charge)
           #payjp推奨の方法であり、テスト時にpayjpのような外部APIのレスポンスを要する場合はモックを使い、フェイクのレスポンスを取得するようにする。allowはpayjpとの通信を回避するためのメソッド。
+          #allow(実装を置き換えたいオブジェクト).to receive(置き換えたいメソッド名).and_return(返却したい値やオブジェクト)
           post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
         end
 
@@ -92,14 +68,13 @@ RSpec.describe OrdersController, type: :controller do
       context 'アクション失敗' do
         before do
           @item = item
-          # @address = address
         end
 
         context "出品停止の商品の場合" do
           before do
             @item.update(transaction_status: 0)
-            allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_charge)
             post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
+            allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_charge)
           end
 
           example "- 支払情報の取得失敗" do
@@ -138,6 +113,7 @@ RSpec.describe OrdersController, type: :controller do
             @item = item
             @card = card
             allow(Payjp::Charge).to receive(:create).and_raise(Payjp::CardError.new('', {}, 402))
+            #allow(オブジェクト).to receive(メソッド名).and_raise(エラー)・・・人為的にエラーを発生させる構文
             post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
           end
 
