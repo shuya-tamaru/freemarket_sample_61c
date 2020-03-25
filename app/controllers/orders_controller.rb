@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def new
     if @card.blank?
       # redirect_to controller: "credit_cards", action: "new" #登録された情報がない場合、クレジットカード登録画面に移動。
+      #テスト時は、Payjpを介したカード登録はしないため、コメントアウト。
     else #以下はcredit_cards_controllerの内容にもあるので意味はそちらをご参照。
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
