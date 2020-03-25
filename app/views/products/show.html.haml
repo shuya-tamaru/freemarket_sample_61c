@@ -35,7 +35,7 @@
             %tr
               %th カテゴリー
               %td.item-box__details__table__td
-                - if @categorys.has_children? && @categorys.has_parent? == false
+                - if @categorys.root?
                   = link_to "#", class:"td__link" do
                     = @categorys.name
                 - elsif @categorys.has_children? && @categorys.has_parent?
