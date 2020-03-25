@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :brand do
-    name           { Faker::Name.name }
+    id {1}
+    name { "シャネル" }
   end
 end

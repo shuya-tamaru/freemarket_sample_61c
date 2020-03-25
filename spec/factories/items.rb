@@ -14,5 +14,8 @@ FactoryBot.define do
     region {1}
     transaction_status {1}
     buyer_user_id {nil}
+
+    association :category
+    association :brand
   end
 end
