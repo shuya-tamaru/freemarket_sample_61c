@@ -56,7 +56,7 @@ RSpec.describe OrdersController, type: :controller do
         end
 
         example "- buyer_user_idの更新成功" do
-          expect(assigns(:item).buyer_user_id).not_to eq nil
+          expect(assigns(:item).buyer_user_id).to eq users.first.id
         end
 
         example "- 購入完了画面に遷移" do
