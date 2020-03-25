@@ -38,16 +38,27 @@
             %tr
               %th カテゴリー
               %td.item-box__details__table__td
-                = link_to "#", class:"td__link" do
-                  = @categorys.parent.parent.name
-                %br
-                = link_to "#", class:"td__link" do
-                  = icon('fas', 'chevron-right')
-                  = @categorys.parent.name
-                %br
-                = link_to "#", class:"td__link" do
-                  = icon('fas', 'chevron-right')
-                  = @categorys.name
+                - if @categorys.has_children? && @categorys.has_parent? == false
+                  = link_to "#", class:"td__link" do
+                    = @categorys.name
+                - elsif @categorys.has_children? && @categorys.has_parent?
+                  = link_to "#", class:"td__link" do
+                    = @categorys.parent.name
+                  %br
+                  = link_to "#", class:"td__link" do
+                    = icon('fas', 'chevron-right')
+                    = @categorys.name
+                - else
+                  = link_to "#", class:"td__link" do
+                    = @categorys.parent.parent.name
+                  %br
+                  = link_to "#", class:"td__link" do
+                    = icon('fas', 'chevron-right')
+                    = @categorys.parent.name 
+                  %br
+                  = link_to "#", class:"td__link" do
+                    = icon('fas', 'chevron-right')
+                    = @categorys.name
                                  
               %tr
                 %th ブランド
