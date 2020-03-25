@@ -112,8 +112,10 @@ RSpec.describe OrdersController, type: :controller do
           before do
             @item = item
             @card = card
-            allow(Payjp::Charge).to receive(:create).and_raise(Payjp::CardError.new('', {}, 402))
+            allow(Payjp::Charge).to receive(:create).and_raise(Payjp::CardError.new(402, "", ""))
             #allow(オブジェクト).to receive(メソッド名).and_raise(エラー)・・・人為的にエラーを発生させる構文
+            #402:カード認証/支払いエラー
+            #newの引数の個数は3~6じゃないとダメと言われたので無理やり3つにしました。402はなんとなく入れたかっただけです。
             post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
           end
 
