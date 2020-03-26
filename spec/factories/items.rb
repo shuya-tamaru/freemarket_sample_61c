@@ -12,5 +12,8 @@ FactoryBot.define do
     sipping_days {1}
     price {20000}
     region {1}
+
+    association :category
+    association :brand
   end
 end
