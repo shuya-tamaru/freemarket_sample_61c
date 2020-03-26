@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
         gcc.child_ids
       end
       grandchild_categorys.flatten!
-      @items << Item.where(category_id: grandchild_categorys, transaction_status: 1).last(10).reverse
+      @items << Item.where(category_id: grandchild_categorys, transaction_status: 1).includes(:images).last(10).reverse
       @items.each do |item|
         @itemCategorys[i] << item
       end
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
       @item_brands[i] = []
       @item_brands[i] << Brand.find(brand).name
       @items = []
-      @items << Item.where(brand_id: brand).last(10).reverse
+      @items << Item.where(brand_id: brand).includes(:images).last(10).reverse
       @items.each do |item|
         @item_brands[i] << item
       end
