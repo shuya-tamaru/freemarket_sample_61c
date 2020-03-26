@@ -1,25 +1,20 @@
 FactoryBot.define do
   factory :item do
     name {"テストの商品"}
+    # images {[FactoryBot.attributes_for(:image)]}
     images {[FactoryBot.build(:image, item: nil)]}
     discription {"hogeeeeeeeefugaaaaaaaaaaaa"}
     saler_user_id {1}
-    item_status {1}
-    fee_side {1}
-    shipping_way {1}
-    sipping_days {1}
+    item_status {"新品、未使用"}
+    fee_side {"送料込み"}
+    shipping_way {"未定"}
+    sipping_days {'1〜2日で発送'}
     price {20000}
-    region {1}
+    region {"北海道"}
     transaction_status {1}
     category
     brand
+    
   end
-
-  # factory :item_with_image, class: Item do
-  #   image {File.open("#{Rails.root}/public/images/test.png")}
-
-  #   after( :create ) do |item|
-  #     create :image, item: item
-  #   end
-  # end  
+ 
 end

@@ -20,6 +20,13 @@ RSpec.describe ProductsController, type: :controller do
     end
   end
 
+  describe "GET #new without user logged_in" do
+    it "returns 302" do
+      get :new
+      expect(response).to have_http_status "302"
+    end
+  end
+
   # describe "GET #show" do
   #   it "returns http success" do
   #     get :show
@@ -35,7 +42,7 @@ RSpec.describe ProductsController, type: :controller do
 
     context "current_user.id==sailer_user.id" do
       let(:user) {
-        FactoryBot.create(:user, id:1)
+        FactoryBot.create(:user, id:3)
       }
 
       it "assigns the requested item to @item" do
@@ -45,7 +52,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "renders the :edit template" do
-        item = create(:item)
+        item = create(:item, saler_user_id:3)
         get :edit, params: { id: item }
         expect(response).to render_template :edit
       end
@@ -53,7 +60,7 @@ RSpec.describe ProductsController, type: :controller do
 
     context "current_user.id!=sailer_user.id" do
       let(:user) {
-        FactoryBot.create(:user, id:2)
+        FactoryBot.create(:user)
       }
 
       it "assigns the requested item to @item" do
@@ -67,16 +74,12 @@ RSpec.describe ProductsController, type: :controller do
         get :edit, params: { id: item }
         expect(response).to redirect_to (root_path)
       end
-  describe "GET #new without user logged_in" do
-    it "returns 302" do
-      get :new
-      expect(response).to have_http_status "302"
     end
-  end
+
 
   describe 'Patch #update' do
     let(:user) {
-      FactoryBot.create(:user, id:1)
+      FactoryBot.create(:user,id:3)
     }
 
     before do
@@ -86,8 +89,9 @@ RSpec.describe ProductsController, type: :controller do
     context "can update" do
 
         before do
-          @item = create(:item)
+          @item = create(:item, saler_user_id: 3)
           @item_params = @item.attributes
+          # @item_params = FactoryBot.attributes_for(:item, images:"#{Rails.root}/app/assets/images/step4.png" )
         end
 
         it 'item can be updated' do
@@ -100,6 +104,13 @@ RSpec.describe ProductsController, type: :controller do
           patch :update, params: {id: @item,item: @item_params}
           @item.reload
           expect(@item.name).to eq("アップデート")
+        end
+
+        it "changes @item's attributes image" do
+          @item_params[:images] = "#{Rails.root}/app/assets/images/step4.png"
+          patch :update, params: {id: @item, item: @item_params}
+          @item.reload
+          expect(@item.images[0].image.url).to eq("#{Rails.root}/app/assets/images/step4.png")
         end
 
         it "redirects to root_path" do
@@ -128,9 +139,6 @@ RSpec.describe ProductsController, type: :controller do
           expect(response).to redirect_to(root_path)
         end
       end
-
-
+    end
   end
-
-
 end
