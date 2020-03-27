@@ -52,4 +52,12 @@ describe Item do
       expect(item.errors[:price])
     end
   end
+
+  describe '#destroy' do
+    let!(:item) { FactoryBot.create(:item, transaction_status: 1) }
+    it "is valid with correct params" do
+      expect{ item.destroy }.to change{ Item.count }.by(-1)
+    end
+  end
+
 end
