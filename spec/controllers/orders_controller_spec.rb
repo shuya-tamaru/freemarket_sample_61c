@@ -10,12 +10,11 @@ RSpec.describe OrdersController, type: :controller do
 
   describe 'GET #new' do
     context 'ログイン時' do
-      before do
+      example "- newテンプレートの表示成功" do
         login users.first
         @item = item
+        allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer)
         get :new, params:{id: @item[:id]}
-      end
-      example "- newテンプレートの表示成功" do
         expect(response).to render_template :new
       end
 
@@ -77,10 +76,6 @@ RSpec.describe OrdersController, type: :controller do
             allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_charge)
           end
 
-          example "- 支払情報の取得失敗" do
-            expect(PayjpMock.prepare_charge).to eq nil
-          end
-
           example "- transaction_statusの更新失敗" do
             expect(assigns(:item).transaction_status).not_to eq 2
           end
@@ -98,8 +93,8 @@ RSpec.describe OrdersController, type: :controller do
             post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
           end
 
-          example "- 支払情報の取得失敗" do
-            expect(PayjpMock.prepare_charge).to eq nil
+          example "- transaction_statusの更新失敗" do
+            expect(assigns(:item).transaction_status).to eq 2
           end
 
           example "- buyer_user_idの更新失敗" do
