@@ -103,7 +103,7 @@
                 発送までの日数
               %span
                 必須
-              = f.select :sipping_days, Item.sipping_days.keys.to_a,include_blank: "---", class: "contents__item__shippingWay__right__days__select"
+              = f.select :sipping_days, Item.sipping_days.keys.to_a, class: "contents__item__shippingWay__right__days__select"
               -# = f.select :sipping_days, [["---", value = 1], ["1〜2日で発送", value = 2],["2〜3日で発送", value = 3], ["4〜7日で発送", value = 4]], class: "contents__item__shippingWay__right__days__select"
 
         .contents__item__price
