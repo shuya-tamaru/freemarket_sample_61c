@@ -91,7 +91,6 @@ RSpec.describe ProductsController, type: :controller do
         before do
           @item = create(:item, saler_user_id: 3)
           @item_params = @item.attributes
-          # @item_params = FactoryBot.attributes_for(:item, images:"#{Rails.root}/app/assets/images/step4.png" )
         end
 
         it 'item can be updated' do
@@ -104,13 +103,6 @@ RSpec.describe ProductsController, type: :controller do
           patch :update, params: {id: @item,item: @item_params}
           @item.reload
           expect(@item.name).to eq("アップデート")
-        end
-
-        it "changes @item's attributes image" do
-          @item_params[:images] = "#{Rails.root}/app/assets/images/step4.png"
-          patch :update, params: {id: @item, item: @item_params}
-          @item.reload
-          expect(@item.images[0].image.url).to eq("#{Rails.root}/app/assets/images/step4.png")
         end
 
         it "redirects to root_path" do
