@@ -13,7 +13,7 @@ RSpec.describe OrdersController, type: :controller do
       example "- newテンプレートの表示成功" do
         login users.first
         @item = item
-        allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer)
+        allow(Payjp::Customer).to receive(:retrieve).and_return(PayjpMock.prepare_customer)
         get :new, params:{id: @item[:id]}
         expect(response).to render_template :new
       end
