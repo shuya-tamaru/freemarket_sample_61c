@@ -125,5 +125,13 @@ RSpec.describe OrdersController, type: :controller do
         end
       end
     end
+    context "ログアウト:" do
+
+      it "- new_user_session_pathにリダイレクト" do
+        @item = item
+        post :pay, params: {id: @item.id, customer_id: 'cus_121673955bd7aa144de5a8f6c262' }
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end
